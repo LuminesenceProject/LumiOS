@@ -1,14 +1,27 @@
 [
     {
         "name": "Valorant",
+        "image": "",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/valorant.html"
     },
     {
         "name": "Fnaf 2",
+        "image": "",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/fnaf2.html"
     },
     {
         "name": "Geodash",
+        "image": "",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/Geo-dash.html"
+    },
+    {
+        "name": "Eaglercraft 1.5.2",
+        "image": "",
+        "path": ""
+    },
+    {
+        "name": "Eaglercraft 1.8",
+        "image": "",
+        "path": ""
     }
 ]
