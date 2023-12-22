@@ -1,27 +1,27 @@
 [
     {
         "name": "Valorant",
-        "image": "",
+        "image": "./images/valorant.jpeg",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/valorant.html"
     },
     {
         "name": "Fnaf 2",
-        "image": "",
+        "image": "./images/fnaf.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/fnaf2.html"
     },
     {
         "name": "Geodash",
-        "image": "",
+        "image": "./images/geometryDash.jpeg",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/Geo-dash.html"
     },
     {
         "name": "Eaglercraft 1.5.2",
-        "image": "",
-        "path": ""
+        "image": "./images/eaglercraft.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/eaglercraft.1.5.2.html"
     },
     {
         "name": "Eaglercraft 1.8",
-        "image": "",
-        "path": ""
+        "image": "./images/eaglercraft.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/eaglercraft.1.8.html"
     }
 ]
