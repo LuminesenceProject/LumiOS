@@ -1,14 +1,14 @@
 [
-  {
-    "name": "Valorant",
-    "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/valorant.html",
-  },
-  {
-    "name": "Fnaf 2",
-    "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/fnaf2.html",
-  },
-  {
-    "name": "Geodash",
-    "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/Geo-dash.html",
-  }
+    {
+        "name": "Valorant",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/valorant.html"
+    },
+    {
+        "name": "Fnaf 2",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/fnaf2.html"
+    },
+    {
+        "name": "Geodash",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/Geo-dash.html"
+    }
 ]
