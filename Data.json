@@ -1,27 +1,27 @@
 [
     {
         "name": "Valorant",
-        "image": "./images/valorant.jpeg",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/valorant.jpeg",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/valorant.html"
     },
     {
         "name": "Fnaf 2",
-        "image": "./images/fnaf.png",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/fnaf.jpeg",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/fnaf2.html"
     },
     {
         "name": "Geodash",
-        "image": "./images/geometryDash.jpeg",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/geometryDash.jpeg",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/Geo-dash.html"
     },
     {
         "name": "Eaglercraft 1.5.2",
-        "image": "./images/eaglercraft.png",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/eaglercraft.1.5.2.html"
     },
     {
         "name": "Eaglercraft 1.8",
-        "image": "./images/eaglercraft.png",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/eaglercraft.1.8.html"
     }
 ]
