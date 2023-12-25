@@ -2,31 +2,36 @@
     {
         "name": "Valorant",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/valorant.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/valorant.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/valorant.html"
     },
     {
         "name": "Fnaf 2",
-        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/fnaf.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/fnaf2.html"
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/fnaf2.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/fnaf2.html"
+    },
+    {
+        "name": "Terraria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/terraria.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Terraria 1.0.html"
     },
     {
         "name": "Geodash",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/geometryDash.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/Geo-dash.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Geo-dash.html"
     },
     {
         "name": "Eaglercraft 1.5.2",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/eaglercraft.1.5.2.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.5.2.html"
     },
     {
         "name": "Eaglercraft 1.8",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/eaglercraft.1.8.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.8.html"
     },
     {
         "name": "Proxy",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/Proxy.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/Proxy.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/games/main/Proxy.html"
     }
 ]
