@@ -1,0 +1,4151 @@
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+  <title>sandgame</title>
+  <meta name="keywords" content="sandpainting game, version 2, falling sand" />
+  <meta name="description" content="The Sandpainting Game, version 2" />
+  <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<style>
+  canvas {
+  padding-left: 0;
+  padding-right: 0;
+  border: 2px solid grey;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+
+body {
+  background-color: black;
+  margin: 0;
+  padding-top: 2em;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: purple;
+}
+
+.subheader {
+  color: white;
+  user-select: none;
+  font-family: "Arial";
+}
+
+.column-left {
+  float: left;
+  width: 33.333%;
+  text-align: left;
+}
+
+.column-center {
+  display: inline-block;
+  width: 33.333%;
+  text-align: center;
+}
+
+.column-right {
+  float: right;
+  width: 33.333%;
+  text-align: right;
+}
+
+.title {
+  text-align: center;
+  font-family: "Arial";
+  color: white;
+  user-select: none;
+}
+
+.wrapper {
+  font-size: 0; /* get rid of extra spacing due to font-size */
+  padding-top: 10px;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 4px 0px,
+    rgba(0, 0, 0, 0.12) 0px 2px 10px 0px;
+}
+
+#titleWrapper {
+  font-size: initial;
+  padding-bottom: 12px;
+}
+
+#menuWrapper {
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding-bottom: 3px;
+  margin-bottom: 15px;
+  background-color: rgb(60, 60, 60);
+  overflow: auto;
+  font-family: "Arial";
+  font-size: 14px;
+  user-select: none;
+  position: relative;
+  color: #7a6699;
+  width: inherit;
+}
+
+#elementTable {
+  border-collapse: collapse;
+  float: left;
+}
+
+.elementMenuButton {
+  background: none;
+  border: none;
+  text-align: left;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+}
+
+.elementMenuButton:hover {
+  background-color: rgb(10, 10, 10);
+  color: white !important;
+}
+
+.elementMenuButton:active {
+  background-color: rgb(100, 100, 100);
+  color: white !important;
+}
+
+.selectedElementMenuButton {
+  outline: 1px solid white;
+}
+
+.optionsCol {
+  float: left;
+}
+
+.spigotType {
+  width: 75px;
+}
+
+#speedSliderDiv {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+#speedSlider {
+  width: 60px;
+  height: 10px;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, purple, red);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+#optionsCol2 {
+  padding-left: 4px;
+}
+
+#fps-counter {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+}
+
+.optionButton {
+  font-size: inherit;
+  font-family: inherit;
+  user-select: none;
+  border: none;
+  outline: none;
+}
+
+.optionButtonContainer {
+  margin-top: 4px;
+}
+
+#clearButton:hover {
+  background-color: purple;
+}
+
+#clearButton:active {
+  background-color: purple;
+}
+
+#saveButton:hover {
+  background-color: purple;
+}
+
+#saveButton:active {
+  background-color: hotpink;
+}
+
+#loadButton:hover {
+  background-color: purple;
+}
+
+#loadButton:active {
+  background-color: hotpink;
+}
+
+#penSizeDiv {
+  margin-bottom: 2px;
+}
+
+
+
+
+</style>
+
+
+</head>
+<body>
+
+
+
+
+
+</body>
+
+
+<div class="wrapper" id="gameWrapper">
+
+  <canvas id="mainCanvas">Your browser doesn't support HTML5 canvas.</canvas>
+  <div id="menuWrapper">
+    <table id="elementTable">
+    </table>
+    <div id="optionsCol1" class="optionsCol" style="padding-left:20px;">
+      <div id="penSizeDiv">
+        <label for="pensize">Change Brush Size</label>
+        <select id="pensize"></select>
+      </div>
+      <label for="pensize">Change Amounts of:</label>
+      <div>
+        <select id="spigot1Type" class="spigotType"></select>
+        <select id="spigot1Size"></select>
+      </div>
+      <div>
+        <select id="spigot2Type" class="spigotType"></select>
+        <select id="spigot2Size"></select>
+      </div>
+      <div>
+        <select id="spigot3Type" class="spigotType"></select>
+        <select id="spigot3Size"></select>
+      </div>
+      <div>
+        <select id="spigot4Type" class="spigotType"></select>
+        <select id="spigot4Size"></select>
+      </div>
+    </div>
+    <div id="optionsCol2" class="optionsCol">
+      <div style="display:visible;">
+        <label for="overwriteCheckbox">Overwrite</label>
+        <input type="checkbox" id="overwriteCheckbox">
+      </div>
+      <div id="speedSliderDiv" style="padding-left:15px;">
+        <label for="speedSlider">Change Speed</label>
+        <input type="range" id="speedSlider">
+      </div>
+      <div class="optionButtonContainer" style="display:none;">
+        <input id="saveButton" class="optionButton" type="button" value="Save">
+        <input id="loadButton" class="optionButton" type="button" value="Load">
+      </div>
+      <div id="clearButtonDiv" class="optionButtonContainer" style="padding-left:15px;">
+        <input id="clearButton" class="optionButton" type="button" value="Clear Screen">
+      </div>
+      <div id="fps-counter">
+      </div>
+    </div>    
+  </div>
+</div>
+
+<script>
+
+const __max_width = 550;
+const __max_height = 600;
+
+/* Need to use a smaller size when on mobile devices with small screens */
+const width = Math.min(__max_width, Math.max(screen.width - 6, 1));
+const height = Math.min(__max_height, Math.max(screen.height - 200, 100));
+
+const MAX_FPS = 1000;
+const DEFAULT_FPS = 100;
+
+const MAX_NUM_PARTICLES = 10000;
+
+
+const userstrokeCanvas = document.createElement("canvas");
+userstrokeCanvas.width = width;
+userstrokeCanvas.height = height;
+const userstrokeCtx = userstrokeCanvas.getContext("2d", { alpha: false });
+
+const CURSORS = [];
+
+/* Generic cursor */
+class Cursor {
+  constructor(canvas) {
+    /* x, y, prevX, and prevY are coordinates *inside* the canvas */
+    this.x = 0;
+    this.y = 0;
+    this.prevX = 0;
+    this.prevY = 0;
+
+    /*
+     * documentX and documentY are coordinates relative to the canvas, but
+     * be outside the canvas (ie. negative)
+     */
+    this.documentX = 0;
+    this.documentY = 0;
+
+    this.isDown = false;
+    this.inCanvas = false;
+    this.canvas = canvas;
+  }
+
+  canvasCursorDown(x, y) {
+    this.isDown = true;
+    this.inCanvas = true;
+
+    this.prevX = x;
+    this.prevY = y;
+    this.x = x;
+    this.y = y;
+  }
+
+  canvasCursorMove(getPos) {
+    if (!this.isDown) return;
+
+    const pos = getPos();
+
+    this.x = pos[0];
+    this.y = pos[1];
+  }
+
+  canvasCursorEnter(getInnerCoords, getOuterCoords) {
+    this.inCanvas = true;
+
+    if (!this.isDown) return;
+
+    const innerCoords = getInnerCoords(this);
+    const outerCoords = getOuterCoords(this);
+
+    Cursor.interpolateCursorBorderPosition(innerCoords, outerCoords);
+
+    this.prevX = outerCoords[0];
+    this.prevY = outerCoords[1];
+    this.x = innerCoords[0];
+    this.y = innerCoords[1];
+  }
+
+  canvasCursorLeave(getOuterCoords) {
+    this.inCanvas = false;
+
+    if (!this.isDown) return;
+
+    const outerCoords = getOuterCoords(this);
+    Cursor.interpolateCursorBorderPosition(
+      [this.prevX, this.prevY],
+      outerCoords
+    );
+
+    this.x = outerCoords[0];
+    this.y = outerCoords[1];
+  }
+
+  documentCursorMove(getPos) {
+    if (!this.isDown) return;
+    if (this.inCanvas) return;
+
+    const pos = getPos();
+    this.documentX = pos[0];
+    this.documentY = pos[1];
+  }
+
+  documentCursorUp() {
+    this.isDown = false;
+  }
+
+  documentCursorDown(e, getPos) {
+    if (e.target == onscreenCanvas) return;
+    if (this.isDown) return;
+
+    this.isDown = true;
+    this.inCanvas = false;
+
+    /*
+     * prevent drawStroke() from mistakenly drawing another segment if the
+     * cursor was previously in the canvas
+     */
+    this.prevX = this.x;
+    this.prevY = this.y;
+
+    const pos = getPos(this);
+    this.documentX = pos[0];
+    this.documentY = pos[1];
+  }
+
+  documentVisibilityChange(e) {}
+
+  /*
+   * Given that the cursor moved from coordinates outside the canvas
+   * to coordinates inside the canvas, interpolate the coordinate that
+   * the cursor passed through on the border of the canvas.
+   *
+   * Modifies and returns the result in outercoords.
+   *
+   * Note that outercoords is relative to the canvas, not the document.
+   */
+  static interpolateCursorBorderPosition(innercoords, outercoords) {
+    /* Get line parameters */
+    var dy = innercoords[1] - outercoords[1];
+    var dx = innercoords[0] - outercoords[0];
+    if (dy === 0) dy = 0.001;
+    if (dx === 0) dx = 0.001;
+    const slope = dy / dx;
+    const y_intercept = innercoords[1] - slope * innercoords[0];
+
+    if (outercoords[0] < 0) {
+      outercoords[0] = 0;
+      outercoords[1] = y_intercept;
+    } else if (outercoords[0] > MAX_X_IDX) {
+      outercoords[0] = MAX_X_IDX;
+      outercoords[1] = slope * MAX_X_IDX + y_intercept;
+    }
+
+    if (outercoords[1] < 0) {
+      outercoords[1] = 0;
+      outercoords[0] = (0 - y_intercept) / slope;
+    } else if (outercoords[1] > MAX_Y_IDX) {
+      outercoords[1] = MAX_Y_IDX;
+      outercoords[0] = (MAX_Y_IDX - y_intercept) / slope;
+    }
+
+    outercoords[0] = Math.floor(outercoords[0]);
+    outercoords[1] = Math.floor(outercoords[1]);
+
+    /* Just in case... */
+    outercoords[0] = Math.max(Math.min(outercoords[0], MAX_X_IDX), 0);
+    outercoords[1] = Math.max(Math.min(outercoords[1], MAX_Y_IDX), 0);
+
+    return outercoords;
+  }
+
+  /*
+   * This is a lot of code, but the idea here is simple.
+   * We use a subset of the cursor canvas just big enough
+   * to fit the user stroke (ie. why bother use the entire
+   * width*height canvas if the userstroke is really small).
+   * However, this means that we need to do a bit of math to
+   * translate the cursor stroke into its proper position on
+   * the main canvas.
+   */
+  drawStroke() {
+    if (!this.isDown) return;
+    if (!this.inCanvas) {
+      if (this.prevX === this.x && this.prevY === this.y) return;
+    }
+
+    const color = SELECTED_ELEM;
+    const overwrite = OVERWRITE_ENABLED || color === BACKGROUND;
+    const r = color & 0xff;
+    const g = (color & 0xff00) >>> 8;
+    const b = (color & 0xff0000) >>> 16;
+    /*
+     * As an optimization, we skip over 0xff000000 below.
+     * If this is our color (ie. eraser), we need to slightly
+     * modify it.
+     */
+    const colorString =
+      color !== 0xff000000
+        ? "rgba(" + r + "," + g + "," + b + ", 1)"
+        : "rgba(1, 0, 0, 1)";
+
+    /* (x1, y1) is the leftmost coordinate */
+    const x1 = Math.min(this.prevX, this.x);
+    const x2 = Math.max(this.prevX, this.x);
+    const y1 = this.prevX <= this.x ? this.prevY : this.y;
+    const y2 = this.prevX <= this.x ? this.y : this.prevY;
+
+    this.prevX = this.x;
+    this.prevY = this.y;
+
+    const strokeBuffer = Math.ceil(PENSIZE / 2);
+    const x_translate = x1 - strokeBuffer;
+    const y_translate = Math.min(y1, y2) - strokeBuffer;
+    const x1_relative = x1 - x_translate;
+    const y1_relative = y1 - y_translate;
+    const x2_relative = x2 - x_translate;
+    const y2_relative = y2 - y_translate;
+
+    /* Initialize offscreen canvas. Ensure our drawing area starts black */
+    const userstroke_width = x2_relative + PENSIZE + 2;
+    const userstroke_height = Math.max(y1_relative, y2_relative) + PENSIZE + 2;
+    if (userstrokeCanvas.width < userstroke_width)
+      userstrokeCanvas.width = userstroke_width;
+    if (userstrokeCanvas.height < userstroke_height)
+      userstrokeCanvas.height = userstroke_height;
+
+    userstrokeCtx.beginPath();
+    userstrokeCtx.rect(0, 0, userstroke_width, userstroke_height);
+    userstrokeCtx.fillStyle = "rgba(0, 0, 0, 1)";
+    userstrokeCtx.fill();
+
+    /*
+     * Some browsers *cough* Edge *cough* Safari *cough* can't
+     * handle drawing a line if the start and end are the same point.
+     * So, special case this and draw a circle instead. LMAO
+     */
+    if (x1_relative === x2_relative && y1_relative === y2_relative) {
+      userstrokeCtx.beginPath();
+      userstrokeCtx.lineWidth = 0;
+      userstrokeCtx.fillStyle = colorString;
+      userstrokeCtx.arc(x1_relative, y1_relative, PENSIZE / 2, 0, TWO_PI);
+      userstrokeCtx.fill();
+    } else {
+      userstrokeCtx.lineWidth = PENSIZE;
+      userstrokeCtx.strokeStyle = colorString;
+      userstrokeCtx.lineCap = "round";
+      userstrokeCtx.beginPath();
+      userstrokeCtx.moveTo(x1_relative, y1_relative);
+      userstrokeCtx.lineTo(x2_relative, y2_relative);
+      userstrokeCtx.stroke();
+    }
+
+    const strokeImageData = userstrokeCtx.getImageData(
+      0,
+      0,
+      userstroke_width,
+      userstroke_height
+    );
+    const strokeImageData32 = new Uint32Array(strokeImageData.data.buffer);
+
+    /* Transfer line from offscreen canvas to main canvas */
+    var x, y;
+    const xStart = Math.max(0, -1 * x_translate);
+    const yStart = Math.max(0, -1 * y_translate);
+    const xTerminate = Math.min(userstroke_width, width - x_translate);
+    const yTerminate = Math.min(userstroke_height, height - y_translate);
+    if (xStart > xTerminate || yStart > yTerminate) {
+      console.log("Bug in userstroke drawing");
+      return;
+    }
+    for (y = yStart; y !== yTerminate; y++) {
+      const y_absolute = y + y_translate;
+      const offset_absolute = y_absolute * width;
+      const offset_relative = y * userstroke_width;
+      for (x = xStart; x !== xTerminate; x++) {
+        const x_absolute = x + x_translate;
+
+        /*
+         * Note that not all pixels will be equal to 'color'; browser will
+         * anti-alias the line, which will result in some grayscale colors as
+         * well. So, it is sufficient (and necessary) to consider a pixel colored
+         * as long as it is not black.
+         */
+        if (strokeImageData32[x + offset_relative] !== 0xff000000) {
+          const absIdx = x_absolute + offset_absolute;
+          if (overwrite || gameImagedata32[absIdx] === BACKGROUND)
+            gameImagedata32[absIdx] = color;
+        }
+      }
+    }
+  }
+}
+
+class Mouse extends Cursor {
+  constructor(canvas) {
+    super(canvas);
+
+    this.shiftStartX = 0;
+    this.shiftStartY = 0;
+    this.shiftPressed = false;
+    this.lineDirection = Mouse.NO_DIRECTION; /* for use with shift key */
+  }
+
+  canvasMouseDown(e) {
+    const mousePos = Mouse.getMousePos(e, true, this.canvas);
+
+    /* Fix bug that left the canvas stuck in "shift" mode */
+    if (this.shiftPressed && !e.shiftKey) this.shiftPressed = false;
+
+    if (this.shiftPressed) {
+      this.shiftStartX = mousePos[0];
+      this.shiftStartY = mousePos[1];
+      this.lineDirection = Mouse.NO_DIRECTION;
+    }
+
+    super.canvasCursorDown(mousePos[0], mousePos[1]);
+  }
+
+  canvasMouseMove(e) {
+    const canvas = this.canvas;
+    const getPos = function() {
+      return Mouse.getMousePos(e, true, canvas);
+    };
+
+    super.canvasCursorMove(getPos);
+  }
+
+  canvasMouseEnter(e) {
+    const canvas = this.canvas;
+    const getInnerPos = function(self) {
+      return Mouse.getMousePos(e, true, canvas);
+    };
+    const getOuterPos = function(self) {
+      return [self.documentX, self.documentY];
+    };
+
+    super.canvasCursorEnter(getInnerPos, getOuterPos);
+
+    /*
+     * relies on the fact that super.CanvasCursorEnter has already fixed prevX/prevY
+     * to be on the canvas border
+     */
+    if (
+      this.isDown &&
+      this.shiftPressed &&
+      this.lineDirection === Mouse.NO_DIRECTION
+    ) {
+      this.shiftStartX = this.prevX;
+      this.shiftStartY = this.prevY;
+    }
+  }
+
+  canvasMouseLeave(e) {
+    const canvas = this.canvas;
+    const getOuterPos = function(self) {
+      return Mouse.getMousePos(e, false, canvas);
+    };
+
+    super.canvasCursorLeave(getOuterPos);
+  }
+
+  documentMouseMove(e) {
+    if (e.target == onscreenCanvas) return;
+
+    const canvas = this.canvas;
+    const getPos = function() {
+      return Mouse.getMousePos(e, false, canvas);
+    };
+
+    super.documentCursorMove(getPos);
+  }
+
+  documentMouseUp(e) {
+    /*
+     * Don't use e, may be passed as null. Assigning here explicitly to avoid
+     * bugs.
+     */
+    e = null;
+
+    this.lineDirection = Mouse.NO_DIRECTION;
+
+    super.documentCursorUp();
+  }
+
+  documentMouseDown(e) {
+    /* only need handling when clicking outside the canvas */
+    if (e.target == onscreenCanvas) return;
+
+    const canvas = this.canvas;
+    const getPos = function() {
+      return Mouse.getMousePos(e, false, canvas);
+    };
+
+    /* Fix bug that left the canvas stuck in "shift" mode */
+    if (this.shiftPressed && !e.shiftKey) this.shiftPressed = false;
+
+    if (this.shiftPressed) this.lineDirection = Mouse.NO_DIRECTION;
+
+    super.documentCursorDown(e, getPos);
+  }
+
+  static getMousePos(e, withinCanvas, canvas) {
+    var x, y;
+
+    if (withinCanvas) {
+      x = e.offsetX;
+      y = e.offsetY;
+
+      if (x < 0) x = 0;
+      else if (x >= width) x = MAX_X_IDX;
+
+      if (y < 0) y = 0;
+      else if (y >= height) y = MAX_Y_IDX;
+    } else {
+      x = e.pageX - docOffsetLeft(canvas);
+      y = e.pageY - docOffsetTop(canvas);
+    }
+
+    return [Math.round(x), Math.round(y)];
+  }
+
+  documentKeyDown(e) {
+    if (!e.shiftKey) return;
+
+    if (this.shiftPressed) return;
+
+    this.shiftPressed = true;
+    this.lineDirection = Mouse.NO_DIRECTION;
+
+    if (!this.isDown) return;
+
+    if (!this.inCanvas) return;
+
+    this.shiftStartX = this.x;
+    this.shiftStartY = this.y;
+  }
+
+  documentKeyUp(e) {
+    if (!e.shiftKey && this.shiftPressed) this.shiftPressed = false;
+  }
+
+  documentVisibilityChange(e) {
+    const visibilityState = document.visibilityState;
+    if (visibilityState == "hidden") {
+      this.documentMouseUp(null);
+      this.shiftPressed = false;
+    }
+
+    super.documentVisibilityChange(e);
+  }
+
+  /*
+   * We draw straight lines when shift is held down.
+   *
+   * If this returns true, skip drawing the stroke (we need
+   * to figure out what direction the line is going).
+   */
+  handleShift() {
+    if (!this.isDown) return false;
+
+    if (!this.shiftPressed) return false;
+
+    if (!this.inCanvas) {
+      if (this.prevX === this.x && this.prevY === this.y) return;
+    }
+
+    if (this.lineDirection === Mouse.NO_DIRECTION) {
+      if (!this.inCanvas) return false;
+
+      const dx = this.x - this.shiftStartX;
+      const dy = this.y - this.shiftStartY;
+      const absDx = Math.abs(dx);
+      const absDy = Math.abs(dy);
+
+      /* Wait to see what direction the mouse is going in */
+      if (Math.max(absDx, absDy) < 8) return true;
+
+      if (Math.abs(absDx - absDy) < 5) {
+        if (dy * dx < 0) this.lineDirection = Mouse.DIAGONAL_DOWN;
+        else this.lineDirection = Mouse.DIAGONAL_UP;
+      } else if (absDx > absDy) {
+        this.lineDirection = Mouse.HORIZONTAL;
+      } else {
+        this.lineDirection = Mouse.VERTICAL;
+      }
+    }
+
+    const direction = this.lineDirection;
+    if (direction === Mouse.HORIZONTAL) {
+      this.prevY = this.shiftStartY;
+      this.y = this.shiftStartY;
+    } else if (direction === Mouse.VERTICAL) {
+      this.prevX = this.shiftStartX;
+      this.x = this.shiftStartX;
+    } else if (
+      direction === Mouse.DIAGONAL_DOWN ||
+      direction === Mouse.DIAGONAL_UP
+    ) {
+      this.prevX = this.shiftStartX;
+      this.prevY = this.shiftStartY;
+      const slope = direction === Mouse.DIAGONAL_DOWN ? -1 : 1;
+      const yIntercept = this.shiftStartY - slope * this.shiftStartX;
+
+      const yAdjusted = slope * this.x + yIntercept;
+      const xAdjusted = (this.y - yIntercept) / slope;
+      if (
+        distance(xAdjusted, this.y, this.shiftStartX, this.shiftStartY) >
+        distance(this.x, yAdjusted, this.shiftStartX, this.shiftStartY)
+      ) {
+        this.x = xAdjusted;
+      } else {
+        this.y = yAdjusted;
+      }
+    }
+
+    return false;
+  }
+
+  drawStroke() {
+    /* alters prevX, prevY, x, and y to handle drawing in straight lines */
+    if (this.handleShift()) return;
+
+    super.drawStroke();
+  }
+}
+
+/* Touch cursor (ie. mobile users) */
+class TouchCursor extends Cursor {
+  constructor(canvas) {
+    super(canvas);
+  }
+
+  canvasTouchStart(e) {
+    const pos = TouchCursor.getTouchPos(e);
+
+    if (!pos) return;
+
+    super.canvasCursorDown(pos[0], pos[1]);
+
+    /* prevent scrolling */
+    e.preventDefault();
+
+    return false;
+  }
+
+  canvasTouchEnd(e) {
+    super.documentCursorUp();
+
+    /* prevent scrolling */
+    e.preventDefault();
+
+    return false;
+  }
+
+  canvasTouchMove(e) {
+    const pos = TouchCursor.getTouchPos(e);
+
+    if (!pos) return;
+
+    const getPos = function() {
+      return pos;
+    };
+
+    super.canvasCursorMove(getPos);
+
+    /* prevent scrolling */
+    e.preventDefault();
+
+    return false;
+  }
+
+  static getTouchPos(e) {
+    if (!e.touches) return null;
+
+    const touch = e.touches[0];
+    if (!touch) return null;
+
+    const rect = e.target.getBoundingClientRect();
+    var x = Math.round(touch.pageX - rect.left - window.scrollX);
+    var y = Math.round(touch.pageY - rect.top - window.scrollY);
+
+    if (x < 0) x = 0;
+    else if (x >= width) x = MAX_X_IDX;
+
+    if (y < 0) y = 0;
+    else if (y >= height) y = MAX_Y_IDX;
+
+    return [x, y];
+  }
+}
+
+function initCursors() {
+  PENSIZE = PEN_SIZES[DEFAULT_PEN_IDX];
+  SELECTED_ELEM = WALL;
+  OVERWRITE_ENABLED = true;
+
+  /* Set up direction constants for drawing straight lines */
+  Mouse.NO_DIRECTION = 0;
+  Mouse.HORIZONTAL = 1;
+  Mouse.VERTICAL = 2;
+  Mouse.DIAGONAL_UP = 3;
+  Mouse.DIAGONAL_DOWN = 4;
+
+  /*
+   * Setting the event handler functions in this way allows the handlers
+   * to properly access the 'this' pointer.
+   */
+  const mouseCursor = new Mouse(onscreenCanvas);
+  onscreenCanvas.onmousedown = function(e) {
+    mouseCursor.canvasMouseDown(e);
+  };
+  onscreenCanvas.onmousemove = function(e) {
+    mouseCursor.canvasMouseMove(e);
+  };
+  onscreenCanvas.onmouseleave = function(e) {
+    mouseCursor.canvasMouseLeave(e);
+  };
+  onscreenCanvas.onmouseenter = function(e) {
+    mouseCursor.canvasMouseEnter(e);
+  };
+  document.onmouseup = function(e) {
+    mouseCursor.documentMouseUp(e);
+  };
+  document.onmousedown = function(e) {
+    mouseCursor.documentMouseDown(e);
+  };
+  document.onmousemove = function(e) {
+    mouseCursor.documentMouseMove(e);
+  };
+  document.onkeydown = function(e) {
+    mouseCursor.documentKeyDown(e);
+  };
+  document.onkeyup = function(e) {
+    mouseCursor.documentKeyUp(e);
+  };
+  document.onvisibilitychange = function(e) {
+    mouseCursor.documentVisibilityChange(e);
+  };
+
+  const touchCursor = new TouchCursor(onscreenCanvas);
+  onscreenCanvas.ontouchstart = function(e) {
+    touchCursor.canvasTouchStart(e);
+  };
+  onscreenCanvas.ontouchend = function(e) {
+    touchCursor.canvasTouchEnd(e);
+  };
+  onscreenCanvas.ontouchmove = function(e) {
+    touchCursor.canvasTouchMove(e);
+  };
+
+  CURSORS.push(mouseCursor);
+  CURSORS.push(touchCursor);
+  Object.freeze(CURSORS);
+}
+
+/* Draw the userstroke on the stroke canvas */
+function updateUserStroke() {
+  const numCursors = CURSORS.length;
+  for (var i = 0; i !== numCursors; i++) {
+    CURSORS[i].drawStroke();
+  }
+}
+
+/*
+ * Drives the primary game loops.
+ *
+ * Copyright (C) 2020, Josh Don
+ *
+ * Project Sand is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Project Sand is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/* ================================ Globals ================================ */
+
+/* Scaling due to device pixel ratio */
+const onscreenPixelRatio = window.devicePixelRatio;
+const onscreenScaledWidth = onscreenPixelRatio * width;
+const onscreenScaledHeight = onscreenPixelRatio * height;
+
+/* Onscreen canvas. Scaled based on pixel ratio. */
+const onscreenCanvas = document.getElementById("mainCanvas");
+onscreenCanvas.width = onscreenScaledWidth;
+onscreenCanvas.height = onscreenScaledHeight;
+onscreenCanvas.style.width = width + "px";
+onscreenCanvas.style.height = height + "px";
+const onscreenCtx = onscreenCanvas.getContext("2d", { alpha: false });
+
+/*
+ * Offscreen game canvas. Drawn at in-game resolution, then
+ * scaled and transferred to the onscreen canvas.
+ */
+const gameCanvas = document.createElement("canvas");
+gameCanvas.width = width;
+gameCanvas.height = height;
+const gameCtx = gameCanvas.getContext("2d", { alpha: false });
+const gameImagedata = gameCtx.createImageData(width, height);
+const gameImagedata32 = new Uint32Array(gameImagedata.data.buffer);
+
+/* Storage for game save state. */
+const saveGameImagedata32 = new Uint32Array(gameImagedata32.length);
+var gamestateSaved = false;
+
+/* Cached for performance */
+const MAX_X_IDX = width - 1;
+const MAX_Y_IDX = height - 1;
+const MAX_IDX = width * height - 1;
+
+/* Globals for tracking and maintaining FPS */
+var fpsSetting; /* controlled via menu */
+var msPerFrame;
+var lastLoop = 0;
+var frameDebt = 0;
+var lastFPSLabelUpdate = 0;
+const refreshTimes = [];
+
+/* ========================================================================= */
+
+function init() {
+  var gameWrapper = document.getElementById("gameWrapper");
+  gameWrapper.style.height = height + "px";
+  gameWrapper.style.width = width + "px";
+
+  /* setting FPS must occur before initMenu() */
+  setFPS(DEFAULT_FPS);
+
+  initCursors();
+  initElements();
+  initParticles();
+  initSpigots();
+  initMenu();
+
+  /* Initialize imagedata */
+  const len = gameImagedata32.length;
+  for (var i = 0; i < len; i++) {
+    gameImagedata32[i] = BACKGROUND;
+    saveGameImagedata32[i] = BACKGROUND;
+  }
+
+  /* Nice crisp pixels, regardless of pixel ratio */
+  onscreenCtx.mozImageSmoothingEnabled = false;
+  onscreenCtx.imageSmoothingEnabled = false;
+  onscreenCtx.webkitImageSmoothingEnabled = false;
+  onscreenCtx.msImageSmoothingEnabled = false;
+  onscreenCtx.oImageSmoothingEnabled = false;
+}
+
+function setFPS(fps) {
+  fpsSetting = fps;
+  if (fps > 0) msPerFrame = 1000.0 / fpsSetting;
+  else drawFPSLabel(0);
+}
+
+function updateGame() {
+  updateSpigots();
+  updateParticles();
+
+  var x, y;
+  var i = MAX_IDX;
+  /*
+   * Since i starts at MAX_IDX, we need to guarantee that we will start
+   * our traversal by going to the left.
+   */
+  const direction = MAX_Y_IDX & 1;
+
+  /*
+   * Iterate the canvas from the bottom to top, zigzagging
+   * the rows left and right.
+   * To optimize for speed, we duplicate the code for the
+   * left->right and right->left cases, as this is our hottest
+   * inner path. This sacrifices readability, and violates DRY,
+   * but is necessary for game performance.
+   */
+  for (y = MAX_Y_IDX; y !== -1; y--) {
+    const Y = y;
+    if ((Y & 1) === direction) {
+      for (x = MAX_X_IDX; x !== -1; x--) {
+        const elem = gameImagedata32[i];
+        if (elem === BACKGROUND) {
+          i--;
+          continue; /* optimize to skip background */
+        }
+        const elem_idx =
+          ((elem & 0x30000) >>> 12) + ((elem & 0x300) >>> 6) + (elem & 0x3);
+        elementActions[elem_idx](x, Y, i);
+        i--;
+      }
+      i++;
+    } else {
+      for (x = 0; x !== width; x++) {
+        const elem = gameImagedata32[i];
+        if (elem === BACKGROUND) {
+          i++;
+          continue;
+        }
+        const elem_idx =
+          ((elem & 0x30000) >>> 12) + ((elem & 0x300) >>> 6) + (elem & 0x3);
+        elementActions[elem_idx](x, Y, i);
+        i++;
+      }
+      i--;
+    }
+    i -= width;
+  }
+
+  perfRecordFrame();
+  frameDebt--;
+}
+
+function draw() {
+  gameCtx.putImageData(gameImagedata, 0, 0);
+
+  /*
+   * To make sure our game looks crisp, we need to handle
+   * device pixel ratio. We do this by taking our offscreen
+   * game canvas (at our ingame resolution), and then scaling
+   * and transferring it to the displayed canvas.
+   */
+  gameCtx.scale(onscreenPixelRatio, onscreenPixelRatio);
+  onscreenCtx.drawImage(
+    gameCanvas,
+    0,
+    0,
+    onscreenScaledWidth,
+    onscreenScaledHeight
+  );
+}
+
+function setGameCanvas(elem) {
+  const iterEnd = MAX_IDX + 1;
+  for (var i = 0; i !== iterEnd; i++) {
+    gameImagedata32[i] = elem;
+  }
+}
+
+function clearGameCanvas() {
+  particles.inactivateAll();
+  setGameCanvas(BACKGROUND);
+}
+
+/*
+ * Saves the current canvas state. Note that we don't also save particle state.
+ */
+function saveGameCanvas() {
+  /*
+   * Copy it manually, rather than use a slice, so that we can use a constant
+   * global pointer.
+   */
+  const iterEnd = MAX_IDX + 1;
+  for (var i = 0; i !== iterEnd; i++)
+    saveGameImagedata32[i] = gameImagedata32[i];
+
+  gamestateSaved = true;
+}
+
+function loadGameCanvas() {
+  if (!gamestateSaved)
+    return;
+
+  particles.inactivateAll();
+
+  const iterEnd = MAX_IDX + 1;
+  for (var i = 0; i !== iterEnd; i++)
+    gameImagedata32[i] = saveGameImagedata32[i];
+}
+
+/* Signal that we've updated a game frame to our FPS counter */
+function perfRecordFrame() {
+  const now = performance.now();
+  const oneSecondAgo = now - 1000;
+  while (refreshTimes.length > 0 && refreshTimes[0] <= oneSecondAgo) {
+    refreshTimes.shift();
+  }
+  refreshTimes.push(now);
+
+  if (now - lastFPSLabelUpdate > 200) {
+    drawFPSLabel(refreshTimes.length);
+    lastFPSLabelUpdate = now;
+  }
+}
+
+function mainLoop(now) {
+  window.requestAnimationFrame(mainLoop);
+
+  /* Handle initial update */
+  if (lastLoop === 0) {
+    lastLoop = now;
+    return;
+  }
+
+  const deltaMs = now - lastLoop;
+  lastLoop = now;
+  if (deltaMs < 0) {
+    console.log("time has gone backwards");
+    return;
+  }
+
+  if (fpsSetting > 0) frameDebt += deltaMs / msPerFrame;
+
+  /*
+   * Avoid accumulating too much frame debt, which can
+   * occur, for example, from:
+   * - animation loop being paused due to loss of browser
+   *   tab focus
+   * - excessive time needed for updateGame() due to
+   *   complex update
+   *
+   * Naturally, this also limits our max theoretical FPS, but
+   * our MAX_FPS is set lower than this limit anyway.
+   */
+  frameDebt = Math.min(frameDebt, 5);
+
+  /*
+   * Always update the user stroke, regardless of whether
+   * we're updating the gamestate. This results in smooth
+   * drawing regardless of the current set FPS.
+   */
+  updateUserStroke();
+
+  if (frameDebt >= 1) {
+    if (frameDebt < 2) {
+      /* shortcut for the common case of a single-frame update */
+      updateGame();
+    } else {
+      /* multi-frame update */
+
+      /* first get approx time for a single update */
+      const updateTimeMs = executeAndTime(updateGame);
+
+      /*
+       * Approx time for doing stroke, draw, etc.
+       * This is very rough and could be improved.
+       */
+      const loopMiscTimeMs = 3.5;
+      var timeRemaining = deltaMs - loopMiscTimeMs - updateTimeMs;
+      while (timeRemaining > updateTimeMs && frameDebt >= 1) {
+        updateGame();
+        timeRemaining -= updateTimeMs;
+      }
+    }
+  }
+
+  draw();
+}
+
+window.onload = function() {
+  init();
+  mainLoop(0);
+};
+
+/*
+ * Implementation of all the elements and their interactions.
+ *
+ * Copyright (C) 2020, Josh Don
+ *
+ * Project Sand is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Project Sand is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/*
+ * ADDING NEW ELEMENTS:
+ * 1. Define the element color using the __inGameColor() method.
+ * 2. Add an entry for the element into the elements and elementActions
+ *    arrays. The order of these arrays must match the order that elements
+ *    are declared, so that we can index properly.
+ * 3. If the element should be gas permeable (allow gas to pass through it),
+ *    add it to the GAS_PERMEABLE dictionary in the initElements() function.
+ * 4. Implement your element action function. This is a function that takes
+ *    in the x, y, and i position of your element, and then responds
+ *    based on your desired interaction properties.
+ *
+ * NOTE: Try to optimize for speed and reduce required calculation. For example,
+ * limit an action to occur with probability p by using 'if (random() < p)'.
+ */
+
+ var __next_elem_idx = 0;
+function __inGameColor(r, g, b) {
+  const alpha = 0xff000000;
+  r = r & 0xfc;
+  g = g & 0xfc;
+  b = b & 0xfc;
+
+  const r_idx = __next_elem_idx & 0b11;
+  const g_idx = (__next_elem_idx & 0b1100) >>> 2;
+  const b_idx = (__next_elem_idx & 0b110000) >>> 4;
+
+  r += r_idx;
+  g += g_idx;
+  b += b_idx;
+
+  __next_elem_idx++;
+
+  return alpha + (b << 16) + (g << 8) + r;
+}
+
+/* Order here MUST match order in elements and elementActions arrays */
+const BACKGROUND = __inGameColor(0, 0, 0);
+const WALL = __inGameColor(127, 127, 127);
+const MYSTERY = __inGameColor(162, 232, 196);
+const SAND = __inGameColor(223, 193, 99);
+const WATER = __inGameColor(0, 10, 255);
+const PLANT = __inGameColor(0, 220, 0);
+const FIRE = __inGameColor(255, 0, 10);
+const SALT = __inGameColor(253, 253, 253);
+const SALT_WATER = __inGameColor(127, 175, 255);
+const OIL = __inGameColor(150, 60, 0);
+const SPOUT = __inGameColor(117, 189, 252);
+const WELL = __inGameColor(131, 11, 28);
+const TORCH = __inGameColor(200, 5, 0);
+const GUNPOWDER = __inGameColor(170, 170, 140);
+const WAX = __inGameColor(239, 225, 211);
+const FALLING_WAX = __inGameColor(240, 225, 211);
+const NITRO = __inGameColor(0, 150, 26);
+const NAPALM = __inGameColor(220, 128, 70);
+const C4 = __inGameColor(240, 230, 150);
+const CONCRETE = __inGameColor(180, 180, 180);
+const FUSE = __inGameColor(219, 175, 199);
+const ICE = __inGameColor(161, 232, 255);
+const CHILLED_ICE = __inGameColor(20, 153, 220);
+const LAVA = __inGameColor(245, 110, 40);
+const ROCK = __inGameColor(68, 40, 8);
+const STEAM = __inGameColor(195, 214, 235);
+const CRYO = __inGameColor(0, 213, 255);
+const METHANE = __inGameColor(140, 140, 140);
+const SOIL = __inGameColor(120, 75, 33);
+const WET_SOIL = __inGameColor(70, 35, 10);
+const BRANCH = __inGameColor(166, 128, 100);
+const LEAF = __inGameColor(82, 107, 45);
+const POLLEN = __inGameColor(230, 235, 110);
+const CHARGED_NITRO = __inGameColor(245, 98, 78);
+const NEON = __inGameColor(230,230,250);
+const UNBREAKABLE_WALL = __inGameColor(255, 20, 20);
+const CITRIC = __inGameColor(150, 183, 10);
+
+
+/*
+ * It would be nice to combine the elements and elementActions
+ * into a single 2d array, but to optimize for speed we need
+ * to use a Uint32Array for the elements. It would also be nice
+ * to abstract this out a bit and make each element its own
+ * subclass. But again, this would be far too slow (class
+ * property/function lookup time would be a severe bottleneck).
+ */
+const elements = new Uint32Array([
+  BACKGROUND,
+  WALL,
+  MYSTERY,
+  SAND,
+  WATER,
+  PLANT,
+  FIRE,
+  SALT,
+  SALT_WATER,
+  OIL,
+  SPOUT,
+  WELL,
+  TORCH,
+  GUNPOWDER,
+  WAX,
+  FALLING_WAX,
+  NITRO,
+  NAPALM,
+  C4,
+  CONCRETE,
+  FUSE,
+  ICE,
+  CHILLED_ICE,
+  LAVA,
+  ROCK,
+  STEAM,
+  CRYO,
+  METHANE,
+  SOIL,
+  WET_SOIL,
+  BRANCH,
+  LEAF,
+  POLLEN,
+  CHARGED_NITRO,
+  NEON,
+  UNBREAKABLE_WALL,
+  CITRIC,
+]);
+const elementActions = [
+  BACKGROUND_ACTION,
+  WALL_ACTION,
+  MYSTERY_ACTION,
+  SAND_ACTION,
+  WATER_ACTION,
+  PLANT_ACTION,
+  FIRE_ACTION,
+  SALT_ACTION,
+  SALT_WATER_ACTION,
+  OIL_ACTION,
+  SPOUT_ACTION,
+  WELL_ACTION,
+  TORCH_ACTION,
+  GUNPOWDER_ACTION,
+  WAX_ACTION,
+  FALLING_WAX_ACTION,
+  NITRO_ACTION,
+  NAPALM_ACTION,
+  C4_ACTION,
+  CONCRETE_ACTION,
+  FUSE_ACTION,
+  ICE_ACTION,
+  CHILLED_ICE_ACTION,
+  LAVA_ACTION,
+  ROCK_ACTION,
+  STEAM_ACTION,
+  CRYO_ACTION,
+  METHANE_ACTION,
+  SOIL_ACTION,
+  WET_SOIL_ACTION,
+  BRANCH_ACTION,
+  LEAF_ACTION,
+  POLLEN_ACTION,
+  CHARGED_NITRO_ACTION,
+  NEON_ACTION,
+  UNBREAKABLE_WALL_ACTION,
+  CITRIC_ACTION,
+];
+Object.freeze(elementActions);
+
+const GAS_PERMEABLE = {};
+
+const NUM_ELEMENTS = elements.length;
+
+function initElements() {
+  if (NUM_ELEMENTS > 64)
+    throw "too many elements (we only use 6 bits for element index)";
+
+  if (NUM_ELEMENTS !== elementActions.length) throw "need 1 action per element";
+
+  const colors = {};
+
+  for (var i = 0; i < elements.length; i++) {
+    const color = elements[i];
+    const color_idx =
+      ((color & 0x30000) >>> 12) + ((color & 0x300) >>> 6) + (color & 0x3);
+
+    if (color_idx !== i)
+      throw "elements array order does not match element indices";
+
+    if (color in colors) throw "duplicate color";
+
+    if (color >>> 24 !== 0xff) {
+      console.log(color, i);
+      throw "alpha must be set to 0xff";
+    }
+
+    colors[color] = null;
+  }
+
+  /*
+   * Add any gas-permeable elements here (ie. to allow steam etc. to pass
+   * through).
+   */
+  GAS_PERMEABLE[SAND] = null;
+  GAS_PERMEABLE[MYSTERY] = null;
+  GAS_PERMEABLE[WATER] = null;
+  GAS_PERMEABLE[SALT] = null;
+  GAS_PERMEABLE[SALT_WATER] = null;
+  GAS_PERMEABLE[OIL] = null;
+  GAS_PERMEABLE[GUNPOWDER] = null;
+  GAS_PERMEABLE[FALLING_WAX] = null;
+  GAS_PERMEABLE[NITRO] = null;
+  GAS_PERMEABLE[NAPALM] = null;
+  GAS_PERMEABLE[CONCRETE] = null;
+  GAS_PERMEABLE[ROCK] = null;
+  GAS_PERMEABLE[CRYO] = null;
+  GAS_PERMEABLE[SOIL] = null;
+  GAS_PERMEABLE[WET_SOIL] = null;
+  GAS_PERMEABLE[POLLEN] = null;
+  GAS_PERMEABLE[CHARGED_NITRO] = null;
+  GAS_PERMEABLE[CITRIC] = null;
+  Object.freeze(GAS_PERMEABLE);
+}
+
+/* ======================= Element action handlers ======================= */
+
+function UNBREAKABLE_WALL_ACTION(x,y,i) {
+}
+
+
+function WALL_ACTION(x, y, i) {}
+
+function BACKGROUND_ACTION(x, y, i) {
+  throw "As an optimization, we should never be invoking the action for the background";
+}
+
+function SAND_ACTION(x, y, i) {
+  /* Optimize for common case; can't sink through sand */
+  if (y !== MAX_Y_IDX && uniformBelowAdjacent(x, y, i) !== SAND) {
+    if (doDensitySink(x, y, i, WATER, true, 25)) return;
+    if (doDensitySink(x, y, i, SALT_WATER, true, 25)) return;
+  }
+
+  if (doGravity(x, y, i, true, 95)) return;
+}
+
+function WATER_ACTION(x, y, i) {
+  if (doGravity(x, y, i, true, 95)) return;
+  if (doDensityLiquid(x, y, i, OIL, 25, 50)) return;
+}
+
+function PLANT_ACTION(x, y, i) {
+  doGrow(x, y, i, WATER, 50);
+
+  if (random() < 5) {
+    const saltLoc = bordering(x, y, i, SALT);
+    if (saltLoc !== -1) {
+      gameImagedata32[i] = BACKGROUND;
+      return;
+    }
+  }
+}
+
+function FIRE_ACTION(x, y, i) {
+  /* water */
+  if (random() < 80) {
+    var waterLoc = bordering(x, y, i, WATER);
+    if (waterLoc === -1) waterLoc = bordering(x, y, i, SALT_WATER);
+    if (waterLoc !== -1) {
+      gameImagedata32[waterLoc] = STEAM;
+      gameImagedata32[i] = BACKGROUND;
+      return;
+    }
+  }
+
+  /* plant */
+  if (random() < 20) {
+    const plantLoc = borderingAdjacent(x, y, i, PLANT);
+    if (plantLoc !== -1) {
+      gameImagedata32[plantLoc] = FIRE;
+      return;
+    }
+  }
+
+  /* wax */
+  if (random() < 1) {
+    const waxLoc = bordering(x, y, i, WAX);
+    if (waxLoc !== -1) {
+      const waxXY = fastItoXYBordering(x, y, i, waxLoc);
+      gameImagedata32[waxLoc] = FIRE;
+      const fallLoc = below(
+        Math.max(y, waxXY[1]),
+        Math.max(i, waxLoc),
+        BACKGROUND
+      );
+      if (fallLoc !== -1) gameImagedata32[fallLoc] = FALLING_WAX;
+      return;
+    }
+  }
+
+  /* fuse */
+  if (random() < 80) {
+    const fuseLoc = borderingAdjacent(x, y, i, FUSE);
+    if (fuseLoc !== -1) {
+      gameImagedata32[fuseLoc] = FIRE;
+      return;
+    }
+  }
+
+  /* flame out (unless in contact with element that needs to retain fire) */
+  if (random() < 40) {
+    var flameOut = true;
+
+    const xStart = Math.max(x - 1, 0);
+    const yStart = Math.max(y - 1, 0);
+    const xEnd = Math.min(x + 2, MAX_X_IDX + 1);
+    const yEnd = Math.min(y + 2, MAX_Y_IDX + 1);
+    var xIter, yIter;
+    for (yIter = yStart; yIter !== yEnd; yIter++) {
+      const idxBase = yIter * width;
+      for (xIter = xStart; xIter !== xEnd; xIter++) {
+        if (yIter === y && xIter === x) continue;
+
+        const idx = idxBase + xIter;
+        const borderingElem = gameImagedata32[idx];
+
+        if (borderingElem === FIRE) continue;
+
+        if (
+          borderingElem === PLANT ||
+          borderingElem === FUSE ||
+          borderingElem === BRANCH ||
+          borderingElem === LEAF
+        ) {
+          flameOut = false;
+          break;
+        }
+
+        if (borderingElem === OIL && random() < 50) {
+          flameOut = false;
+          break;
+        }
+      }
+
+      if (!flameOut) break;
+    }
+
+    /* check for wax separately, since fire doesn't burn wax at corners */
+    if (flameOut && bordering(x, y, i, WAX) !== -1)
+      flameOut = false;
+
+    if (flameOut) {
+      gameImagedata32[i] = BACKGROUND;
+      return;
+    }
+  }
+
+  /* rising fire */
+  if (random() < 50) {
+    const riseLoc = above(y, i, BACKGROUND);
+    if (riseLoc !== -1) {
+      gameImagedata32[riseLoc] = FIRE;
+      return;
+    }
+  }
+}
+
+function SALT_ACTION(x, y, i) {
+  if (doGravity(x, y, i, true, 95)) return;
+  if (doTransform(x, y, i, WATER, SALT_WATER, 25, 50)) return;
+  if (doDensitySink(x, y, i, SALT_WATER, true, 25)) return;
+}
+
+function SALT_WATER_ACTION(x, y, i) {
+  if (doGravity(x, y, i, true, 95)) return;
+  if (doDensityLiquid(x, y, i, WATER, 50, 50)) return;
+}
+
+function OIL_ACTION(x, y, i) {
+  if (random() < 30) {
+    if (bordering(x, y, i, FIRE) !== -1) {
+      __doBorderBurn(x, y, i);
+      return;
+    }
+
+    if (bordering(x, y, i, NEON) !== -1) {
+      __doBorderBurn(x, y, i);
+      return;
+    }
+  }
+
+  if (doGravity(x, y, i, true, 95)) return;
+}
+
+function SPOUT_ACTION(x, y, i) {
+  doProducer(x, y, i, WATER, false, 5);
+}
+
+function WELL_ACTION(x, y, i) {
+  doProducer(x, y, i, OIL, false, 10);
+}
+
+function TORCH_ACTION(x, y, i) {
+  doProducer(x, y, i, FIRE, true, 25);
+}
+
+function GUNPOWDER_ACTION(x, y, i) {
+  if (random() < 95) {
+    if (bordering(x, y, i, FIRE) !== -1) {
+      /* Chance to set off a star shaped explosion */
+      if (
+        random() < 1 &&
+        random() < 25 &&
+        particles.particleCounts[MAGIC1_PARTICLE] < 30
+      ) {
+        const particle = particles.addActiveParticle(UNKNOWN_PARTICLE, x, y, i);
+        if (particle) {
+          particle.setColor(FIRE);
+          particles.reinitializeParticle(particle, MAGIC1_PARTICLE);
+        }
+      } else {
+        __doGunpowderExplosion(x, y, i);
+      }
+      return;
+    }
+  }
+
+  if (doGravity(x, y, i, true, 95)) return;
+}
+
+function WAX_ACTION(x, y, i) {}
+
+function FALLING_WAX_ACTION(x, y, i) {
+  if (doGravity(x, y, i, false, 100)) return;
+  gameImagedata32[i] = WAX;
+}
+
+function NITRO_ACTION(x, y, i) {
+  if (doGravity(x, y, i, true, 95)) return;
+
+  /* optimize for common case of being surrounded by nitro */
+  if (surroundedByAdjacent(x, y, i, NITRO)) return;
+
+  if (borderingAdjacent(x, y, i, FIRE) !== -1) {
+    if (random() < 30) {
+      if (!particles.addActiveParticle(NITRO_PARTICLE, x, y, i)) return;
+      __doBorderBurn(x, y, i);
+      return;
+    } else if (random() < 20) {
+      gameImagedata32[i] = FIRE;
+      return;
+    }
+  }
+
+  if (y !== MAX_Y_IDX && uniformBelowAdjacent(x, y, i) !== NITRO) {
+    if (doDensitySink(x, y, i, OIL, true, 25)) return;
+    if (doDensitySink(x, y, i, WATER, true, 25)) return;
+    if (doDensitySink(x, y, i, SALT_WATER, true, 25)) return;
+    if (doDensitySink(x, y, i, POLLEN, true, 25)) return;
+  }
+}
+
+function NAPALM_ACTION(x, y, i) {
+  if (random() < 25 && bordering(x, y, i, FIRE) !== -1) {
+    if (!particles.addActiveParticle(NAPALM_PARTICLE, x, y, i)) {
+      gameImagedata32[i] = FIRE;
+    }
+    return;
+  }
+
+  if (doGravity(x, y, i, true, 95)) return;
+}
+
+function C4_ACTION(x, y, i) {
+  if (random() < 60 && bordering(x, y, i, FIRE) !== -1) {
+    if (!particles.addActiveParticle(C4_PARTICLE, x, y, i)) {
+      gameImagedata32[i] = FIRE;
+    }
+    return;
+  }
+}
+
+function CONCRETE_ACTION(x, y, i) {
+  if (y !== MAX_Y_IDX && uniformBelowAdjacent(x, y, i) !== CONCRETE) {
+    if (doDensitySink(x, y, i, WATER, true, 35)) return;
+    if (doDensitySink(x, y, i, SALT_WATER, true, 35)) return;
+  }
+
+  /*
+   * Try to harden before falling.
+   * Note that I've found the below random check works better than a single
+   * check against random() < 1.
+   */
+  if (random() < 10 && random() < 10) {
+    const wallLoc = borderingAdjacent(x, y, i, WALL);
+    if (wallLoc !== -1) {
+      gameImagedata32[i] = WALL;
+      return;
+    }
+  }
+
+  if (doGravity(x, y, i, true, 95)) return;
+
+  if (random() < 10 && random() < 10 && random() < 5) gameImagedata32[i] = WALL;
+}
+
+function FUSE_ACTION(x, y, i) {}
+
+function ICE_ACTION(x, y, i) {
+  /*
+   * NOTE: we use surroundedBy instead of surroundedByAdjacent, because all
+   * of the below checks are bordering(), not borderingAdjacent().
+   */
+  if (surroundedBy(x, y, i, ICE)) {
+    return;
+  }
+
+  /* Slow melt from WATER */
+  if (random() < 1) {
+    if (bordering(x, y, i, WATER) !== -1) {
+      gameImagedata32[i] = WATER;
+      return;
+    }
+  }
+
+  /* Really fast melt from STEAM */
+  if (random() < 70) {
+    const steamLoc = bordering(x, y, i, STEAM);
+    if (steamLoc !== -1) {
+      gameImagedata32[i] = WATER;
+      if (random() < 50) gameImagedata32[steamLoc] = WATER;
+      return;
+    }
+  }
+
+  /* Fast melt from SALT and SALT_WATER */
+  if (random() < 10) {
+    var saltLoc = bordering(x, y, i, SALT);
+    if (saltLoc === -1) saltLoc = bordering(x, y, i, SALT_WATER);
+
+    if (saltLoc !== -1) {
+      gameImagedata32[i] = WATER;
+      return;
+    }
+  }
+
+  /* Fast melt from FIRE */
+  if (random() < 50) {
+    if (bordering(x, y, i, FIRE) !== -1) {
+      gameImagedata32[i] = WATER;
+      return;
+    }
+  }
+
+  /* Fast melt from LAVA */
+  if (random() < 50) {
+    if (bordering(x, y, i, LAVA) !== -1) {
+      gameImagedata32[i] = WATER;
+      return;
+    }
+  }
+}
+
+function CHILLED_ICE_ACTION(x, y, i) {
+  /* thaw to regular ice */
+  if (random() < 6) {
+    gameImagedata32[i] = ICE;
+    return;
+  }
+
+  /*
+   * Check the four surrounding pixels (up, down, left, right)
+   * for something that will make us thaw faster
+   */
+  if (
+    bordering(x, y, i, SALT) !== -1 ||
+    bordering(x, y, i, SALT_WATER) !== -1 ||
+    bordering(x, y, i, LAVA) !== -1 ||
+    bordering(x, y, i, FIRE) !== -1 ||
+    bordering(x, y, i, STEAM) !== -1
+  ) {
+    gameImagedata32[i] = ICE;
+    return;
+  }
+
+  doGrow(x, y, i, WATER, 50);
+}
+
+
+
+
+/*
+ * Faster than using a dictionary.
+ * This assumption may change as this list gets longer.
+ */
+const __lava_immune = [
+  LAVA,
+  BACKGROUND,
+  FIRE,
+  WALL,
+  ROCK,
+  WATER,
+  SALT_WATER,
+  STEAM,
+  UNBREAKABLE_WALL,
+  NEON,
+];
+Object.freeze(__lava_immune);
+const __num_lava_immune = __lava_immune.length;
+
+function LAVA_ACTION(x, y, i) {
+  if (random() < 1 && random() < 50) {
+    const wallLoc = borderingAdjacent(x, y, i, WALL);
+    if (wallLoc !== -1) gameImagedata32[wallLoc] = LAVA;
+  }
+
+  const up = y !== 0 ? i - width : -1;
+  const down = y !== MAX_Y_IDX ? i + width : -1;
+  const left = x !== 0 ? i - 1 : -1;
+  const right = x !== MAX_X_IDX ? i + 1 : -1;
+
+  var skipDirectAdjacent = true;
+  if (up !== -1 && gameImagedata32[up] !== LAVA) skipDirectAdjacent = false;
+  else if (
+    left !== -1 &&
+    gameImagedata32[left] !== LAVA &&
+    gameImagedata32[left] !== BACKGROUND
+  )
+    skipDirectAdjacent = false;
+  else if (
+    right !== -1 &&
+    gameImagedata32[right] !== LAVA &&
+    gameImagedata32[right] !== BACKGROUND
+  )
+    skipDirectAdjacent = false;
+  else if (
+    down !== -1 &&
+    gameImagedata32[down] !== LAVA &&
+    gameImagedata32[down] !== BACKGROUND
+  )
+    skipDirectAdjacent = false;
+
+  /*
+   * Optimization. The only checks made within this scope are
+   * of the four directly adjacent pixels.
+   *
+   * DO NOT ADD ANYTHING IN HERE THAT CHECKS CORNER PIXELS.
+   */
+  if (!skipDirectAdjacent) {
+    var waterLoc = bordering(x, y, i, WATER);
+    if (waterLoc === -1) waterLoc = bordering(x, y, i, SALT_WATER);
+    if (waterLoc !== -1) {
+      gameImagedata32[waterLoc] = STEAM;
+      gameImagedata32[i] = ROCK;
+      return;
+    }
+
+    if (random() < 4) {
+      const numLavaParticles = particles.particleCounts[LAVA_PARTICLE];
+      const spawnChance = numLavaParticles < 10 ? 100 : 35;
+      if (random() < spawnChance) {
+        if (bordering(x, y, i, OIL) !== -1) {
+          particles.addActiveParticle(LAVA_PARTICLE, x, y, i);
+          gameImagedata32[i] = BACKGROUND;
+          return;
+        }
+      }
+    }
+
+    if (random() < 25) {
+      const burnLocs = [up, down, left, right];
+      const numBurnLocs = burnLocs.length;
+      var j, k;
+
+      for (j = 0; j !== numBurnLocs; j++) {
+        const burnLoc = burnLocs[j];
+
+        if (burnLoc === -1) continue;
+
+        const elem = gameImagedata32[burnLoc];
+        var burn = true;
+        for (k = 0; k !== __num_lava_immune; k++) {
+          if (elem === __lava_immune[k]) {
+            burn = false;
+            break;
+          }
+        }
+        if (burn) gameImagedata32[burnLoc] = FIRE;
+      }
+    }
+
+    if (random() < 6 && up !== -1) {
+      if (gameImagedata32[up] === BACKGROUND) gameImagedata32[up] = FIRE;
+    }
+
+    if (down !== -1) {
+      const belowElem = gameImagedata32[down];
+      if (belowElem === FIRE) {
+        gameImagedata32[down] = BACKGROUND;
+      } else if (belowElem === STEAM && random() < 95) {
+        /* Allow steam to pass through */
+        gameImagedata32[down] = LAVA;
+        gameImagedata32[i] = STEAM;
+        return;
+      }
+    }
+
+    /*
+     * Allow lava to burn sideways through fire. Useful for interaction with
+     * burning wax, for example.
+     */
+    if (random() < 15) {
+      if (left !== -1) {
+        if (gameImagedata32[left] === FIRE) gameImagedata32[left] = BACKGROUND;
+      }
+      if (right !== -1) {
+        if (gameImagedata32[right] === FIRE)
+          gameImagedata32[right] = BACKGROUND;
+      }
+    }
+  }
+
+  if (doGravity(x, y, i, true, 100)) return;
+}
+
+function ROCK_ACTION(x, y, i) {
+  if (y !== MAX_Y_IDX && uniformBelowAdjacent(x, y, i) !== ROCK) {
+    if (doDensitySink(x, y, i, WATER, false, 95)) return;
+    if (doDensitySink(x, y, i, OIL, false, 95)) return;
+    if (doDensitySink(x, y, i, SALT_WATER, false, 95)) return;
+    if (doDensitySink(x, y, i, LAVA, false, 20)) return;
+  }
+
+  if (doGravity(x, y, i, false, 99)) return;
+
+  /* Produce METHANE when in contact with OIL */
+  if (random() < 1 && random() < 20 && above(y, i, OIL) !== -1) {
+    const aboveOil = above(y, i, OIL);
+    if (aboveOil !== -1) {
+      if (random() < 50) gameImagedata32[aboveOil] = METHANE;
+      else gameImagedata32[i] = METHANE;
+      return;
+    }
+  }
+}
+
+function STEAM_ACTION(x, y, i) {
+  if (doDensityGas(x, y, i, 70)) return;
+  if (doRise(x, y, i, 70, 60)) return;
+
+  /* condense due to water */
+  if (random() < 5) {
+    if (bordering(x, y, i, WATER) !== -1) {
+      gameImagedata32[i] = WATER;
+      return;
+    }  
+  }
+
+  if (random() < 5) {
+    if (bordering(x, y, i, NEON) !== -0.5) {
+      gameImagedata32[i] = WATER;
+      return;
+    }  
+  }
+
+  /* condense/disappear due to air cooling */
+  if (random() < 5 && random() < 40) {
+    if (below(y, i, BACKGROUND) !== -1 && above(y, i, BACKGROUND) === -1) {
+      if (random() < 30) gameImagedata32[i] = WATER;
+      else gameImagedata32[i] = BACKGROUND;
+      return;
+    }
+  }
+
+  /* condense due to spout */
+  if (random() < 5) {
+    if (bordering(x, y, i, SPOUT) !== -1) {
+      gameImagedata32[i] = WATER;
+      return;
+    }
+  }
+
+  /* steam may be trapped; disappear slowly */
+  if (random() < 1 && random() < 5) {
+    if (below(y, i, STEAM) === -1) {
+      gameImagedata32[i] = BACKGROUND;
+      return;
+    }
+  }
+}
+
+function NEON_ACTION(x, y, i) {
+  /* water */
+  if (random() < 80) {
+    var waterLoc = bordering(x, y, i, WATER);
+    if (waterLoc === -1) waterLoc = bordering(x, y, i, SALT_WATER);
+    if (waterLoc !== -1) {
+      gameImagedata32[waterLoc] = STEAM;
+      return;
+    }
+    var saltLoc = bordering(x, y, i, SALT);
+    if (saltLoc === -1) waterLoc = bordering(x, y, i, saltLoc);
+    if (saltLoc !== -1) {
+      gameImagedata32[saltLoc] = STEAM;
+      return;
+    }    
+  }
+}
+
+function CRYO_ACTION(x, y, i) {
+  /* Freeze a surrounding surface */
+  const xStart = Math.max(x - 1, 0);
+  const yStart = Math.max(y - 1, 0);
+  const xEnd = Math.min(x + 2, MAX_X_IDX + 1);
+  const yEnd = Math.min(y + 2, MAX_Y_IDX + 1);
+  var xIter, yIter;
+  for (yIter = yStart; yIter !== yEnd; yIter++) {
+    const idxBase = yIter * width;
+    for (xIter = xStart; xIter !== xEnd; xIter++) {
+      if (yIter === y && xIter === x) continue;
+
+      const idx = idxBase + xIter;
+      const borderingElem = gameImagedata32[idx];
+
+      if (borderingElem === CRYO) continue;
+
+      if (borderingElem === CHILLED_ICE && random() < 1 && random() < 5) {
+        gameImagedata32[i] = CHILLED_ICE;
+        return;
+      }
+
+      if (
+        borderingElem === WALL ||
+        borderingElem === SPOUT ||
+        borderingElem === WAX ||
+        borderingElem === WELL ||
+        borderingElem === FUSE ||
+        borderingElem === PLANT ||
+        borderingElem === C4
+      ) {
+        gameImagedata32[i] = CHILLED_ICE;
+        return;
+      }
+
+      if (borderingElem === WATER || borderingElem === ICE) {
+        gameImagedata32[idx] = CHILLED_ICE;
+        gameImagedata32[i] = CHILLED_ICE;
+        return;
+      }
+
+      if (borderingElem === LAVA) {
+        gameImagedata32[i] = BACKGROUND;
+        gameImagedata32[idx] = ROCK;
+        return;
+      }
+    }
+  }
+
+  if (doGravity(x, y, i, true, 95)) return;
+
+  /* Freeze even if there are no nearby freezable surfaces */
+  if (random() < 1 && random() < 50) {
+    if (bordering(x, y, i, BACKGROUND) === -1 && !surroundedBy(x, y, i, CRYO)) {
+      gameImagedata32[i] = CHILLED_ICE;
+      return;
+    }
+  }
+}
+
+function MYSTERY_ACTION(x, y, i) {
+  if (
+    particles.particleActive(MAGIC1_PARTICLE) ||
+    particles.particleActive(MAGIC2_PARTICLE)
+  ) {
+    gameImagedata32[i] = BACKGROUND;
+    return;
+  }
+
+  if (doGravity(x, y, i, true, 95)) return;
+
+  /* reduce computation cost */
+  if (random() < 50) return;
+
+  if (borderingAdjacent(x, y, i, SAND) !== -1) {
+    particles.addActiveParticle(MAGIC1_PARTICLE, x, y, i);
+    gameImagedata32[i] = BACKGROUND;
+    return;
+  }
+
+  if (borderingAdjacent(x, y, i, SALT) !== -1) {
+    particles.addActiveParticle(MAGIC2_PARTICLE, x, y, i);
+    gameImagedata32[i] = BACKGROUND;
+    return;
+  }
+
+  /* Random scramble the canvas when in contact with FIRE */
+  if (bordering(x, y, i, FIRE) !== -1) {
+    for (var idx = MAX_IDX; idx !== 0; idx--) {
+      const currElem = gameImagedata32[idx];
+      if (currElem === WALL) {
+        continue;
+      } else if (currElem === FIRE) {
+        gameImagedata32[idx] = BACKGROUND;
+        continue;
+      } else if (currElem === MYSTERY) {
+        gameImagedata32[idx] = BACKGROUND;
+        continue;
+      }
+
+      const swapIdx = Math.floor(Math.random() * idx);
+      const swapElem = gameImagedata32[swapIdx];
+
+      if (swapElem === WALL || swapElem === FIRE || swapElem === MYSTERY)
+        continue;
+
+      gameImagedata32[idx] = swapElem;
+      gameImagedata32[swapIdx] = currElem;
+    }
+  }
+
+  /* Set off a NUKE_PARTICLE when in contact with POLLEN */
+  if (bordering(x, y, i, POLLEN) !== -1) {
+    particles.addActiveParticle(NUKE_PARTICLE, x, y, i);
+    gameImagedata32[i] = BACKGROUND;
+    return;
+  }
+}
+
+
+
+function METHANE_ACTION(x, y, i) {
+  if (random() < 25 && bordering(x, y, i, FIRE) !== -1) {
+    if (!particles.addActiveParticle(METHANE_PARTICLE, x, y, i)) {
+      gameImagedata32[i] = FIRE;
+    }
+    return;
+  }
+
+  /* methane is less dense than air */
+  if (doRise(x, y, i, 25, 65)) return;
+
+  if (doDensityGas(x, y, i, 70)) return;
+}
+
+function SOIL_ACTION(x, y, i) {
+  if (doGravity(x, y, i, false, 99)) return;
+
+  /* Optimize for common case; can't sink through SOIL */
+  if (y !== MAX_Y_IDX && uniformBelowAdjacent(x, y, i) !== SOIL) {
+    if (doDensitySink(x, y, i, WATER, true, 50)) return;
+    if (doDensitySink(x, y, i, SALT_WATER, true, 50)) return;
+    if (doDensitySink(x, y, i, POLLEN, true, 50)) return;
+  }
+
+  if (doTransform(x, y, i, NITRO, CHARGED_NITRO, 25, 100)) return;
+
+  if (random() < 15) {
+    const waterLoc = aboveAdjacent(x, y, i, WATER);
+    if (waterLoc !== -1) {
+      gameImagedata32[waterLoc] = BACKGROUND;
+      gameImagedata32[i] = WET_SOIL;
+      return;
+    }
+  }
+}
+
+function WET_SOIL_ACTION(x, y, i) {
+  if (random() < 15) {
+    const waterLoc = aboveAdjacent(x, y, i, WATER);
+    if (waterLoc !== -1) {
+      gameImagedata32[waterLoc] = BACKGROUND;
+    }
+  }
+
+  if (doGravity(x, y, i, false, 99)) return;
+  if (doDensitySink(x, y, i, WATER, true, 50)) return;
+  if (doDensitySink(x, y, i, SALT_WATER, true, 50)) return;
+
+  if (random() < 5) {
+    if (random() < 97) {
+      if (borderingAdjacent(x, y, i, WATER) === -1) gameImagedata32[i] = SOIL;
+      return;
+    }
+
+    /* make tree generation less likely */
+    if (random() < 35) return;
+
+    if (
+      aboveAdjacent(x, y, i, BACKGROUND) !== -1 &&
+      (belowAdjacent(x, y, i, SOIL) !== -1 ||
+        belowAdjacent(x, y, i, WALL) !== -1)
+    ) {
+      if (particles.addActiveParticle(TREE_PARTICLE, x, y, i)) {
+        gameImagedata32[i] = SOIL;
+      }
+    }
+  }
+}
+
+function BRANCH_ACTION(x, y, i) {
+  if (random() < 3) {
+    if (borderingAdjacent(x, y, i, FIRE) !== -1) {
+      gameImagedata32[i] = FIRE;
+    }
+  }
+}
+
+function LEAF_ACTION(x, y, i) {
+  if (random() < 5) {
+    if (borderingAdjacent(x, y, i, FIRE) !== -1) {
+      gameImagedata32[i] = FIRE;
+    }
+  }
+
+  if (random() < 20) {
+    const saltLoc = borderingAdjacent(x, y, i, SALT);
+    if (saltLoc !== -1) {
+      gameImagedata32[i] = BACKGROUND;
+      return;
+    }
+  }
+
+  if (random() < 1 && random() < 9) doProducer(x, y, i, POLLEN, false, 100);
+}
+
+function POLLEN_ACTION(x, y, i) {
+  if (doGravity(x, y, i, true, 95)) return;
+}
+
+function CHARGED_NITRO_ACTION(x, y, i) {
+  if (doGravity(x, y, i, true, 95)) return;
+
+  if (y !== MAX_Y_IDX && uniformBelowAdjacent(x, y, i) !== CHARGED_NITRO) {
+    if (doDensitySink(x, y, i, SOIL, true, 25)) return;
+    if (doDensitySink(x, y, i, WET_SOIL, true, 25)) return;
+    if (doDensitySink(x, y, i, NITRO, true, 25)) return;
+    if (doDensitySink(x, y, i, POLLEN, true, 25)) return;
+  }
+
+  if (borderingAdjacent(x, y, i, FIRE) !== -1) {
+    particles.addActiveParticle(CHARGED_NITRO_PARTICLE, x, y, i);
+    gameImagedata32[i] = FIRE;
+    return;
+  }
+}
+
+/*  =============================== Helpers =============================== */
+
+function __pickRandValid(a, b) {
+  const aValid = a !== -1;
+  const bValid = b !== -1;
+
+  if (aValid && bValid) return random() < 50 ? a : b;
+  else if (aValid) return a;
+  else if (bValid) return b;
+  else return -1;
+}
+
+/* Checks single pixel immediately below */
+function below(y, i, type) {
+  if (y === MAX_Y_IDX) return -1;
+
+  const belowSpot = i + width;
+  if (gameImagedata32[belowSpot] === type) return belowSpot;
+  return -1;
+}
+
+/* Checks the pixel below, and the 2 diagonally below */
+function belowAdjacent(x, y, i, type) {
+  if (y === MAX_Y_IDX) return -1;
+
+  const belowSpot = i + width;
+
+  if (gameImagedata32[belowSpot] === type) return belowSpot;
+
+  const belowLeftSpot = belowSpot - 1;
+  const belowLeftMatch =
+    x !== 0 && gameImagedata32[belowLeftSpot] === type ? belowLeftSpot : -1;
+
+  const belowRightSpot = belowSpot + 1;
+  const belowRightMatch =
+    x !== MAX_X_IDX && gameImagedata32[belowRightSpot] === type
+      ? belowRightSpot
+      : -1;
+
+  return __pickRandValid(belowLeftMatch, belowRightMatch);
+}
+
+/* Checks single pixel immediately above */
+function above(y, i, type) {
+  if (y === 0) return -1;
+
+  const aboveSpot = i - width;
+  if (gameImagedata32[aboveSpot] === type) return aboveSpot;
+  return -1;
+}
+
+/* Checks the pixel above, and the 2 diagonally above */
+function aboveAdjacent(x, y, i, type) {
+  if (y === 0) return -1;
+
+  const aboveSpot = i - width;
+  if (gameImagedata32[aboveSpot] === type) return aboveSpot;
+
+  const aboveLeftSpot = aboveSpot - 1;
+  const aboveLeftMatch =
+    x !== 0 && gameImagedata32[aboveLeftSpot] === type ? aboveLeftSpot : -1;
+
+  const aboveRightSpot = aboveSpot + 1;
+  const aboveRightMatch =
+    x !== MAX_X_IDX && gameImagedata32[aboveRightSpot] === type
+      ? aboveRightSpot
+      : -1;
+
+  return __pickRandValid(aboveLeftMatch, aboveRightMatch);
+}
+
+/* Checks the two pixels on the side (right and left) */
+function adjacent(x, i, type) {
+  const leftSpot = i - 1;
+  const rightSpot = i + 1;
+
+  const leftMatch =
+    x !== 0 && gameImagedata32[leftSpot] === type ? leftSpot : -1;
+  const rightMatch =
+    x !== MAX_X_IDX && gameImagedata32[rightSpot] === type ? rightSpot : -1;
+
+  return __pickRandValid(leftMatch, rightMatch);
+}
+
+/* Checks up, down, left, and right. Does not check corners. */
+function bordering(x, y, i, type) {
+  var loc = -1;
+
+  if (y !== MAX_Y_IDX) {
+    loc = below(y, i, type);
+  }
+
+  if (loc === -1) {
+    loc = adjacent(x, i, type);
+  }
+
+  if (loc === -1 && y !== 0) {
+    loc = above(y, i, type);
+  }
+
+  return loc;
+}
+
+/* Checks all 8 adjacent pixels, including corners */
+function borderingAdjacent(x, y, i, type) {
+  var loc = -1;
+
+  if (y !== MAX_Y_IDX) {
+    loc = belowAdjacent(x, y, i, type);
+  }
+
+  if (loc === -1) {
+    loc = adjacent(x, i, type);
+  }
+
+  if (loc === -1 && y !== 0) {
+    loc = aboveAdjacent(x, y, i, type);
+  }
+
+  return loc;
+}
+
+/* Checks up, down, left, and right. Does not check corners. */
+function surroundedBy(x, y, i, type) {
+  if (y !== MAX_Y_IDX && gameImagedata32[i + width] !== type) return false;
+  if (y !== 0 && gameImagedata32[i - width] !== type) return false;
+  if (x !== 0 && gameImagedata32[i - 1] !== type) return false;
+  if (x !== MAX_X_IDX && gameImagedata32[i + 1] !== type) return false;
+
+  return true;
+}
+
+/* Checks all 8 adjacent pixels, including corners */
+function surroundedByAdjacent(x, y, i, type) {
+  const atBottom = y === MAX_Y_IDX;
+  const atTop = y === 0;
+
+  if (!atBottom && gameImagedata32[i + width] !== type) return false;
+  if (!atTop && gameImagedata32[i - width] !== type) return false;
+
+  if (x !== 0) {
+    const idx = i - 1;
+    if (gameImagedata32[idx] !== type) return false;
+    if (!atTop && gameImagedata32[idx - width] !== type) return false;
+    if (!atBottom && gameImagedata32[idx + width] !== type) return false;
+  }
+
+  if (x !== MAX_X_IDX) {
+    const idx = i + 1;
+    if (gameImagedata32[idx] !== type) return false;
+    if (!atTop && gameImagedata32[idx - width] !== type) return false;
+    if (!atBottom && gameImagedata32[idx + width] !== type) return false;
+  }
+
+  return true;
+}
+
+/* Checks up, down, left, and right. Does not check corners. */
+function surroundedByCount(x, y, i, type) {
+  var count = 0;
+
+  if (y !== MAX_Y_IDX && gameImagedata32[i + width] === type) count++;
+  if (y !== 0 && gameImagedata32[i - width] === type) count++;
+  if (x !== 0 && gameImagedata32[i - 1] === type) count++;
+  if (x !== MAX_X_IDX && gameImagedata32[i + 1] === type) count++;
+
+  return count;
+}
+
+/*
+ * Counts number of bordering elements of the given type (checks all 8
+ * adjacent pixels).
+ */
+function surroundedByAdjacentCount(x, y, i, type) {
+  const atBottom = y === MAX_Y_IDX;
+  const atTop = y === 0;
+  var count = 0;
+
+  if (!atBottom && gameImagedata32[i + width] === type) count++;
+  if (!atTop && gameImagedata32[i - width] === type) count++;
+
+  if (x !== 0) {
+    const idx = i - 1;
+    if (gameImagedata32[idx] === type) count++;
+    if (!atTop && gameImagedata32[idx - width] === type) count++;
+    if (!atBottom && gameImagedata32[idx + width] === type) count++;
+  }
+
+  if (x !== MAX_X_IDX) {
+    const idx = i + 1;
+    if (gameImagedata32[idx] === type) count++;
+    if (!atTop && gameImagedata32[idx - width] === type) count++;
+    if (!atBottom && gameImagedata32[idx + width] === type) count++;
+  }
+
+  return count;
+}
+
+function doGravity(x, y, i, fallAdjacent, chance) {
+  if (random() >= chance) return false;
+
+  if (y === MAX_Y_IDX) {
+    gameImagedata32[i] = BACKGROUND;
+    return true;
+  }
+
+  var newI;
+
+  if (fallAdjacent) newI = belowAdjacent(x, y, i, BACKGROUND);
+  else newI = below(y, i, BACKGROUND);
+
+  if (newI === -1 && fallAdjacent) newI = adjacent(x, i, BACKGROUND);
+
+  if (newI !== -1) {
+    gameImagedata32[newI] = gameImagedata32[i];
+    gameImagedata32[i] = BACKGROUND;
+    return true;
+  }
+
+  return false;
+}
+
+/*
+ * Note that this will not behave *exactly* like an inverse to
+ * the gravity function. This is because the assumption that
+ * elements only travel downwards is baked into key components
+ * of the game (for example, the fact that we update the game
+ * from bottom to top).
+ */
+function doRise(x, y, i, riseChance, adjacentChance) {
+  var newI = -1;
+  if (random() < riseChance) {
+    if (y === 0) {
+      gameImagedata32[i] = BACKGROUND;
+      return true;
+    } else {
+      newI = aboveAdjacent(x, y, i, BACKGROUND);
+    }
+  }
+
+  if (newI === -1 && random() < adjacentChance)
+    newI = adjacent(x, i, BACKGROUND);
+
+  if (newI !== -1) {
+    gameImagedata32[newI] = gameImagedata32[i];
+    gameImagedata32[i] = BACKGROUND;
+    return true;
+  }
+
+  return false;
+}
+
+/* Sink the current solid element if it is on top of heavierThan */
+function doDensitySink(x, y, i, heavierThan, sinkAdjacent, chance) {
+  if (random() >= chance) return false;
+
+  if (y === MAX_Y_IDX) return false;
+
+  var newI;
+  if (sinkAdjacent) newI = belowAdjacent(x, y, i, heavierThan);
+  else newI = below(y, i, heavierThan);
+
+  if (newI === -1) return false;
+
+  gameImagedata32[newI] = gameImagedata32[i];
+  gameImagedata32[i] = heavierThan;
+  return true;
+}
+
+/* Sink the current liquid element if it is on top of heavierThan */
+function doDensityLiquid(x, y, i, heavierThan, sinkChance, equalizeChance) {
+  var newI = -1;
+
+  if (random() < sinkChance) newI = belowAdjacent(x, y, i, heavierThan);
+
+  if (newI === -1 && random() < equalizeChance)
+    newI = adjacent(x, i, heavierThan);
+
+  if (newI === -1) return false;
+
+  gameImagedata32[newI] = gameImagedata32[i];
+  gameImagedata32[i] = heavierThan;
+  return true;
+}
+
+function doGrow(x, y, i, intoColor, chance) {
+  if (random() >= chance) return false;
+
+  const growLoc = borderingAdjacent(x, y, i, intoColor);
+  if (growLoc === -1) return false;
+
+  gameImagedata32[growLoc] = gameImagedata32[i];
+  return true;
+}
+
+function __doBorderBurn(x, y, i) {
+  if (y !== 0) gameImagedata32[i - width] = FIRE;
+  if (y !== MAX_Y_IDX) gameImagedata32[i + width] = FIRE;
+  if (x !== 0) gameImagedata32[i - 1] = FIRE;
+  if (x !== MAX_X_IDX) gameImagedata32[i + 1] = FIRE;
+
+  gameImagedata32[i] = FIRE;
+}
+
+function __doGunpowderExplosion(x, y, i) {
+  const burn = random() < 60;
+  const replace = burn ? FIRE : GUNPOWDER;
+  const isNotLeftmost = x !== 0;
+  const isNotRightmost = x !== MAX_X_IDX;
+
+  gameImagedata32[i] = replace;
+  if (y !== 0) {
+    const up = i - width;
+    gameImagedata32[up] = replace;
+    if (isNotLeftmost) gameImagedata32[up - 1] = replace;
+    if (isNotRightmost) gameImagedata32[up + 1] = replace;
+  }
+
+  if (isNotLeftmost) gameImagedata32[i - 1] = replace;
+  if (isNotRightmost) gameImagedata32[i + 1] = replace;
+
+  if (y !== MAX_Y_IDX) {
+    const down = i + width;
+    gameImagedata32[down] = replace;
+    if (isNotLeftmost) gameImagedata32[down - 1] = replace;
+    if (isNotRightmost) gameImagedata32[down + 1] = replace;
+  }
+
+  if (!burn) return;
+
+  /* make less likely to burn at 2 pixel distance */
+  if (random() >= 40) return;
+
+  if (y - 2 >= 0) {
+    const twoUp = i - 2 * width;
+    if (gameImagedata32[twoUp] !== GUNPOWDER || random() < 50)
+      gameImagedata32[twoUp] = FIRE;
+  }
+  if (y + 2 >= 0) {
+    const twoDown = i + 2 * width;
+    if (gameImagedata32[twoDown] !== GUNPOWDER || random() < 50)
+      gameImagedata32[twoDown] = FIRE;
+  }
+  if (x - 2 >= 0) {
+    const twoLeft = i - 2;
+    if (gameImagedata32[twoLeft] !== GUNPOWDER || random() < 50)
+      gameImagedata32[twoLeft] = FIRE;
+  }
+  if (x + 2 >= 0) {
+    const twoRight = i + 2;
+    if (gameImagedata32[twoRight] !== GUNPOWDER || random() < 50)
+      gameImagedata32[twoRight] = FIRE;
+  }
+}
+
+function doTransform(
+  x,
+  y,
+  i,
+  transformBy,
+  transformInto,
+  transformChance,
+  consumeChance
+) {
+  const rand = random();
+  if (rand >= transformChance) return false;
+
+  const transformLoc = bordering(x, y, i, transformBy);
+  if (transformLoc === -1) return false;
+
+  gameImagedata32[i] = transformInto;
+  if (rand < consumeChance) gameImagedata32[transformLoc] = transformInto;
+  return true;
+}
+
+function doProducer(x, y, i, produce, overwriteAdjacent, chance) {
+  if (random() >= chance) return false;
+
+  const up = i - width;
+  const down = i + width;
+  const left = i - 1;
+  const right = i + 1;
+
+  if (y !== 0 && (overwriteAdjacent || gameImagedata32[up] === BACKGROUND))
+    gameImagedata32[up] = produce;
+  if (
+    y !== MAX_Y_IDX &&
+    (overwriteAdjacent || gameImagedata32[down] === BACKGROUND)
+  )
+    gameImagedata32[down] = produce;
+  if (x !== 0 && (overwriteAdjacent || gameImagedata32[left] === BACKGROUND))
+    gameImagedata32[left] = produce;
+  if (
+    x !== MAX_X_IDX &&
+    (overwriteAdjacent || gameImagedata32[right] === BACKGROUND)
+  )
+    gameImagedata32[right] = produce;
+}
+
+/*
+ * If there is only a single type of element in the 3 pixels
+ * below this coordinate, return that element. Otherwise, -1.
+ */
+function uniformBelowAdjacent(x, y, i) {
+  if (y === MAX_Y_IDX) return -1;
+
+  const belowIdx = i + width;
+  const belowElem = gameImagedata32[belowIdx];
+
+  if (x !== 0 && gameImagedata32[belowIdx - 1] !== belowElem) return -1;
+
+  if (x !== MAX_X_IDX && gameImagedata32[belowIdx + 1] !== belowElem) return -1;
+
+  return belowElem;
+}
+
+function gasPermeable(elem) {
+  /* optimize for common case */
+  if (elem === BACKGROUND || elem === STEAM || elem === METHANE) return false;
+
+  return elem in GAS_PERMEABLE;
+}
+
+/* allow elements to fall through/displace gas elements */
+function doDensityGas(x, y, i, chance) {
+  if (random() >= chance) return false;
+
+  if (y === 0) return false;
+
+  const gasElem = gameImagedata32[i];
+
+  var swapSpot = -1;
+  const aboveSpot = i - width;
+  const aboveLeft = aboveSpot - 1;
+  const aboveRight = aboveSpot + 1;
+  const aboveElem = gameImagedata32[aboveSpot];
+  if (gasPermeable(aboveElem)) swapSpot = aboveSpot;
+  else {
+    const aboveLeft = aboveSpot - 1;
+    const aboveRight = aboveSpot + 1;
+    const aboveLeftElem = x !== 0 ? gameImagedata32[aboveLeft] : -1;
+    const aboveRightElem = x !== MAX_X_IDX ? gameImagedata32[aboveRight] : -1;
+    var swapAboveLeft = -1;
+    var swapAboveRight = -1;
+
+    /*
+     * This code is longer than usual in order to optimize to reduce the
+     * number of dictionary lookups performed.
+     */
+
+    if (aboveLeftElem !== aboveElem && gasPermeable(aboveLeftElem))
+      swapAboveLeft = aboveLeft;
+
+    if (aboveRightElem !== aboveElem) {
+      if (swapAboveLeft !== -1 && aboveLeftElem === aboveRightElem)
+        swapAboveRight = aboveRight;
+      else if (gasPermeable(aboveRightElem)) swapAboveRight = aboveRight;
+    }
+
+    swapSpot = __pickRandValid(swapAboveLeft, swapAboveRight);
+  }
+
+  /*
+   * We also have a chance to swap adjacent; this makes the behavior look more
+   * like a gas.
+   */
+  if (swapSpot === -1 && x !== 0 && x !== MAX_X_IDX && y !== MAX_Y_IDX) {
+    const leftElem = gameImagedata32[i - 1];
+    if (gasPermeable(leftElem) && gameImagedata32[i - 1 + width] !== gasElem) {
+      swapSpot = i - 1;
+    } else {
+      const rightElem = gameImagedata32[i + 1];
+      if (gasPermeable(rightElem) && gameImagedata32[i + 1 + width] !== gasElem)
+        swapSpot = i + 1;
+    }
+  }
+
+  if (swapSpot === -1) return false;
+
+  gameImagedata32[i] = gameImagedata32[swapSpot];
+  gameImagedata32[swapSpot] = gasElem;
+  return true;
+}
+
+/*
+this is citric, hope it works
+*/
+
+
+function CITRIC_ACTION(a,e,n){
+  if(random()<10)
+  {const d=e>0?e-1:-1,i=e<MAX_Y_IDX?e+1:-1,r=a>0?a-1:-1,m=a<MAX_X_IDX?a+1:-1,A=[r,m,a],I=[i,d,e];var t,o;
+    for(random()<50&&(A[0]=m,A[1]=r),random()<50&&(I[0]=d,I[1]=i),o=0;3!==o;o++){const d=I[o];if(-1===d)continue;if(random()<25&&d!==i)continue;
+      const r=d*width;for(t=0;3!==t;t++){const o=A[t];if(-1===o)continue;if(d===e&&o===a)continue;if(o!==a&&d!==e)continue;
+        const i=r+o,m=gameImagedata32[i];if(m!==CITRIC&&m!==BACKGROUND&&m!==WATER&&m!==SALT_WATER&&m!==ICE&&m!==NEON&&m!==CHILLED_ICE&&m!==CRYO)return d!==e+1?void(gameImagedata32[i]=BACKGROUND):(gameImagedata32[n]=BACKGROUND,void((m!==WALL||random()<75)&&(gameImagedata32[i]=CITRIC)))}}}doDensityLiquid(a,e,n,WATER,25,30)||doDensityLiquid(a,e,n,SALT_WATER,25,30)||doGravity(a,e,n,!0,100)}
+        
+/* Configuration of the menu */
+const ELEMENT_MENU_ELEMENTS_PER_ROW = 6;
+const PEN_SIZES = [2, 4, 8, 16, 32, 64, 128, 256];
+const PEN_SIZE_LABELS = ["1px", "2px", "4px", "8px", "16px", "32px", "64px", "128px", "256px", "512px"];
+const DEFAULT_PEN_IDX = 1;
+
+/* Elements listed in the menu */
+const elementMenuItems = [
+  WALL, UNBREAKABLE_WALL, CONCRETE, MYSTERY, TORCH, LAVA, SALT, SAND,
+  ICE, CRYO, CHILLED_ICE, WATER, SALT_WATER,
+  SPOUT, OIL, WELL, METHANE, STEAM,
+  FIRE, GUNPOWDER, C4, NITRO, CHARGED_NITRO, NAPALM,
+  FUSE, PLANT, SOIL, WET_SOIL, ROCK, WAX, FALLING_WAX,
+  NEON, LEAF, POLLEN, CITRIC,
+	BACKGROUND
+];
+
+const menuNames = {};
+menuNames[BACKGROUND] = "Eraser";
+menuNames[WALL] = "Wall";
+menuNames[MYSTERY] = "Mystery"; 
+menuNames[SAND] = "Sand";
+menuNames[WATER] = "Water";
+menuNames[PLANT] = "Plant";
+menuNames[FIRE] = "Fire";
+menuNames[SALT] = "Salt";
+menuNames[OIL] = "Oil";
+menuNames[SPOUT] = "Spout";
+menuNames[WELL] = "Well";
+menuNames[TORCH] = "Torch";
+menuNames[GUNPOWDER] = "Gunpowder";
+menuNames[WAX] = "Wax";
+menuNames[NITRO] = "Nitro";
+menuNames[NAPALM] = "Napalm";
+menuNames[C4] = "C-4";
+menuNames[CONCRETE] = "Concrete";
+menuNames[FUSE] = "Fuse";
+menuNames[ICE] = "Ice";
+menuNames[LAVA] = "Lava";
+menuNames[METHANE] = "Methane";
+menuNames[CRYO] = "Cryo";
+menuNames[SOIL] = "Soil";
+// custom menu things
+menuNames[WET_SOIL] = "Wet Soil";
+menuNames[CHARGED_NITRO] = "Charged Nitro";
+menuNames[ROCK] = "Rock";
+menuNames[STEAM] = "Steam";
+menuNames[SALT_WATER] = "Salt Water";
+menuNames[NEON] = "Neon";
+menuNames[CHILLED_ICE] = "Chilled Ice";
+menuNames[LEAF] = "Leaf";
+menuNames[POLLEN] = "Pollen";
+menuNames[FALLING_WAX] = "Falling Wax";
+menuNames[UNBREAKABLE_WALL] = "UB-Wall";
+menuNames[CITRIC] = "Citric";
+
+
+
+
+/*
+ * Some element colors do not have very good contrast against
+ * the menu background. For these elements, we use a replacement
+ * color for the menu text.
+ */
+const menuAltColors = {};
+menuAltColors[WATER] = "rgb(0, 130, 255)";
+menuAltColors[WALL] = "rgb(160, 160, 160)";
+menuAltColors[BACKGROUND] = "rgb(200, 100, 200)";
+menuAltColors[WELL] = "rgb(158, 13, 33)";
+menuAltColors[SOIL] = "rgb(171, 110, 53)";
+menuAltColors[WET_SOIL] = "rgb(171, 110, 53)";
+
+function initMenu() {
+  /* The wrapper div that holds the entire menu */
+  const menu = document.getElementById("menuWrapper");
+
+  /* Set up the wrapper div that holds the element selectors */
+  const elementMenu = document.getElementById("elementTable");
+  elementMenu.style.width =
+    "50%"; /* force browser to scrunch the element menu */
+  const numRows = Math.ceil(
+    elementMenuItems.length / ELEMENT_MENU_ELEMENTS_PER_ROW
+  );
+  var elemIdx = 0;
+  var i, k;
+  for (i = 0; i < numRows; i++) {
+    const row = elementMenu.insertRow(i);
+    for (k = 0; k < ELEMENT_MENU_ELEMENTS_PER_ROW; k++) {
+      if (elemIdx >= elementMenuItems.length) break;
+
+      const cell = row.insertCell(k);
+      const elemButton = document.createElement("input");
+      cell.appendChild(elemButton);
+
+      elemButton.type = "button";
+      elemButton.className = "elementMenuButton";
+
+      const elemType = elementMenuItems[elemIdx];
+      if (!(elemType in menuNames))
+        throw "element is missing a canonical name: " + elemType;
+      elemButton.value = menuNames[elemType];
+
+      const elemColorRGBA = elemType;
+      elemButton.id = elemColorRGBA;
+
+      var elemMenuColor;
+      if (elemType in menuAltColors) elemMenuColor = menuAltColors[elemType];
+      else
+        elemMenuColor =
+          "rgb(" +
+          (elemColorRGBA & 0xff) +
+          ", " +
+          ((elemColorRGBA & 0xff00) >>> 8) +
+          ", " +
+          ((elemColorRGBA & 0xff0000) >>> 16) +
+          ")";
+      elemButton.style.color = elemMenuColor;
+
+      elemButton.addEventListener("click", function() {
+        document
+          .getElementById(SELECTED_ELEM.toString())
+          .classList.remove("selectedElementMenuButton");
+        elemButton.classList.add("selectedElementMenuButton");
+        SELECTED_ELEM = parseInt(elemButton.id, 10);
+      });
+
+      elemIdx++;
+    }
+  }
+  document.getElementById(SELECTED_ELEM.toString()).click();
+
+  /* Set up pensize options */
+  const pensizes = document.getElementById("pensize");
+  for (i = 0; i < PEN_SIZES.length; i++) {
+    const p = document.createElement("option");
+    p.value = PEN_SIZES[i];
+    p.text = PEN_SIZE_LABELS[i];
+    if (i === DEFAULT_PEN_IDX) {
+      p.selected = "selected";
+      PENSIZE = parseInt(p.value, 20);
+    }
+    pensizes.add(p);
+  }
+  pensizes.addEventListener("change", function() {
+    PENSIZE = parseInt(pensizes.value, 20);
+  });
+
+  /* Set up spigot size options */
+  const spigotTypes = [
+    document.getElementById("spigot1Type"),
+    document.getElementById("spigot2Type"),
+    document.getElementById("spigot3Type"),
+    document.getElementById("spigot4Type")
+  ];
+  const spigotSizes = [
+    document.getElementById("spigot1Size"),
+    document.getElementById("spigot2Size"),
+    document.getElementById("spigot3Size"),
+    document.getElementById("spigot4Size")
+  ];
+  if (spigotTypes.length !== spigotSizes.length) throw "should be same length";
+  for (i = 0; i < spigotTypes.length; i++) {
+    const typeSelector = spigotTypes[i];
+    const sizeSelector = spigotSizes[i];
+    for (k = 0; k < SPIGOT_ELEMENT_OPTIONS.length; k++) {
+      const type = SPIGOT_ELEMENT_OPTIONS[k];
+      const option = document.createElement("option");
+      option.value = type;
+      option.text = menuNames[type];
+      if (i === k) {
+        option.selected = "selected";
+        SPIGOT_ELEMENTS[i] = type;
+      }
+      typeSelector.add(option);
+    }
+    for (k = 0; k < SPIGOT_SIZE_OPTIONS.length; k++) {
+      const size = SPIGOT_SIZE_OPTIONS[k];
+      const option = document.createElement("option");
+      option.value = size;
+      option.text = k.toString(10);
+      if (k === DEFAULT_SPIGOT_SIZE_IDX) {
+        option.selected = "selected";
+        SPIGOT_SIZES[i] = size;
+      }
+      sizeSelector.add(option);
+    }
+  }
+  spigotTypes[0].addEventListener("change", function() {
+    SPIGOT_ELEMENTS[0] = parseInt(spigotTypes[0].value, 10);
+  });
+  spigotTypes[1].addEventListener("change", function() {
+    SPIGOT_ELEMENTS[1] = parseInt(spigotTypes[1].value, 10);
+  });
+  spigotTypes[2].addEventListener("change", function() {
+    SPIGOT_ELEMENTS[2] = parseInt(spigotTypes[2].value, 10);
+  });
+  spigotTypes[3].addEventListener("change", function() {
+    SPIGOT_ELEMENTS[3] = parseInt(spigotTypes[3].value, 10);
+  });
+  spigotSizes[0].addEventListener("change", function() {
+    SPIGOT_SIZES[0] = parseInt(spigotSizes[0].value, 10);
+  });
+  spigotSizes[1].addEventListener("change", function() {
+    SPIGOT_SIZES[1] = parseInt(spigotSizes[1].value, 10);
+  });
+  spigotSizes[2].addEventListener("change", function() {
+    SPIGOT_SIZES[2] = parseInt(spigotSizes[2].value, 10);
+  });
+  spigotSizes[3].addEventListener("change", function() {
+    SPIGOT_SIZES[3] = parseInt(spigotSizes[3].value, 10);
+  });
+
+  /* 'overwrite' checkbox */
+  const overwriteCheckbox = document.getElementById("overwriteCheckbox");
+  overwriteCheckbox.checked = OVERWRITE_ENABLED;
+  overwriteCheckbox.addEventListener("click", function() {
+    OVERWRITE_ENABLED = overwriteCheckbox.checked;
+  });
+
+  /* speed slider */
+  const speedSlider = document.getElementById("speedSlider");
+  speedSlider.min = 0;
+  speedSlider.max = MAX_FPS;
+  speedSlider.value = DEFAULT_FPS;
+  speedSlider.addEventListener("input", function() {
+    const val = parseInt(speedSlider.value, 20);
+    /* make 'magnetic' towards the default */
+    if (Math.abs(val - DEFAULT_FPS) < 10) speedSlider.value = DEFAULT_FPS;
+    setFPS(parseInt(speedSlider.value, 10));
+  });
+
+  /* clear button */
+  const clearButton = document.getElementById("clearButton");
+  clearButton.onclick = clearGameCanvas;
+
+  /* save button */
+  const saveButton = document.getElementById("saveButton");
+  saveButton.onclick = saveGameCanvas;
+
+  /* load button */
+  const loadButton = document.getElementById("loadButton");
+  loadButton.onclick = loadGameCanvas;
+}
+
+function drawFPSLabel(fps) {
+  document.getElementById("fps-counter").innerText = "FPS: " + fps;
+}
+/*
+ * Handling for particle animations. Unlike elements, which are
+ * represented by colored pixels on the canvas, particles are
+ * backed by an actual object. This means that we can store state
+ * for each particle, in order to do things such as complex movement.
+ * However, this also means that particles are more expensive than
+ * regular elements, so we use them sparingly (as limited by
+ * MAX_NUM_PARTICLES).
+ *
+ * Copyright (C) 2020, Josh Don
+ *
+ * Project Sand is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Project Sand is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/*
+ * ADDING NEW PARTICLES:
+ *
+ * 1. Define its particle index below. Pick the next available integer.
+ * 2. Add its init and action methods to the __particleInit and
+ *    __particleActions arrays. Order here must match the particle indices.
+ * 3. Implement the init and action methods for your particle. Importantly,
+ *    your action method is responsible for inactivating your particle (ie.
+ *    after a certain number of iterations, or when it is offCanvas()). Use
+ *    particles.makeParticleInactive(particle) for this.
+ * 4. Your init method sets your particle color; it must pick a
+ *    PAINTABLE_PARTICLE_COLOR.
+ */
+
+/* Offscreen canvas for drawing particles */
+const offscreenParticleCanvas = document.createElement("canvas");
+const offscreenParticleCtx = offscreenParticleCanvas.getContext("2d", {
+  alpha: false
+});
+
+/* These values index into __particleInit and __particleActions arrays */
+const UNKNOWN_PARTICLE = 0;
+const NITRO_PARTICLE = 1;
+const NAPALM_PARTICLE = 2;
+const C4_PARTICLE = 3;
+const LAVA_PARTICLE = 4;
+const MAGIC1_PARTICLE = 5; /* multi-pronged star */
+const MAGIC2_PARTICLE = 6; /* spiral */
+const METHANE_PARTICLE = 7;
+const TREE_PARTICLE = 8;
+const CHARGED_NITRO_PARTICLE = 9;
+const NUKE_PARTICLE = 10;
+
+const __particleInit = [
+  UNKNOWN_PARTICLE_INIT,
+  NITRO_PARTICLE_INIT,
+  NAPALM_PARTICLE_INIT,
+  C4_PARTICLE_INIT,
+  LAVA_PARTICLE_INIT,
+  MAGIC1_PARTICLE_INIT,
+  MAGIC2_PARTICLE_INIT,
+  METHANE_PARTICLE_INIT,
+  TREE_PARTICLE_INIT,
+  CHARGED_NITRO_PARTICLE_INIT,
+  NUKE_PARTICLE_INIT
+];
+Object.freeze(__particleInit);
+
+const __particleActions = [
+  UNKNOWN_PARTICLE_ACTION,
+  NITRO_PARTICLE_ACTION,
+  NAPALM_PARTICLE_ACTION,
+  C4_PARTICLE_ACTION,
+  LAVA_PARTICLE_ACTION,
+  MAGIC1_PARTICLE_ACTION,
+  MAGIC2_PARTICLE_ACTION,
+  METHANE_PARTICLE_ACTION,
+  TREE_PARTICLE_ACTION,
+  CHARGED_NITRO_PARTICLE_ACTION,
+  NUKE_PARTICLE_ACTION
+];
+Object.freeze(__particleActions);
+
+function UNKNOWN_PARTICLE_INIT(particle) {}
+function UNKNOWN_PARTICLE_ACTION(particle) {
+  throw "Unknown particle";
+}
+
+function NITRO_PARTICLE_INIT(particle) {
+  particle.setColor(FIRE);
+
+  const velocity = 5 + Math.random() * 10;
+  const angle = Math.random() * TWO_PI;
+  particle.setVelocity(velocity, angle);
+
+  particle.size = 2 + Math.random() * 7;
+}
+
+function NITRO_PARTICLE_ACTION(particle) {
+  offscreenParticleCtx.beginPath();
+  offscreenParticleCtx.lineWidth = particle.size;
+  offscreenParticleCtx.strokeStyle = particle.rgbaColor;
+  offscreenParticleCtx.lineCap = "round";
+  offscreenParticleCtx.moveTo(particle.x, particle.y);
+  particle.x += particle.xVelocity;
+  particle.y += particle.yVelocity;
+  offscreenParticleCtx.lineTo(particle.x, particle.y);
+  offscreenParticleCtx.stroke();
+
+  const iterations = particle.actionIterations;
+  if (iterations % 5 === 0) particle.size /= 1.3;
+  if (iterations % 15 === 0) particle.yVelocity += 10 * (iterations / 5);
+
+  if (particle.size < 1.75) particles.makeParticleInactive(particle);
+  else if (particle.offCanvas()) particles.makeParticleInactive(particle);
+}
+
+function NAPALM_PARTICLE_INIT(particle) {
+  particle.setColor(FIRE);
+  particle.size = Math.random() * 8 + 6;
+  particle.xVelocity = Math.random() * 8 - 4;
+  particle.yVelocity = -1 * (Math.random() * 4 + 4);
+  particle.maxIterations = Math.floor(Math.random() * 10) + 5;
+}
+
+function NAPALM_PARTICLE_ACTION(particle) {
+  particle.drawCircle(particle.size);
+
+  particle.x += particle.xVelocity;
+  particle.y += particle.yVelocity;
+  particle.size *= 1 + Math.random() * 0.1;
+
+  if (particle.actionIterations > particle.maxIterations)
+    particles.makeParticleInactive(particle);
+}
+
+function C4_PARTICLE_INIT(particle) {
+  particle.setColor(FIRE);
+  const rand = Math.random() * 10000;
+  if (rand < 9000) {
+    particle.size = Math.random() * 10 + 3;
+  } else if (rand < 9500) {
+    particle.size = Math.random() * 32 + 3;
+  } else if (rand < 9800) {
+    particle.size = Math.random() * 64 + 3;
+  } else {
+    particle.size = Math.random() * 128 + 3;
+  }
+}
+
+function C4_PARTICLE_ACTION(particle) {
+  particle.drawCircle(particle.size);
+
+  if (particle.actionIterations % 3 === 0) {
+    particle.size /= 3;
+    if (particle.size <= 1) particles.makeParticleInactive(particle);
+  }
+}
+
+function LAVA_PARTICLE_INIT(particle) {
+  particle.setColor(FIRE);
+  /* Make it harder for the angle to be steep */
+  var angle = QUARTER_PI + Math.random() * HALF_PI;
+  if (random() < 75 && Math.abs(HALF_PI - angle) < EIGHTEENTH_PI)
+    angle += EIGHTEENTH_PI * (angle > HALF_PI ? 1 : -1);
+
+  particle.xVelocity = (1 + Math.random() * 3) * Math.cos(angle);
+  particle.yVelocity = (-4 * Math.random() - 3) * Math.sin(angle);
+  particle.initYVelocity = particle.yVelocity;
+  particle.yAcceleration = 0.06;
+
+  particle.size = 4 + Math.random() * 3;
+  particle.y -= particle.size;
+}
+
+function LAVA_PARTICLE_ACTION(particle) {
+  offscreenParticleCtx.beginPath();
+  offscreenParticleCtx.lineWidth = particle.size;
+  offscreenParticleCtx.strokeStyle = particle.rgbaColor;
+  offscreenParticleCtx.lineCap = "round";
+  offscreenParticleCtx.moveTo(particle.x, particle.y);
+
+  const iterations = particle.actionIterations;
+  particle.x += particle.xVelocity;
+  particle.y =
+    particle.initY +
+    particle.initYVelocity * iterations +
+    (particle.yAcceleration * iterations * iterations) / 2;
+
+  offscreenParticleCtx.lineTo(particle.x, particle.y);
+  offscreenParticleCtx.stroke();
+
+  /* Allow particle to exist "above" the canvas */
+  if (particle.x < 0 || particle.x > MAX_X_IDX || particle.y > MAX_Y_IDX) {
+    particles.makeParticleInactive(particle);
+    return;
+  }
+
+  /* possible extinguish due to water, lava, rock, ice, or wall */
+  if (random() < 25) {
+    /* Need to update yVelocity before calling aboutToHit() */
+    particle.yVelocity =
+      particle.initYVelocity + particle.yAcceleration * iterations;
+    const touchingColor = particle.aboutToHit();
+
+    var replaceColor = -1;
+    if (touchingColor === WATER || touchingColor === SALT_WATER) {
+      if (random() < 58) replaceColor = ROCK;
+    } else if (touchingColor === LAVA || touchingColor === ROCK) {
+      if (random() < 75) replaceColor = LAVA;
+    } else if (
+      touchingColor === ICE ||
+      touchingColor === CHILLED_ICE ||
+      touchingColor === CRYO
+    ) {
+      if (random() < 70) replaceColor = ROCK;
+    } else if (touchingColor === WALL) {
+      if (random() < 25) replaceColor = LAVA;
+    }
+
+    if (replaceColor !== -1) {
+      particle.setColor(replaceColor);
+      particle.drawCircle(particle.size / 2);
+      particles.makeParticleInactive(particle);
+      return;
+    }
+  }
+}
+
+function MAGIC1_PARTICLE_INIT(particle) {
+  if (!particle.reinitialized) particle.setRandomColor(MAGIC_COLORS);
+
+  var numSpokes = 5 + Math.round(Math.random() * 13);
+  const spokes = [particle];
+  var i;
+  for (i = 1; i !== numSpokes; i++) {
+    /*
+     * Temporarily set type to UNKNOWN_PARTICLE so that we don't
+     * recurse back into this function.
+     */
+    const newSpoke = particles.addActiveParticle(
+      UNKNOWN_PARTICLE,
+      particle.x,
+      particle.y,
+      particle.i
+    );
+    if (!newSpoke) break;
+
+    /*
+     * We're manually changing the particle type; ensure that our
+     * particle counts don't get corrupted.
+     */
+    particles.particleCounts[newSpoke.type]--;
+    particles.particleCounts[MAGIC1_PARTICLE]++;
+
+    newSpoke.type = MAGIC1_PARTICLE;
+    newSpoke.setColor(particle.color);
+    spokes.push(newSpoke);
+  }
+  numSpokes = spokes.length;
+
+  const angle = TWO_PI / numSpokes;
+  const velocity = 7 + Math.random() * 3;
+  const spokeSize = 4 + Math.random() * 4;
+
+  var currAngle = 0;
+  for (i = 0; i !== numSpokes; i++) {
+    const spoke = spokes[i];
+    spoke.setVelocity(velocity, currAngle);
+    spoke.size = spokeSize;
+    currAngle += angle;
+  }
+}
+
+function MAGIC1_PARTICLE_ACTION(particle) {
+  offscreenParticleCtx.beginPath();
+  offscreenParticleCtx.lineWidth = particle.size;
+  offscreenParticleCtx.strokeStyle = particle.rgbaColor;
+  offscreenParticleCtx.lineCap = "square";
+  offscreenParticleCtx.moveTo(particle.x, particle.y);
+  particle.x += particle.xVelocity;
+  particle.y += particle.yVelocity;
+  offscreenParticleCtx.lineTo(particle.x, particle.y);
+  offscreenParticleCtx.stroke();
+
+  if (particle.offCanvas()) particles.makeParticleInactive(particle);
+}
+
+function MAGIC2_PARTICLE_INIT(particle) {
+  particle.setRandomColor(MAGIC_COLORS);
+
+  particle.size = 4 + Math.random() * 8;
+  particle.x = Math.floor(width / 2);
+  particle.y = Math.floor(height / 2);
+  particle.initX = particle.x;
+  particle.initY = particle.y;
+  particle.magic_2_max_radius =
+    Math.sqrt(width * width + height * height) / 2 + particle.size;
+  particle.magic_2_theta = 0;
+  particle.magic_2_speed = 20;
+  particle.magic_2_radius_spacing = 25 + Math.random() * 55;
+  particle.magic_2_radius = particle.magic_2_radius_spacing;
+}
+
+function MAGIC2_PARTICLE_ACTION(particle) {
+  offscreenParticleCtx.beginPath();
+  offscreenParticleCtx.lineWidth = particle.size;
+  offscreenParticleCtx.strokeStyle = particle.rgbaColor;
+  offscreenParticleCtx.lineCap = "round";
+  offscreenParticleCtx.moveTo(particle.x, particle.y);
+
+  const newTheta =
+    particle.magic_2_theta + particle.magic_2_speed / particle.magic_2_radius;
+  particle.magic_2_theta = newTheta;
+  const newRadius =
+    (particle.magic_2_theta / TWO_PI) * particle.magic_2_radius_spacing;
+  particle.magic_2_radius = newRadius;
+
+  particle.x = newRadius * Math.cos(newTheta) + particle.initX;
+  particle.y = newRadius * Math.sin(newTheta) + particle.initY;
+
+  offscreenParticleCtx.lineTo(particle.x, particle.y);
+  offscreenParticleCtx.stroke();
+
+  if (newRadius > particle.magic_2_max_radius)
+    particles.makeParticleInactive(particle);
+}
+
+function METHANE_PARTICLE_INIT(particle) {
+  particle.setColor(FIRE);
+  particle.size = 10 + Math.random() * 10;
+}
+
+function METHANE_PARTICLE_ACTION(particle) {
+  const iterations = particle.actionIterations;
+
+  particle.drawCircle(particle.size);
+
+  if (iterations > 2) particles.makeParticleInactive(particle);
+}
+
+class TreeType {
+  constructor() {
+    throw "Should never actually instantiate this.";
+  }
+
+  /** @nocollapse */
+  static initTreeParticle(p, oldP) {}
+
+  /** @nocollapse */
+  static branchAngles(treeParticle) {
+    throw "Branch angles not implemented.";
+  }
+
+  /** @nocollapse */
+  static branchSpacingFactor(treeParticle) {
+    throw "Branch spacing factor not implemented.";
+  }
+}
+
+/* Standard tree */
+class Tree0 extends TreeType {
+  /** @nocollapse */
+  static branchAngles(treeParticle) {
+    const branchAngle = EIGHTH_PI + Math.random() * QUARTER_PI;
+    return [treeParticle.angle + branchAngle, treeParticle.angle - branchAngle];
+  }
+
+  /** @nocollapse */
+  static branchSpacingFactor(treeParticle) {
+    return 0.9;
+  }
+}
+
+/* Single branch */
+class Tree1 extends TreeType {
+  /** @nocollapse */
+  static initTreeParticle(p, oldP) {
+    const branchDirection = oldP
+      ? oldP.branchDirection
+      : random() < 50
+      ? 1
+      : -1;
+    p.branchDirection = branchDirection;
+  }
+
+  /** @nocollapse */
+  static branchAngles(treeParticle) {
+    const branchAngle =
+      (EIGHTH_PI + Math.random() * EIGHTH_PI) * treeParticle.branchDirection;
+    return [treeParticle.angle + branchAngle, treeParticle.angle];
+  }
+
+  /** @nocollapse */
+  static branchSpacingFactor(treeParticle) {
+    return 0.7;
+  }
+}
+
+/* Lots of shallow angle branching */
+class Tree2 extends TreeType {
+  /** @nocollapse */
+  static branchAngles(treeParticle) {
+    const branchAngle = Math.random() * SIXTEENTH_PI + EIGHTH_PI;
+    return [
+      treeParticle.angle,
+      treeParticle.angle + branchAngle,
+      treeParticle.angle - branchAngle
+    ];
+  }
+
+  /** @nocollapse */
+  static branchSpacingFactor(treeParticle) {
+    return 0.6;
+  }
+}
+
+const TREE_TYPES = [
+  Tree0,
+  /* A little too cluttered to include Tree1 */
+  /* Tree1, */
+  Tree2
+];
+const NUM_TREE_TYPES = TREE_TYPES.length;
+
+function TREE_PARTICLE_INIT(particle) {
+  particle.setColor(BRANCH);
+  particle.size = random() < 50 ? 3 : 4;
+
+  const velocity = 1 + Math.random() * 0.5;
+  const angle = -1 * (HALF_PI + EIGHTH_PI - Math.random() * QUARTER_PI);
+  particle.setVelocity(velocity, angle);
+  particle.generation = 1;
+  particle.branchSpacing = 15 + Math.round(Math.random() * 45);
+  particle.maxBranches = 1 + Math.round(Math.random() * 2);
+  particle.nextBranch = particle.branchSpacing;
+  particle.branches = 0;
+
+  /* make it more likely to be a standard tree */
+  if (random() < 62) {
+    particle.treeType = 0;
+  } else {
+    particle.treeType = 1 + Math.floor(Math.random() * NUM_TREE_TYPES - 1);
+  }
+
+  TREE_TYPES[particle.treeType].initTreeParticle(particle, null);
+}
+
+function TREE_PARTICLE_ACTION(particle) {
+  offscreenParticleCtx.beginPath();
+  offscreenParticleCtx.lineWidth = particle.size;
+  offscreenParticleCtx.strokeStyle = particle.rgbaColor;
+  offscreenParticleCtx.lineCap = "round";
+  offscreenParticleCtx.moveTo(particle.x, particle.y);
+  particle.x += particle.xVelocity;
+  particle.y += particle.yVelocity;
+  offscreenParticleCtx.lineTo(particle.x, particle.y);
+  offscreenParticleCtx.stroke();
+
+  /* Don't grow through WALL */
+  if (particle.aboutToHit() === WALL) {
+    particles.makeParticleInactive(particle);
+    return;
+  }
+
+  const iterations = particle.actionIterations;
+
+  if (iterations >= particle.nextBranch) {
+    particle.branches++;
+
+    if (particle.maxBranches === 0) {
+      particles.makeParticleInactive(particle);
+      return;
+    }
+
+    const leafBranch =
+      particle.color === LEAF || particle.branches === particle.maxBranches;
+
+    const treeInfo = TREE_TYPES[particle.treeType];
+    const branchAngles = treeInfo.branchAngles(particle);
+    const numBranches = branchAngles.length;
+    for (var i = 0; i < numBranches; i++) {
+      const b = particles.addActiveParticle(
+        TREE_PARTICLE,
+        particle.x,
+        particle.y,
+        particle.i
+      );
+      if (!b) break;
+      b.generation = particle.generation + 1;
+      b.maxBranches = Math.max(0, particle.maxBranches - 1);
+      b.branchSpacing =
+        particle.branchSpacing * treeInfo.branchSpacingFactor(particle);
+      b.nextBranch = b.branchSpacing;
+      b.angle = branchAngles[i];
+      b.setVelocity(particle.velocity, b.angle);
+      b.size = Math.max(particle.size - 1, 2);
+      b.treeType = particle.treeType;
+      treeInfo.initTreeParticle(b, particle);
+
+      if (leafBranch) b.setColor(LEAF);
+    }
+
+    if (particle.branches >= particle.maxBranches) {
+      particles.makeParticleInactive(particle);
+      return;
+    }
+
+    if (particle.branchSpacing > 45) particle.branchSpacing *= 0.8;
+    particle.nextBranch =
+      iterations + particle.branchSpacing * (Math.random() * 0.35 + 0.65);
+  }
+}
+
+function CHARGED_NITRO_PARTICLE_INIT(particle) {
+  particle.setColor(FIRE);
+  particle.size = 4;
+  particle.xVelocity = 0;
+  particle.yVelocity = -100;
+
+  /* Search upwards for a WALL collision (but don't check every pixel) */
+  particle.minY = -1;
+  const step = (3 + Math.round(Math.random() * 2)) * width;
+  for (var idx = particle.i; idx > -1; idx -= step) {
+    if (gameImagedata32[idx] === WALL) {
+      particle.minY = idx / width;
+      break;
+    }
+  }
+}
+
+function CHARGED_NITRO_PARTICLE_ACTION(particle) {
+  offscreenParticleCtx.beginPath();
+  offscreenParticleCtx.lineWidth = particle.size;
+  offscreenParticleCtx.strokeStyle = particle.rgbaColor;
+  offscreenParticleCtx.lineCap = "square";
+  offscreenParticleCtx.moveTo(particle.initX, particle.initY);
+  particle.x += particle.xVelocity;
+  particle.y = Math.max(particle.minY, particle.y + particle.yVelocity);
+  offscreenParticleCtx.lineTo(particle.x, particle.y);
+  offscreenParticleCtx.stroke();
+
+  if (particle.y <= particle.minY || particle.offCanvas()) {
+    particles.makeParticleInactive(particle);
+    return;
+  }
+}
+
+function NUKE_PARTICLE_INIT(particle) {
+  particle.setColor(FIRE);
+  const maxDimension = Math.max(width, height);
+  particle.size = maxDimension / 4 + (Math.random() * maxDimension) / 8;
+}
+
+function NUKE_PARTICLE_ACTION(particle) {
+  particle.drawCircle(particle.size);
+
+  if (particle.actionIterations > 4) particles.makeParticleInactive(particle);
+}
+
+class Particle {
+  constructor() {
+    this.type = UNKNOWN_PARTICLE;
+    this.initX = -1;
+    this.initY = -1;
+    this.x = -1;
+    this.y = -1;
+    this.i = -1;
+    this.color = 0;
+    this.rgbaColor = "rgba(0, 0, 0, 1)";
+    this.velocity = 0;
+    this.angle = 0;
+    this.xVelocity = 0;
+    this.yVelocity = 0;
+    this.size = 0;
+    this.actionIterations = 0;
+    this.active = false;
+    this.next = null;
+    this.prev = null;
+    this.reinitialized = false;
+  }
+
+  setColor(hexColor) {
+    if (!Particle.warned_unpaintable_color) {
+      if (!(hexColor in PAINTABLE_PARTICLE_COLORS)) {
+        console.log("Unpaintable particle color: " + hexColor);
+        Particle.warned_unpaintable_color = true;
+      }
+    }
+
+    this.color = hexColor;
+
+    const r = hexColor & 0xff;
+    const g = (hexColor & 0xff00) >>> 8;
+    const b = (hexColor & 0xff0000) >>> 16;
+    this.rgbaColor = "rgba(" + r + "," + g + "," + b + ", 1)";
+  }
+
+  setRandomColor(whitelist) {
+    const colorIdx = Math.floor(Math.random() * whitelist.length);
+    this.setColor(whitelist[colorIdx]);
+  }
+
+  offCanvas() {
+    const x = this.x;
+    const y = this.y;
+    return x < 0 || x > MAX_X_IDX || y < 0 || y > MAX_Y_IDX;
+  }
+
+  setVelocity(velocity, angle) {
+    this.velocity = velocity;
+    this.angle = angle;
+    this.xVelocity = velocity * Math.cos(angle);
+    this.yVelocity = velocity * Math.sin(angle);
+  }
+
+  /*
+   * For a spherical particle on a trajectory, figure out what element the particle
+   * is about to hit (right at its tip).
+   *
+   * Expects caller has updated particle's x and y velocity.
+   */
+  aboutToHit() {
+    const radius = this.size / 2;
+    const theta = Math.atan2(this.yVelocity, this.xVelocity);
+    const xPrime = this.x + Math.cos(theta) * radius;
+    const yPrime = this.y + Math.sin(theta) * radius;
+    const idx = Math.round(xPrime) + Math.round(yPrime) * width;
+
+    if (idx < 0 || idx > MAX_IDX) return BACKGROUND;
+
+    return gameImagedata32[idx];
+  }
+
+  drawCircle(radius) {
+    offscreenParticleCtx.beginPath();
+    offscreenParticleCtx.lineWidth = 0;
+    offscreenParticleCtx.fillStyle = this.rgbaColor;
+    offscreenParticleCtx.arc(this.x, this.y, radius, 0, TWO_PI);
+    offscreenParticleCtx.fill();
+  }
+}
+
+Particle.warned_unpaintable_color = false;
+
+/*
+ * Two doubly-linked lists: one for active and one for
+ * inactive particles
+ */
+class ParticleList {
+  constructor() {
+    this.activeHead = null;
+    this.activeSize = 0;
+    this.inactiveHead = null;
+    this.inactiveSize = 0;
+    this.particleCounts = new Uint32Array(__particleInit.length);
+
+    /* This probably isn't necessary, but I don't trust javascript */
+    for (var i = 0; i < this.particleCounts.length; i++) {
+      this.particleCounts[i] = 0;
+    }
+  }
+
+  addActiveParticle(type, x, y, i) {
+    if (this.inactiveSize === 0) return null;
+
+    const particle = this.inactiveHead;
+    this.inactiveHead = this.inactiveHead.next;
+    if (this.inactiveHead) this.inactiveHead.prev = null;
+    this.inactiveSize--;
+
+    if (!this.activeHead) {
+      particle.next = null;
+      particle.prev = null;
+      this.activeHead = particle;
+    } else {
+      this.activeHead.prev = particle;
+      particle.next = this.activeHead;
+      particle.prev = null;
+      this.activeHead = particle;
+    }
+    this.activeSize++;
+
+    particle.active = true;
+    particle.reinitialized = false;
+    particle.actionIterations = 0;
+    particle.type = type;
+    particle.initX = x;
+    particle.initY = y;
+    particle.x = x;
+    particle.y = y;
+    particle.i = i;
+    this.particleCounts[type]++;
+    __particleInit[type](particle);
+
+    return particle;
+  }
+
+  makeParticleInactive(particle) {
+    particle.active = false;
+    this.particleCounts[particle.type]--;
+    particle.type = UNKNOWN_PARTICLE;
+    if (particle.prev) {
+      particle.prev.next = particle.next;
+    }
+    if (particle.next) {
+      particle.next.prev = particle.prev;
+    }
+    if (particle === this.activeHead) {
+      this.activeHead = particle.next;
+    }
+    this.activeSize--;
+
+    if (!this.inactiveHead) {
+      particle.next = null;
+      particle.prev = null;
+      this.inactiveHead = particle;
+    } else {
+      this.inactiveHead.prev = particle;
+      particle.next = this.inactiveHead;
+      particle.prev = null;
+      this.inactiveHead = particle;
+    }
+    this.inactiveSize++;
+  }
+
+  inactivateAll() {
+    var particle = this.activeHead;
+    while (particle) {
+      const next = particle.next;
+      this.makeParticleInactive(particle);
+      particle = next;
+    }
+  }
+
+  reinitializeParticle(particle, newType) {
+    if (!particle.active) throw "Can only be used with active particles";
+
+    this.particleCounts[particle.type]--;
+    this.particleCounts[newType]++;
+    particle.type = newType;
+    particle.reinitialized = true;
+    __particleInit[newType](particle);
+  }
+
+  particleActive(particleType) {
+    return this.particleCounts[particleType] > 0;
+  }
+}
+
+const particles = new ParticleList();
+
+/*
+ * When we copy the particle strokes to the main canvas, some
+ * of the colors will not match any elements (due to anti-aliasing
+ * of the stroke). We need a fast way to know if a given color is
+ * a valid color for painting. Hence, this dictionary of colors that can
+ * be copied from the particle canvas to the main canvas.
+ */
+const PAINTABLE_PARTICLE_COLORS = {};
+
+const MAGIC_COLORS = [];
+
+function initParticles() {
+  if (__particleInit.length !== __particleActions.length)
+    throw "Particle arrays must be same length";
+
+  var numParticlesToCreate = MAX_NUM_PARTICLES;
+  var prevParticle;
+
+  /* Setup the head */
+  particles.inactiveHead = new Particle();
+  particles.inactiveSize++;
+  prevParticle = particles.inactiveHead;
+  numParticlesToCreate--;
+
+  /*
+   * We pre-allocate all of the particles, rather than create them on demand.
+   * This avoids latency spikes due to garbage collection reap. It does require
+   * that we use two linked lists to keep track of them all, but that's fine.
+   */
+  while (numParticlesToCreate > 0) {
+    const particle = new Particle();
+
+    particle.prev = prevParticle;
+    prevParticle.next = particle;
+    particles.inactiveSize++;
+
+    prevParticle = particle;
+
+    numParticlesToCreate--;
+  }
+
+  offscreenParticleCanvas.width = width;
+  offscreenParticleCanvas.height = height;
+
+  PAINTABLE_PARTICLE_COLORS[FIRE] = null;
+  PAINTABLE_PARTICLE_COLORS[WALL] = null;
+  PAINTABLE_PARTICLE_COLORS[ROCK] = null;
+  PAINTABLE_PARTICLE_COLORS[LAVA] = null;
+  PAINTABLE_PARTICLE_COLORS[PLANT] = null;
+  PAINTABLE_PARTICLE_COLORS[SPOUT] = null;
+  PAINTABLE_PARTICLE_COLORS[WELL] = null;
+  PAINTABLE_PARTICLE_COLORS[WAX] = null;
+  PAINTABLE_PARTICLE_COLORS[ICE] = null;
+  PAINTABLE_PARTICLE_COLORS[BRANCH] = null;
+  PAINTABLE_PARTICLE_COLORS[LEAF] = null;
+  Object.freeze(PAINTABLE_PARTICLE_COLORS);
+
+  /* All of these are also in PAINTABLE_PARTICLE_COLORS */
+  MAGIC_COLORS.push(WALL);
+  MAGIC_COLORS.push(PLANT);
+  MAGIC_COLORS.push(SPOUT);
+  MAGIC_COLORS.push(WELL);
+  MAGIC_COLORS.push(WAX);
+  MAGIC_COLORS.push(ICE);
+  Object.freeze(MAGIC_COLORS);
+}
+
+function updateParticles() {
+  if (!particles.activeHead) return;
+
+  const canvasWidth = offscreenParticleCanvas.width;
+  const canvasHeight = offscreenParticleCanvas.height;
+
+  /* reset the particle canvas */
+  offscreenParticleCtx.beginPath();
+  offscreenParticleCtx.fillStyle = "rgba(0, 0, 0, 1)";
+  offscreenParticleCtx.rect(0, 0, canvasWidth, canvasHeight);
+  offscreenParticleCtx.fill();
+
+  /* perform particle actions */
+  var particle = particles.activeHead;
+  while (particle) {
+    /* grab next before doing action, as next could change */
+    const next = particle.next;
+    particle.actionIterations++;
+    __particleActions[particle.type](particle);
+    particle = next;
+  }
+
+  /* move particle draw state to main canvas */
+  const particleImageData = offscreenParticleCtx.getImageData(
+    0,
+    0,
+    canvasWidth,
+    canvasHeight
+  );
+  const particleImageData32 = new Uint32Array(particleImageData.data.buffer);
+  var x, y;
+  var __yOffset = 0;
+  const aliasingSearchDistance = 3;
+  for (y = 0; y !== canvasHeight; y++) {
+    const yOffset = __yOffset; /* optimization: make const copy */
+    for (x = 0; x !== canvasWidth; x++) {
+      const i = x + yOffset;
+      const particleColor = particleImageData32[i];
+
+      if (particleColor === 0xff000000) continue;
+
+      /*
+       * ImageData will container other colors due to anti-aliasing.
+       * However, we can only copy over valid colors to the main canvas.
+       *
+       * If the color appears to be invalid, it is likely right along the
+       * edge of a valid color. In this case, we can search nearby pixels
+       * for such a color.
+       *
+       * The motivation for this is that when many overlapping shapes are
+       * drawn on the canvas (ie. the various particles), the aliased border
+       * of each sub-object created gaps of invalid colors.
+       */
+      if (particleColor in PAINTABLE_PARTICLE_COLORS) {
+        gameImagedata32[i] = particleColor;
+        continue;
+      } else {
+        var searchColor;
+        if (x - aliasingSearchDistance >= 0) {
+          searchColor = particleImageData32[i - aliasingSearchDistance];
+          if (searchColor in PAINTABLE_PARTICLE_COLORS) {
+            gameImagedata32[i] = searchColor;
+            continue;
+          }
+        }
+        if (x + aliasingSearchDistance <= MAX_X_IDX) {
+          searchColor = particleImageData32[i + aliasingSearchDistance];
+          if (searchColor in PAINTABLE_PARTICLE_COLORS) {
+            gameImagedata32[i] = searchColor;
+            continue;
+          }
+        }
+        if (y - aliasingSearchDistance >= 0) {
+          searchColor = particleImageData32[i - aliasingSearchDistance * width];
+          if (searchColor in PAINTABLE_PARTICLE_COLORS) {
+            gameImagedata32[i] = searchColor;
+            continue;
+          }
+        }
+        if (y + aliasingSearchDistance <= MAX_Y_IDX) {
+          searchColor = particleImageData32[i + aliasingSearchDistance * width];
+          if (searchColor in PAINTABLE_PARTICLE_COLORS) {
+            gameImagedata32[i] = searchColor;
+            continue;
+          }
+        }
+      }
+    }
+    __yOffset += canvasWidth;
+  }
+}
+
+/*
+ * Handling for the four primary game spigots.
+ *
+ * Copyright (C) 2020, Josh Don
+ *
+ * Project Sand is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Project Sand is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/* Menu options for the spigots */
+const SPIGOT_ELEMENT_OPTIONS = [
+  SAND,
+  WATER,
+  SALT,
+  OIL,
+  GUNPOWDER,
+  NITRO,
+  NAPALM,
+  CONCRETE,
+  LAVA,
+  CRYO,
+  MYSTERY
+];
+const SPIGOT_SIZE_OPTIONS = [0, 5, 10, 15, 20, 25];
+const DEFAULT_SPIGOT_SIZE_IDX = 1;
+
+/* Type and size of each spigot. Controlled via the menu. */
+const SPIGOT_ELEMENTS = [SAND, WATER, SALT, OIL];
+const SPIGOT_SIZES = [];
+
+const SPIGOT_HEIGHT = 10;
+const MAX_SPIGOT_WIDTH = Math.max(...SPIGOT_SIZE_OPTIONS);
+const NUM_SPIGOTS = SPIGOT_ELEMENTS.length;
+const SPIGOT_SPACING = Math.round(
+  (width - MAX_SPIGOT_WIDTH * NUM_SPIGOTS) / (NUM_SPIGOTS + 1) +
+    MAX_SPIGOT_WIDTH
+);
+const SPIGOTS_ENABLED =
+  MAX_SPIGOT_WIDTH * NUM_SPIGOTS <= width && SPIGOT_HEIGHT <= height;
+
+function initSpigots() {
+  const defaultSize = SPIGOT_SIZE_OPTIONS[DEFAULT_SPIGOT_SIZE_IDX];
+  for (var i = 0; i !== NUM_SPIGOTS; i++) {
+    SPIGOT_SIZES.push(defaultSize);
+  }
+}
+
+function updateSpigots() {
+  if (!SPIGOTS_ENABLED) return;
+
+  var i, w, h;
+  for (i = 0; i !== NUM_SPIGOTS; i++) {
+    const elem = SPIGOT_ELEMENTS[i];
+    const spigotLeft = SPIGOT_SPACING * (i + 1) - MAX_SPIGOT_WIDTH;
+    const spigotRight = spigotLeft + SPIGOT_SIZES[i];
+    if (spigotLeft < 0) continue;
+    if (spigotRight > MAX_X_IDX) break;
+    var heightOffset = 0;
+    for (h = 0; h !== SPIGOT_HEIGHT; h++) {
+      for (w = spigotLeft; w !== spigotRight; w++) {
+        if (random() < 10) gameImagedata32[w + heightOffset] = elem;
+      }
+      heightOffset += width;
+    }
+  }
+}/*
+ * Miscellaneous utility functions and constants.
+ *
+ * Copyright (C) 2020, Josh Don
+ *
+ * Project Sand is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Project Sand is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/* Pre-compute to improve performance */
+const TWO_PI = 2 * Math.PI;
+const HALF_PI = Math.PI / 2;
+const QUARTER_PI = Math.PI / 4;
+const EIGHTH_PI = Math.PI / 8;
+const SIXTEENTH_PI = Math.PI / 16;
+const EIGHTEENTH_PI = Math.PI / 18;
+
+const __num_rand_ints = 8192;
+const __rand_ints = new Uint8Array(__num_rand_ints);
+var __next_rand = 0;
+for (var i = 0; i < __num_rand_ints; i++) {
+  __rand_ints[i] = Math.floor(Math.random() * 100);
+}
+
+/*
+ * Returns a pre-generated random byte between 0-99.
+ * This is especially important for hot-paths that
+ * can't tolerate the time to call Math.random() directly
+ * (or deal with floats).
+ */
+function random() {
+  const r = __rand_ints[__next_rand];
+
+  __next_rand++;
+  if (__next_rand === __num_rand_ints) __next_rand = 0;
+
+  return r;
+}
+
+function executeAndTime(func) {
+  const start = performance.now();
+  func();
+  const end = performance.now();
+
+  return end - start;
+}
+
+function displayPerformance(func, funcName) {
+  const execTime = executeAndTime(func);
+
+  console.log(funcName, ": ", execTime, "ms");
+}
+
+function docOffsetLeft(elem) {
+  var offsetLeft = 0;
+  do {
+    if (!isNaN(elem.offsetLeft)) {
+      offsetLeft += elem.offsetLeft;
+    }
+  } while ((elem = elem.offsetParent));
+  return offsetLeft;
+}
+
+function docOffsetTop(elem) {
+  var offsetTop = 0;
+  do {
+    if (!isNaN(elem.offsetTop)) {
+      offsetTop += elem.offsetTop;
+    }
+  } while ((elem = elem.offsetParent));
+  return offsetTop;
+}
+
+function distance(x1, y1, x2, y2) {
+  const dx = x1 - x2;
+  const dy = y1 - y2;
+
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+/*
+ * We could convert i to xy using division and modulus, but
+ * this can be slow. In cases where we want to convert a coordinate
+ * 'i' that is known to border another coordinate with known xy,
+ * we can determine the xy of the coordinate by iterating all
+ * bordering pixels.
+ */
+function fastItoXYBorderingAdjacent(startX, startY, startI, goalI) {
+  const bottom = startI + width;
+  if (bottom === goalI) return [startX, startY + 1];
+  else if (bottom - 1 === goalI) return [startX - 1, startY + 1];
+  else if (bottom + 1 === goalI) return [startX + 1, startY + 1];
+
+  if (startI - 1 === goalI) return [startX - 1, startY];
+  else if (startI + 1 === goalI) return [startX + 1, startY];
+
+  const top = startI - width;
+  if (top === goalI) return [startX, startY - 1];
+  else if (top - 1 === goalI) return [startX - 1, startY - 1];
+  else if (top + 1 === goalI) return [startX + 1, startY - 1];
+
+  throw "Not passed a bordering coordinate";
+}
+
+/*
+ * See comment on fastItoXYBorderingAdjacent.
+ * This function does the same, but ignores corners.
+ */
+function fastItoXYBordering(startX, startY, startI, goalI) {
+  if (startI + width === goalI) return [startX, startY + 1];
+
+  if (startI - 1 === goalI) return [startX - 1, startY];
+  else if (startI + 1 === goalI) return [startX + 1, startY];
+
+  if (startI - width === goalI) return [startX, startY - 1];
+
+  throw "Not passed a bordering coordinate";
+}
+
+</script>
+</html>
