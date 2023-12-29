@@ -20,6 +20,21 @@
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Geo-dash.html"
     },
     {
+        "name": "Evil Glitch",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/evil-glitch.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/EvilGlitch.html"
+    },
+    {
+        "name": "Sandboxels",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/sandboxels.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Sandboxels.html"
+    },
+    {
+        "name": "Sandgame",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/sandgame.jpg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/sandgame-js.html"
+    },
+    {
         "name": "Eaglercraft 1.5.2",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.5.2.html"
