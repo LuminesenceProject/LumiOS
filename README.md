@@ -21,6 +21,14 @@ To report a problem, open the [issues]() on the github page and explain what doe
 
 ## Todo
 
- - Export/import user settings
- - Fix theme bug when launching
- - Give use to admins
+- Create sorts for filesystem and appmanager
+- Fix algorithm for appmanager
+- Add animations to every menu
+- Fix fullscreen bug
+- Prevent auto-resize on windows
+
+## Source Code
+
+In order to work or modify the code to your own needs, you will need to request permission for the source code, and may be given access to it, or not even at all. Please open an issue in this repository, as I don't check my email.
+
+Please note that you are not able to share the source code with anyone.
