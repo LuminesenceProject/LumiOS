@@ -35,6 +35,26 @@
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/sandgame-js.html"
     },
     {
+        "name": "Cars.io",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/cars.io.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/cars.io.html"
+    },
+    {
+        "name": "Edge Not Found",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/edgenotfound.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/edgenotfound.html"
+    },
+    {
+        "name": "Just One Boss",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/justoneboss.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/justoneboss.html"
+    },
+    {
+        "name": "You Are Jeff Bezos",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/youarejeffbezos.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/youarejeffbezos.html"
+    },
+    {
         "name": "Eaglercraft 1.5.2",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.5.2.html"
@@ -48,5 +68,10 @@
         "name": "Proxy",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/Proxy.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Proxy.html"
+    },
+    {
+        "name": "Windows 8",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/windows8.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Windows8.html"
     }
 ]
