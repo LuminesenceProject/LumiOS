@@ -2,86 +2,1375 @@
     {
         "name": "Valorant",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/valorant.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/valorant.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/valorant.html",
+        "type": "html"
     },
     {
         "name": "Fnaf 2",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/fnaf2.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/fnaf2.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/fnaf2.html",
+        "type": "html"
     },
     {
         "name": "Fnaf 3",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/fnaf3.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/fnaf3.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/fnaf3.html",
+        "type": "html"
     },
     {
         "name": "Terraria",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/terraria.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Terraria 1.0.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Terraria 1.0.html",
+        "type": "html"
     },
     {
         "name": "Geodash",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/geometryDash.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Geo-dash.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Geo-dash.html",
+        "type": "html"
     },
     {
         "name": "Evil Glitch",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/evil-glitch.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/EvilGlitch.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/EvilGlitch.html",
+        "type": "html"
     },
     {
         "name": "Sandboxels",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/sandboxels.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Sandboxels.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Sandboxels.html",
+        "type": "html"
     },
     {
         "name": "Sandgame",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/sandgame.jpg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/sandgame-js.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/sandgame-js.html",
+        "type": "html"
     },
     {
         "name": "Monkeymart",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/monkeymart.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Monkeymart.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Monkeymart.html",
+        "type": "html"
     },
     {
         "name": "Edge Not Found",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/edgenotfound.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/edgenotfound.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/edgenotfound.html",
+        "type": "html"
     },
     {
         "name": "Just One Boss",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/justoneboss.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/justoneboss.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/justoneboss.html",
+        "type": "html"
     },
     {
         "name": "You Are Jeff Bezos",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/youarejeffbezos.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/youarejeffbezos.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/youarejeffbezos.html",
+        "type": "html"
     },
     {
         "name": "Eaglercraft 1.5.2",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.5.2.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.5.2.html",
+        "type": "html"
     },
     {
         "name": "Eaglercraft 1.8",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.8.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.8.html",
+        "type": "html"
     },
     {
         "name": "Proxy",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/Proxy.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Proxy.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Proxy.html",
+        "type": "html"
     },
     {
         "name": "Windows 8",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/windows8.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Windows8.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Windows8.html",
+        "type": "html"
     },
     {
         "name": "Lumi OS Lite",
         "image": "https://avatars.githubusercontent.com/u/101959214?v=4",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/LumiOSLite.html"
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/LumiOSLite.html",
+        "type": "html"
+    },
+    {
+        "name": "1 on 1 Basketball",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/1 on 1 Basketball.swf",
+        "type": "swf"
+    },
+    {
+        "name": "1on1_soccer",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/1on1_soccer.swf",
+        "type": "swf"
+    },
+    {
+        "name": "3_foot_ninja_ii",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/3_foot_ninja_ii.swf",
+        "type": "swf"
+    },
+    {
+        "name": "3_foot_ninja",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/3_foot_ninja.swf",
+        "type": "swf"
+    },
+    {
+        "name": "3_slices_",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/3_slices_.swf",
+        "type": "swf"
+    },
+    {
+        "name": "3d_reversi",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/3d_reversi.swf",
+        "type": "swf"
+    },
+    {
+        "name": "3d_tanks",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/3d_tanks.swf",
+        "type": "swf"
+    },
+    {
+        "name": "5_miles_2_go",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/5_miles_2_go.swf",
+        "type": "swf"
+    },
+    {
+        "name": "7_days_without_rain",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/7_days_without_rain.swf",
+        "type": "swf"
+    },
+    {
+        "name": "100_m_race",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/100_m_race.swf",
+        "type": "swf"
+    },
+    {
+        "name": "625_sandwich_stacker",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/625_sandwich_stacker.swf",
+        "type": "swf"
+    },
+    {
+        "name": "abobos_big_adventure",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/abobos_big_adventure.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Ace Gangster Taxi",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Ace Gangster Taxi.swf",
+        "type": "swf"
+    },
+    {
+        "name": "ace_of_space",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/ace_of_space.swf",
+        "type": "swf"
+    },
+    {
+        "name": "achievement_unlocked_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/achievement_unlocked_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "achievement_unlocked_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/achievement_unlocked_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "achievement_unlocked",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/achievement_unlocked.swf",
+        "type": "swf"
+    },
+    {
+        "name": "action_driving_game",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/action_driving_game.swf",
+        "type": "swf"
+    },
+    {
+        "name": "addiction_solitaire",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/addiction_solitaire.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Adrenaline Challenge",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Adrenaline Challenge.swf",
+        "type": "swf"
+    },
+    {
+        "name": "afl",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/afl.swf",
+        "type": "swf"
+    },
+    {
+        "name": "age_of_war",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/age_of_war.swf",
+        "type": "swf"
+    },
+    {
+        "name": "alien_hominid",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/alien_hominid.swf",
+        "type": "swf"
+    },
+    {
+        "name": "AmericanRacing",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/AmericanRacing.swf",
+        "type": "swf"
+    },
+    {
+        "name": "amorphous_plus",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/amorphous_plus.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Angry Birds HD Halloween",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Angry Birds HD Halloween.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Angry Birds HD",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Angry Birds HD.swf",
+        "type": "swf"
+    },
+    {
+        "name": "apple_shooter",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/apple_shooter.swf",
+        "type": "swf"
+    },
+    {
+        "name": "asteroids",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/asteroids.swf",
+        "type": "swf"
+    },
+    {
+        "name": "astroflash",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/astroflash.swf",
+        "type": "swf"
+    },
+    {
+        "name": "avalanche",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/avalanche.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bad_piggies",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bad_piggies.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Basketball Legends",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Basketball Legends.swf",
+        "type": "swf"
+    },
+    {
+        "name": "battle_pong",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/battle_pong.swf",
+        "type": "swf"
+    },
+    {
+        "name": "battleships",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/battleships.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Bloons TD 2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Bloons TD 2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Bloons TD 3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Bloons TD 3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Bloons TD",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Bloons TD.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bloons_player_pack_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bloons_player_pack_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bloons_player_pack_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bloons_player_pack_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bloons_player_pack_4",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bloons_player_pack_4.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bloons_player_pack_5",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bloons_player_pack_5.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bloons_tower_defense_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bloons_tower_defense_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bloons_tower_defense_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bloons_tower_defense_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bloons_tower_defense",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bloons_tower_defense.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bloxorz",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bloxorz.swf",
+        "type": "swf"
+    },
+    {
+        "name": "blue_tetris",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/blue_tetris.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bowman",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bowman.swf",
+        "type": "swf"
+    },
+    {
+        "name": "boxhead_2_play",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/boxhead_2_play.swf",
+        "type": "swf"
+    },
+    {
+        "name": "boxhead2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/boxhead2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "breaking_the_bank",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/breaking_the_bank.swf",
+        "type": "swf"
+    },
+    {
+        "name": "breakingthebank",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/breakingthebank.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Brutal",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Brutal.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bubble_shooter",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bubble_shooter.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bubble_tanks_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bubble_tanks_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bubble_trouble",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bubble_trouble.swf",
+        "type": "swf"
+    },
+    {
+        "name": "bullet_bill",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/bullet_bill.swf",
+        "type": "swf"
+    },
+    {
+        "name": "burgeria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/burgeria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "castle_wars",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/castle_wars.swf",
+        "type": "swf"
+    },
+    {
+        "name": "causality",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/causality.swf",
+        "type": "swf"
+    },
+    {
+        "name": "champion_archer",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/champion_archer.swf",
+        "type": "swf"
+    },
+    {
+        "name": "chasm",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/chasm.swf",
+        "type": "swf"
+    },
+    {
+        "name": "choose_your_weapon_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/choose_your_weapon_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "choose_your_weapon_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/choose_your_weapon_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "choose_your_weapon_4",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/choose_your_weapon_4.swf",
+        "type": "swf"
+    },
+    {
+        "name": "choose_your_weapon",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/choose_your_weapon.swf",
+        "type": "swf"
+    },
+    {
+        "name": "CoasterRacer2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/CoasterRacer2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "CoasterRacer3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/CoasterRacer3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "commando",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/commando.swf",
+        "type": "swf"
+    },
+    {
+        "name": "connect_the_world",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/connect_the_world.swf",
+        "type": "swf"
+    },
+    {
+        "name": "conquer_antarctica",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/conquer_antarctica.swf",
+        "type": "swf"
+    },
+    {
+        "name": "cubefield",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/cubefield.swf",
+        "type": "swf"
+    },
+    {
+        "name": "dagobah_achievement_unlocked_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/dagobah_achievement_unlocked_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "dagobah_Achievement_Unlocked",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/dagobah_Achievement_Unlocked.swf",
+        "type": "swf"
+    },
+    {
+        "name": "dagobah_Indestructo_Tank_AE",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/dagobah_Indestructo_Tank_AE.swf",
+        "type": "swf"
+    },
+    {
+        "name": "dagobah_ngame",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/dagobah_ngame.swf",
+        "type": "swf"
+    },
+    {
+        "name": "earntodie",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/earntodie.swf",
+        "type": "swf"
+    },
+    {
+        "name": "effing_worms",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/effing_worms.swf",
+        "type": "swf"
+    },
+    {
+        "name": "eggtastic",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/eggtastic.swf",
+        "type": "swf"
+    },
+    {
+        "name": "electric_box",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/electric_box.swf",
+        "type": "swf"
+    },
+    {
+        "name": "electric_man_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/electric_man_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "endless_war_3_456",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/endless_war_3_456.swf",
+        "type": "swf"
+    },
+    {
+        "name": "escaping_the_prison",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/escaping_the_prison.swf",
+        "type": "swf"
+    },
+    {
+        "name": "extremetrucks3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/extremetrucks3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "factory_balls_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/factory_balls_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "factory_balls_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/factory_balls_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "factory_balls_4",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/factory_balls_4.swf",
+        "type": "swf"
+    },
+    {
+        "name": "factory_balls",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/factory_balls.swf",
+        "type": "swf"
+    },
+    {
+        "name": "falldown",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/falldown.swf",
+        "type": "swf"
+    },
+    {
+        "name": "falldown2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/falldown2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "fancy_pants_adventure",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/fancy_pants_adventure.swf",
+        "type": "swf"
+    },
+    {
+        "name": "fancy_pants_adventure2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/fancy_pants_adventure2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "fat_ninja",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/fat_ninja.swf",
+        "type": "swf"
+    },
+    {
+        "name": "feed_us",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/feed_us.swf",
+        "type": "swf"
+    },
+    {
+        "name": "feudalism",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/feudalism.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Flash Sonic",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Flash Sonic.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Flight",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Flight.swf",
+        "type": "swf"
+    },
+    {
+        "name": "FormulaRacer2012",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/FormulaRacer2012.swf",
+        "type": "swf"
+    },
+    {
+        "name": "frogger",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/frogger.swf",
+        "type": "swf"
+    },
+    {
+        "name": "galaga",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/galaga.swf",
+        "type": "swf"
+    },
+    {
+        "name": "gold_miner_special_edition",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/gold_miner_special_edition.swf",
+        "type": "swf"
+    },
+    {
+        "name": "gold_miner_xploit_machine_edition_2009",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/gold_miner_xploit_machine_edition_2009.swf",
+        "type": "swf"
+    },
+    {
+        "name": "gridlock",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/gridlock.swf",
+        "type": "swf"
+    },
+    {
+        "name": "gun_mayhem_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/gun_mayhem_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "gun_mayhem_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/gun_mayhem_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "hobo_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/hobo_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "hobo_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/hobo_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "hobo_4",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/hobo_4.swf",
+        "type": "swf"
+    },
+    {
+        "name": "hobo_5",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/hobo_5.swf",
+        "type": "swf"
+    },
+    {
+        "name": "hobo_6",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/hobo_6.swf",
+        "type": "swf"
+    },
+    {
+        "name": "hobo_7",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/hobo_7.swf",
+        "type": "swf"
+    },
+    {
+        "name": "hobo",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/hobo.swf",
+        "type": "swf"
+    },
+    {
+        "name": "learn_to_fly_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/learn_to_fly_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "learn_to_fly",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/learn_to_fly.swf",
+        "type": "swf"
+    },
+    {
+        "name": "line_rider",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/line_rider.swf",
+        "type": "swf"
+    },
+    {
+        "name": "mario_combat",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/mario_combat.swf",
+        "type": "swf"
+    },
+    {
+        "name": "mariokartflash",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/mariokartflash.swf",
+        "type": "swf"
+    },
+    {
+        "name": "matrixrampage2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/matrixrampage2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "mindfields_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/mindfields_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "minecraft_tower_defence_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/minecraft_tower_defence_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "missile_strike",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/missile_strike.swf",
+        "type": "swf"
+    },
+    {
+        "name": "monster_brawl",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/monster_brawl.swf",
+        "type": "swf"
+    },
+    {
+        "name": "moss",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/moss.swf",
+        "type": "swf"
+    },
+    {
+        "name": "multitask",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/multitask.swf",
+        "type": "swf"
+    },
+    {
+        "name": "n_game",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/n_game.swf",
+        "type": "swf"
+    },
+    {
+        "name": "pandemic_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/pandemic_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Papas Freezeria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Papas Freezeria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Papas Pancakeria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Papas Pancakeria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papas_pizzeria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papas_pizzeria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papasbakeria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papasbakeria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papascheeseria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papascheeseria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papascupcakeria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papascupcakeria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papasdonuteria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papasdonuteria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papashotdoggeria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papashotdoggeria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papaspastaria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papaspastaria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papassushiria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papassushiria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papastacomia",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papastacomia.swf",
+        "type": "swf"
+    },
+    {
+        "name": "papaswingeria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/papaswingeria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "penguin_diner",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/penguin_diner.swf",
+        "type": "swf"
+    },
+    {
+        "name": "penguin",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/penguin.swf",
+        "type": "swf"
+    },
+    {
+        "name": "picos_school",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/picos_school.swf",
+        "type": "swf"
+    },
+    {
+        "name": "pizzeria",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/pizzeria.swf",
+        "type": "swf"
+    },
+    {
+        "name": "plant_vs_zombies_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/plant_vs_zombies_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "playing_with_fire_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/playing_with_fire_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "plazma_burst",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/plazma_burst.swf",
+        "type": "swf"
+    },
+    {
+        "name": "plumber_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/plumber_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Portal Flash",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Portal Flash.swf",
+        "type": "swf"
+    },
+    {
+        "name": "portal_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/portal_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "portal",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/portal.swf",
+        "type": "swf"
+    },
+    {
+        "name": "potty_racers_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/potty_racers_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "potty_racers",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/potty_racers.swf",
+        "type": "swf"
+    },
+    {
+        "name": "primary",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/primary.swf",
+        "type": "swf"
+    },
+    {
+        "name": "raft_wars_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/raft_wars_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "raft_wars",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/raft_wars.swf",
+        "type": "swf"
+    },
+    {
+        "name": "raftwars",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/raftwars.swf",
+        "type": "swf"
+    },
+    {
+        "name": "raftwars2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/raftwars2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "ragdoll_avalanche_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/ragdoll_avalanche_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "ragdoll_avalanche",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/ragdoll_avalanche.swf",
+        "type": "swf"
+    },
+    {
+        "name": "rage_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/rage_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "rage_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/rage_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "rage",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/rage.swf",
+        "type": "swf"
+    },
+    {
+        "name": "redbeard",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/redbeard.swf",
+        "type": "swf"
+    },
+    {
+        "name": "riddleschool",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/riddleschool.swf",
+        "type": "swf"
+    },
+    {
+        "name": "riddleschool2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/riddleschool2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "riddleschool3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/riddleschool3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "riddleschool4",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/riddleschool4.swf",
+        "type": "swf"
+    },
+    {
+        "name": "riddleschool5",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/riddleschool5.swf",
+        "type": "swf"
+    },
+    {
+        "name": "riddletransfer",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/riddletransfer.swf",
+        "type": "swf"
+    },
+    {
+        "name": "riddletransfer2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/riddletransfer2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "roadblock_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/roadblock_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "roadblock",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/roadblock.swf",
+        "type": "swf"
+    },
+    {
+        "name": "run",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/run.swf",
+        "type": "swf"
+    },
+    {
+        "name": "run2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/run2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "Run3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/Run3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "shift_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/shift_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "shift_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/shift_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "shift_4",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/shift_4.swf",
+        "type": "swf"
+    },
+    {
+        "name": "shift",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/shift.swf",
+        "type": "swf"
+    },
+    {
+        "name": "shopping_cart_hero",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/shopping_cart_hero.swf",
+        "type": "swf"
+    },
+    {
+        "name": "skywire_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/skywire_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "skywire",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/skywire.swf",
+        "type": "swf"
+    },
+    {
+        "name": "snow_storm",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/snow_storm.swf",
+        "type": "swf"
+    },
+    {
+        "name": "sonic",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/sonic.swf",
+        "type": "swf"
+    },
+    {
+        "name": "space_invaders",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/space_invaders.swf",
+        "type": "swf"
+    },
+    {
+        "name": "stick_rpg",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/stick_rpg.swf",
+        "type": "swf"
+    },
+    {
+        "name": "stupidity_test",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/stupidity_test.swf",
+        "type": "swf"
+    },
+    {
+        "name": "super_mario_63",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/super_mario_63.swf",
+        "type": "swf"
+    },
+    {
+        "name": "super_mario_flash_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/super_mario_flash_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "super_mario_flash",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/super_mario_flash.swf",
+        "type": "swf"
+    },
+    {
+        "name": "super_mario_sunshine_64",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/super_mario_sunshine_64.swf",
+        "type": "swf"
+    },
+    {
+        "name": "super_smash_flash",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/super_smash_flash.swf",
+        "type": "swf"
+    },
+    {
+        "name": "swords_and_sandals_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/swords_and_sandals_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "swords_and_sandals",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/swords_and_sandals.swf",
+        "type": "swf"
+    },
+    {
+        "name": "tank_trouble_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/tank_trouble_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "tanks",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/tanks.swf",
+        "type": "swf"
+    },
+    {
+        "name": "territory_war",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/territory_war.swf",
+        "type": "swf"
+    },
+    {
+        "name": "tetris",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/tetris.swf",
+        "type": "swf"
+    },
+    {
+        "name": "the_battle",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/the_battle.swf",
+        "type": "swf"
+    },
+    {
+        "name": "the_bright_from_the_screen",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/the_bright_from_the_screen.swf",
+        "type": "swf"
+    },
+    {
+        "name": "the_classroom",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/the_classroom.swf",
+        "type": "swf"
+    },
+    {
+        "name": "the_impossible_game_lite",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/the_impossible_game_lite.swf",
+        "type": "swf"
+    },
+    {
+        "name": "the_impossible_quiz_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/the_impossible_quiz_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "the_impossible_quiz",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/the_impossible_quiz.swf",
+        "type": "swf"
+    },
+    {
+        "name": "the_last_stand_union_city",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/the_last_stand_union_city.swf",
+        "type": "swf"
+    },
+    {
+        "name": "thing_thing_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/thing_thing_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "thing_thing_3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/thing_thing_3.swf",
+        "type": "swf"
+    },
+    {
+        "name": "thing_thing_4",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/thing_thing_4.swf",
+        "type": "swf"
+    },
+    {
+        "name": "thing_thing_arena_2",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/thing_thing_arena_2.swf",
+        "type": "swf"
+    },
+    {
+        "name": "thing_thing_arena",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/thing_thing_arena.swf",
+        "type": "swf"
+    },
+    {
+        "name": "thing_thing",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/thing_thing.swf",
+        "type": "swf"
+    },
+    {
+        "name": "this_is_the_only_level",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/this_is_the_only_level.swf",
+        "type": "swf"
+    },
+    {
+        "name": "throwrocks",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/flash.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/swf/throwrocks.swf",
+        "type": "swf"
     }
 ]
