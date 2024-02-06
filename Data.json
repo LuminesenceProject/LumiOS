@@ -10,6 +10,11 @@
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/fnaf2.html"
     },
     {
+        "name": "Fnaf 3",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/fnaf3.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/fnaf3.html"
+    },
+    {
         "name": "Terraria",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/terraria.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Terraria 1.0.html"
@@ -35,9 +40,9 @@
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/sandgame-js.html"
     },
     {
-        "name": "Cars.io",
-        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/cars.io.jpeg",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/cars.io.html"
+        "name": "Monkeymart",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/monkeymart.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Monkeymart.html"
     },
     {
         "name": "Edge Not Found",
@@ -73,5 +78,10 @@
         "name": "Windows 8",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/windows8.jpeg",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Windows8.html"
+    },
+    {
+        "name": "Lumi OS Lite",
+        "image": "https://avatars.githubusercontent.com/u/101959214?v=4",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/LumiOSLite.html"
     }
 ]
