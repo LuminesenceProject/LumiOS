@@ -24,8 +24,8 @@ To report a problem, open the [issues]() on the github page and explain what doe
 - Create sorts for filesystem and appmanager
 - Fix algorithm for appmanager
 - Add animations to every menu
-- Fix fullscreen bug
-- Prevent auto-resize on windows
+- Add built-in proxy links
+- Search input for app list
 
 ## Source Code
 
