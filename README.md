@@ -31,6 +31,19 @@ You will be marked as **contributer** in this repository.
 
 To report a problem, open the [issues](https://github.com/LuminesenceProject/LumiOS/issues) on the github page, and click 'New issue'
 
+If you are facing a white screen, this is a common error.
+
+#### Built in solution
+The easy solution is to simply type "lumiplus" in that exact order, and it will wipe all data stored.
+
+#### Wiping data outside the site
+1. In the top left, click on the three dots and then click 'settings'
+2. Click on Privacy and Security
+3. Scroll down and click on Clear Browsing Data
+4. Make sure it clears all of Lumi OS's data
+<img width="1417" alt="Screenshot 2024-02-09 at 3 56 24 PM" src="https://github.com/LuminesenceProject/LumiOS/assets/101959214/9327c300-40a0-4b88-a0dd-8130b4bf10d0">
+
+
 Please try to provide a screenshot of the problem, or any error messege.
 
 ## Todo
