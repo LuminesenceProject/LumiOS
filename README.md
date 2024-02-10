@@ -35,6 +35,7 @@ If you are facing a white screen, this is a common error.
 
 #### Built in solution
 The easy solution is to simply type "lumiplus" in that exact order, and it will wipe all data stored.
+This only works in v4.2 and above of lumi os.
 
 #### Wiping data outside the site
 1. In the top left, click on the three dots and then click 'settings'
