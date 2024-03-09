@@ -6,6 +6,9 @@ Lumi OS is a React-based online OS, with many different features, letting the us
      alt="Banner"
 />
 
+## Join the Discord!
+[<img src="./images/discord.png" alt="Discord" />](https://discord.gg/TyacaNY3GK)
+
 ## Features
 
 - Themes, plugins, and more
