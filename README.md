@@ -1,5 +1,8 @@
 # Lumi OS
 
+## Join the Discord!
+[<img src="./images/discord.png" alt="Discord" />](https://discord.gg/TyacaNY3GK)
+
 Lumi OS is a React-based online OS, with many different features, letting the user interact locally, or on a server.
 
 <img src="./images/Banner.png"
