@@ -36,12 +36,6 @@
         "type": "html"
     },
     {
-        "name": "Sandboxels",
-        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/sandboxels.png",
-        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Sandboxels.html",
-        "type": "html"
-    },
-    {
         "name": "Sandgame",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/sandgame.jpg",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/sandgame-js.html",
@@ -81,6 +75,30 @@
         "name": "Eaglercraft 1.8",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.8.html",
+        "type": "html"
+    },
+    {
+        "name": "xxB2exe",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/xxb2exe.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/b2exe.html",
+        "type": "html"
+    },
+    {
+        "name": "Blackhole Black Square",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/blackholeblacksquare.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/BlackHoleBlackSquare.html",
+        "type": "html"
+    },
+    {
+        "name": "Konnekt",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/konnekt.png",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Konnekt.html",
+        "type": "html"
+    },
+    {
+        "name": "Retrohaunt",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/retrohaunt.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/retrohaunt.html",
         "type": "html"
     },
     {
