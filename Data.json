@@ -66,6 +66,12 @@
         "type": "html"
     },
     {
+        "name": "Backrooms",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/backrooms.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/backrooms.html",
+        "type": "html"
+    },
+    {
         "name": "Eaglercraft 1.5.2",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/eaglercraft.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/eaglercraft.1.5.2.html",
