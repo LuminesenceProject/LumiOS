@@ -18,6 +18,18 @@
         "type": "html"
     },
     {
+        "name": "Fnaf 4",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/fnaf4.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/FNAF4.html",
+        "type": "html"
+    },
+    {
+        "name": "Fnaf Sister Location",
+        "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/fnafsl.jpeg",
+        "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/FNAFSL.html",
+        "type": "html"
+    },
+    {
         "name": "Terraria",
         "image": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/images/terraria.png",
         "path": "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/games/Terraria 1.0.html",
