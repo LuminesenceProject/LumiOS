@@ -1,13 +1,17 @@
+<div align="center">
+
 # Lumi OS
 
 ## Join the Discord!
 [<img src="./images/discord.png" alt="Discord" />](https://discord.gg/TyacaNY3GK)
 
-Lumi OS is a React-based online OS, with many different features, letting the user interact locally, or on a server.
+Lumi OS is a React-typescript operating system, with many different features, letting the user interact locally, or on a server.
 
 <img src="./images/Banner.png"
      alt="Banner"
 />
+
+</div>
 
 ## Features
 
@@ -19,7 +23,7 @@ Lumi OS is a React-based online OS, with many different features, letting the us
 
 # Downloading
 
-Lumi OS can be run locally, so click on this [link](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v8.html) in order to download the file. It can also be downloaded as an about:blank page.
+Lumi OS can be run locally, so click on this [link](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v10.html) in order to download the file. It can also be downloaded as an about:blank page.
 - Can I run Lumi OS off of my chromebook?
 	> Yes, Lumi OS can be run from local files.
 - How do I know when to update my file?
