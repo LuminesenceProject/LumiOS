@@ -37,11 +37,11 @@ javascript:(function()%7B(async () %3D> %7B%2F** BUILT FOR LUMI OS* NOVEMBER 17t
 
 ## Contributing
 This respository will become open source shortly.
-Games have been moved to a seperate repository, which is found [here]().
+Games have been moved to a seperate repository, which can be found [here](https://github.com/LuminesenceProject/lumi-games).
 When adding games, please make sure to include an image.
 
 Sometimes features suggeseted will not be added.
-This includes most things that have to invlove an outside server, since it will ruin the functionality of being able to download
+This includes most things that have to involve an outside server, since it will ruin the functionality of being able to download
 Lumi OS and use it anywhere.
 
 You will be marked as **contributer** in this repository. 
