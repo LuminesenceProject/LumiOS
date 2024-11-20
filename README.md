@@ -11,6 +11,9 @@ letting the user interact locally, or on a server.
 
 ## Features
 
+SOME ISSUES WITH CERTAIN BROWSERS MAY OCCUR
+Firefox, Safari, and mobile devices will not work at the moment.
+
 - Themes, plugins, and more
 - Over 200+ games
 - Constant updates
