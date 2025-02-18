@@ -3,10 +3,10 @@
 # Lumi OS
 
 ### Join the Discord!
-[<img src="https://raw.githubusercontent.com/LuminesenceProject/LumiOS/refs/heads/main/images/discord.png" alt="Discord" style="width: 25%; height: 23.5%" />](https://discord.gg/TyacaNY3GK)
+[![Discord](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/refs/heads/main/images/discord.png)](https://discord.gg/TyacaNY3GK)
 
-Lumi OS is a React-typescript operating system, with many different features,
-letting the user interact locally, or on a server.
+Lumi OS is a React-Typescript operating system, offering a wide range of features that allow users to interact locally or on a server.
+
 </div>
 
 ## Features
@@ -14,49 +14,51 @@ letting the user interact locally, or on a server.
 - Themes, plugins, and more
 - Over 200+ games
 - Constant updates
-- Fully working file system
-- Built-in text-editor
+- Fully functional file system
+- Built-in text editor
 
-# Downloading
+## Downloading
 
-Lumi OS can be run locally, so click on this [link](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v12.html) in order to download the file. It can also be downloaded as an about:blank page.
-- Can I run Lumi OS off of my chromebook?
-	> Yes, Lumi OS can be run from local files.
-- How do I know when to update my file?
-	> There will be a popup notifying the user of an update.
-- Why won't my changes be saved?
-	> Selecting any other file besides the one opened will break it.
+Lumi OS can be run locally. Click [here](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v12.html) to download the file. You can also download it as an `about:blank` page.
+
+### Frequently Asked Questions
+
+- **Can I run Lumi OS on my Chromebook?**  
+  > Yes, Lumi OS can be run from local files.
+  
+- **How do I know when to update my file?**  
+  > A popup will notify you when an update is available.
+
+- **Why won't my changes be saved?**  
+  > Selecting any other file besides the one opened will break it.
 
 ## Bookmarklet
 
-Paste this into your bookmark bar, and click it to run it on a website.
-
+Paste the following code into your bookmark bar and click it to run Lumi OS on any website.
 ```
-javascript:(function()%7B(async () %3D> %7B%2F** BUILT FOR LUMI OS* NOVEMBER 17th 2024*%2Fconst fetchLink %3D "https%3A%2F%2Fraw.githubusercontent.com%2FLuminesenceProject%2FLumiOS%2Frefs%2Fheads%2Fmain%2FInfo.json"%3Btry %7Bconst response %3D await fetch(fetchLink)%3Bif (!response.ok) throw new Error('Failed to fetch Info.json')%3Bconst fetched %3D await response.json()%3Bconst version %3D fetched%5B0%5D%3F.version%3Bif (!version) throw new Error('Version not found in Info.json')%3Bconst downloadLink %3D %60https%3A%2F%2Fraw.githubusercontent.com%2FLuminesenceProject%2FLumiOS%2Fmain%2FLumiOS.v%24%7Bversion%7D.html%60%3Bconst fileResponse %3D await fetch(downloadLink)%3Bif (!fileResponse.ok) throw new Error('Failed to fetch the versioned file')%3Bconst content %3D await fileResponse.text()%3Bconst popupWindow %3D window.open(''%2C '_blank'%2C 'width%3D800%2Cheight%3D600')%3Bif (!popupWindow) throw new Error("Popup window couldn't be opened. Please check your browser settings.")%3BpopupWindow.document.open()%3BpopupWindow.document.write(content)%3BpopupWindow.document.close()%3B%7D catch (error) %7Bconsole.error('Error%3A'%2C error.message)%3B%7D%7D)()%7D)()
+javascript:(function(){(async () => {/** BUILT FOR LUMI OS NOVEMBER 17th 2024*/const fetchLink = "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/refs/heads/main/Info.json";try {const response = await fetch(fetchLink);if (!response.ok) throw new Error('Failed to fetch Info.json');const fetched = await response.json();const version = fetched[0]?.version;if (!version) throw new Error('Version not found in Info.json');const downloadLink = https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v${version}.html;const fileResponse = await fetch(downloadLink);if (!fileResponse.ok) throw new Error('Failed to fetch the versioned file');const content = await fileResponse.text();const popupWindow = window.open('', '_blank', 'width=800,height=600');if (!popupWindow) throw new Error("Popup window couldn't be opened. Please check your browser settings.");popupWindow.document.open();popupWindow.document.write(content);popupWindow.document.close();} catch (error) {console.error('Error:', error.message);}})();})()
 ```
 
 ## Contributing
-This respository will become open source shortly.
-Games have been moved to a seperate repository, which can be found [here](https://github.com/LuminesenceProject/lumi-games).
-When adding games, please make sure to include an image.
 
-Sometimes features suggeseted will not be added.
-This includes most things that have to involve an outside server, since it will ruin the functionality of being able to download
-Lumi OS and use it anywhere.
+This repository will be open-source soon.  
+Games have been moved to a separate repository, which can be found [here](https://github.com/LuminesenceProject/lumi-games).  
+When adding games, please ensure you include an image.
 
-You will be marked as **contributer** in this repository. 
+Note: Some feature suggestions may not be added, especially those that rely on external servers, as it could disrupt the ability to use Lumi OS offline.
+
+**Contributors** will be credited in this repository.
 
 ## Issues
 
-To report a problem, open the [issues](https://github.com/LuminesenceProject/LumiOS/issues) on the github page, and click 'New issue'
+To report an issue, please open a new one on the [GitHub Issues page](https://github.com/LuminesenceProject/LumiOS/issues) and click 'New Issue'.
 
-If you are facing a white screen, this is a common error.
+### Common Issues & Solutions
 
-### Built in solution
-The easy solution is to simply type "lumiplus" in that exact order, and it will wipe all data stored.
-This only works in v4.2 and above of lumi os.
+- **White Screen Error:**  
+  This is a common error. To resolve it, type `"lumiplus"` in the exact order, and it will clear all data stored. This solution works in version 4.2 and above of Lumi OS.
 
-Please try to provide a screenshot of the problem, or any error messege.
+Please provide a screenshot or error message if possible.
 
 ## Todo
 
@@ -67,4 +69,4 @@ Please try to provide a screenshot of the problem, or any error messege.
 
 ## Source Code
 
-Cite the changes made within the loading screen.
+Please cite the changes made within the loading screen.
