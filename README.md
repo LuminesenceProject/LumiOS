@@ -19,7 +19,7 @@ Lumi OS is a React-Typescript operating system, offering a wide range of feature
 
 ## Downloading
 
-Lumi OS can be run locally, so click on this [link](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v12.html) in order to download the file. It can also be downloaded as an about:blank page.
+Lumi OS can be run locally, so click on this [link](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v12.1.html) in order to download the file. It can also be downloaded as an about:blank page.
 - Can I run Lumi OS off of my chromebook?
 	> Yes, Lumi OS can be run from local files.
 - How do I know when to update my file?
