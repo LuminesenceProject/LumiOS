@@ -1,0 +1,87 @@
+<!doctype html>
+<!--
+
+In order to download this file, right click, then click 'save as', to save it as a .html file
+Open this file in your browser in order to run
+
+This code is from version 5
+Last updated Tuesday, March 12th, 2024
+
+License is under Apache, and the link for it can be found here: https://github.com/LuminesenceProject/LumiOS/blob/main/LICENSE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://avatars.githubusercontent.com/u/101959214?v=4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumi OS</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script type="text/javascript" async>
+      console.log("%cDon't paste any code here if somebody told you to!", "color: red; font-family: sans-serif; font-size: 32px;");
+      console.log("%cPasting unknown code here could result in loss of data, and/or your computer being hacked. Lumi OS should not require any outside code to be run.", "color: red; font-family: sans-serif; font-size: 24px;");
+      console.log("%cIf you know what your doing, ignore this.", "color: gray; font-family: sans-serif; font-size: 12px;");
+    
+      // Array to store the expected key sequence
+      const expectedSequence = ['l', 'u', 'm', 'i', 'p', 'l', 'u', 's'];
+      // Index to keep track of the current position in the sequence
+      let currentIndex = 0;
+      // Function to check if the key pressed matches the expected sequence
+      const checkKeySequence = (event) => {
+        // Get the pressed key
+        const keyPressed = event.key.toLowerCase();
+        // Check if the pressed key matches the expected key in the sequence
+        if (keyPressed === expectedSequence[currentIndex]) {
+          // Increment the current index
+          currentIndex++;
+          // Check if the sequence is complete
+          if (currentIndex === expectedSequence.length) {
+            // Sequence is complete
+            if (confirm("Do you want to wipe Lumi OS's data?\nClick 'Ok' to continue, or 'Cancel' if this was a mistake.")) {
+              localStorage.clear();
+              sessionStorage.clear();
+              indexedDB.deleteDatabase("Filesystem");
+            }
+            // Reset the current index for the next sequence
+            currentIndex = 0;
+          }
+        } else {
+          // Reset the current index if the pressed key is not correct
+          currentIndex = 0;
+        }
+      }
+      // Add event listener for the keydown event
+      document.addEventListener('keydown', checkKeySequence);
+    </script>
+  </body>
+</html>

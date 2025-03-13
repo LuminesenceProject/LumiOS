@@ -1,0 +1,181 @@
+import React, { useEffect, useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faWindowClose, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
+import { Rnd } from 'react-rnd';
+
+const Window = ({ title, onClick, minimizedApps, onMinimized, children }) => {
+  const windowRef = useRef(null);
+  const [isMaximized, setMaximized] = useState(false);
+  const [isMinimized, setMinimized] = useState(false);
+  const [originalSizeAndPos, setOriginalSizeAndPos] = useState({});
+  const [lastNonMaximizedPosition, setLastNonMaximizedPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [size, setSize] = useState({ width: 500, height: 400 });
+  const [zIndex, setZIndex] = useState(20);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (windowRef.current && !windowRef.current.contains(e.target)) {
+        setZIndex(10);
+      } else {
+        setZIndex(20);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMaximized) {
+      setPosition(lastNonMaximizedPosition);
+    }
+  }, [isMaximized]);
+
+  useEffect(() => {
+    setMinimized(minimizedApps.includes(title));
+  }, [minimizedApps, title]);
+
+  const onMaximize = () => {
+    if (!isMaximized) {
+      setOriginalSizeAndPos({
+        width: size.width,
+        height: size.height,
+        left: position.x,
+        top: position.y,
+      });
+      setSize({ width: window.innerWidth - 10, height: window.innerHeight - 10 });
+      setPosition({ x: 0, y: 0 });
+    } else {
+      setSize({ width: originalSizeAndPos.width, height: originalSizeAndPos.height });
+      setPosition({ x: originalSizeAndPos.left, y: originalSizeAndPos.top });
+    }
+    setMaximized(!isMaximized);
+  };
+
+  const onMinimize = () => {
+    onMinimized(title);
+    setMinimized(!isMinimized);
+  };
+
+  const handleMouseDown = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleDragStop = (e, d) => {
+    if (!isMaximized) {
+      setPosition({ x: d.x, y: d.y });
+      setLastNonMaximizedPosition({ x: d.x, y: d.y });
+    }
+  };
+
+  const handleResizeStop = (e, direction, ref, delta, position) => {
+    if (!isMaximized) {
+      const newSize = {
+        width: size.width + delta.width,
+        height: size.height + delta.height,
+      };
+      setSize(newSize);
+    }
+  };
+
+  const handleClose = () => {
+    const windowElement = windowRef.current;
+    if (!windowElement) return;
+  
+    // Fade out with opacity transition
+    windowElement.style.opacity = "0";
+    windowElement.style.transition = "opacity 300ms ease"; // Adjust the duration and easing as needed
+  
+    // Slide up with translateY
+    windowElement.style.transform = "translateY(20px)";
+    windowElement.style.transition += ", transform 300ms ease"; // Append to the existing transition
+  
+    // After the transition is complete, call onClick
+    setTimeout(() => {
+      onClick();
+    }, 300);
+  };  
+
+  return (
+    <Rnd
+      bounds="body"
+      size={size}
+      position={position}
+      onDragStop={handleDragStop}
+      onResizeStop={handleResizeStop}
+      style={{
+        boxSizing: 'border-box',
+        position: isMaximized ? 'fixed' : 'absolute',
+        width: isMaximized ? window.innerWidth : size.width,
+        height: isMaximized ? window.innerHeight : size.height,
+        minHeight: 'calc(100% +  20px)',
+        minWidth: "500px",
+        maxWidth: window.innerWidth,
+        maxHeight: window.innerHeight,
+        zIndex: zIndex,
+      }}
+      default={{
+        x: position.x,
+        y: position.y,
+        width: size.width,
+        height: size.height,
+      }}
+      className={`rounded-sm shadow-lg z-20 transition-opacity flex flex-col ${
+        isMinimized ? 'opacity-0 pointer-events-none' : 'opacity-100'
+      }`}
+      element-type="window"
+    >
+      <div className="h-[calc(100%-36px)]" ref={windowRef}>
+        <div className="backdrop-blur-lg backdrop-brightness-75 text-white p-2 cursor-move rounded-t-md" style={{ color: 'white' }}>
+          <div className="flex items-center justify-between">
+            <div className="flex-grow font-bold">{title}</div>
+            <div className="flex">
+              <button className="text-white px-2 transition-transform duration-200 active:scale-95" onClick={onMinimize}>
+                <FontAwesomeIcon
+                  icon={faMinus}
+                  style={{
+                    cursor: 'pointer',
+                    transition: 'color 0.3s ease-in-out',
+                  }}
+                  onMouseOver={(e) => (e.target.style.color = '#ffd700')}
+                  onMouseOut={(e) => (e.target.style.color = '')}
+                />
+              </button>
+              <button className="text-white px-2 transition-transform duration-200 active:scale-95" onClick={onMaximize}>
+                <FontAwesomeIcon
+                  icon={faWindowMaximize}
+                  style={{
+                    cursor: 'pointer',
+                    transition: 'color 0.3s ease-in-out',
+                  }}
+                  onMouseOver={(e) => (e.target.style.color = '#00cc00')}
+                  onMouseOut={(e) => (e.target.style.color = '')}
+                />
+              </button>
+              <button className="text-white px-2 transition-transform duration-200 active:scale-95" onClick={handleClose}>
+                <FontAwesomeIcon
+                  icon={faWindowClose}
+                  style={{
+                    cursor: 'pointer',
+                    transition: 'color 0.3s ease-in-out',
+                  }}
+                  onMouseOver={(e) => (e.target.style.color = '#ff4d4d')}
+                  onMouseOut={(e) => (e.target.style.color = '')}
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id={`${title}-content`} className={`bg-primary cursor-auto overflow-auto flex-grow w-full h-full`} onMouseDown={handleMouseDown}>
+          {children}
+        </div>
+      </div>
+    </Rnd>
+  );
+};
+
+export default Window;

@@ -1,0 +1,225 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.oper {
+    @apply text-text-base font-bold bg-primary cursor-pointer transition duration-200 hover:bg-secondary-light rounded p-2
+}
+
+.resizable {
+    resize: both;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.glass {
+  color: white;
+    @apply backdrop-blur-lg backdrop-brightness-75 backdrop-opacity-80
+}
+
+.invert {
+    filter: invert(1);
+}
+
+.inputLabel {
+    @apply flex flex-row items-center gap-2
+}
+
+.inputColor {
+    @apply shadow rounded hover:scale-105 transition-transform duration-200 cursor-pointer border-none;
+
+    &::-webkit-color-swatch-wrapper {
+        padding: 0;
+        width: 100%;
+    }
+    &::-webkit-color-swatch {
+        border: none;
+        border-radius: inherit;
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.inputColor {
+	appearance: none;
+	border: none;
+}
+.inputColor::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+.inputColor::-webkit-color-swatch {
+	border: none;
+}
+
+.select-main {
+  @apply h-full w-full rounded-[7px] border border-t-0 px-3 py-2.5 font-sans text-sm font-normal text-text-base outline outline-0 transition-all placeholder-shown:border focus:border-2 focus:border-primary focus:border-t-0 focus:outline-0 disabled:border-0
+}
+
+.option-main {
+  @apply p-2 text-text-base bg-secondary hover:bg-secondary-light transition-colors duration-200 rounded
+}
+
+.button-main {
+  @apply p-2 text-text-base bg-primary hover:bg-secondary-light transition-all duration-200 active:scale-95 rounded
+}
+
+.input-main {
+  @apply bg-primary-light text-text-base border p-2 rounded-md w-full focus:outline-none focus:ring
+}
+
+.browser-icon-main {
+  @apply bg-primary-light hover:bg-secondary transition-all duration-200 hover:shadow-lg active:scale-95 shadow text-text-base font-bold py-1 px-2 rounded
+}
+
+.bg-blur::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px); /* apply the blur */
+  pointer-events: none; /* make the overlay click-through */
+}
+
+.bg-blur {
+  position: relative;
+  background: no-repeat;
+  background-image: var(--background-image, none);
+  background-size: cover;
+}
+
+#root {
+  overflow: hidden;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    font-family: "Poppins", sans-serif;
+    height: 200px;
+}
+
+.card img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 110%;
+    object-fit: cover;
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 40;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.035, 1.035);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover img {
+    transform: translateY(-10px);
+    filter: brightness(50%);
+}
+
+.card:hover .content {
+    opacity: 1;
+}
+
+@keyframes expandToCorners {
+  0% {
+   transform: scale(1);
+   
+ }
+  100% {
+   transform: scale(1);
+    top: 0;
+    left: 0;
+ }
+}
+
+.fullscreen-animate {
+ top:  0; /* Center vertically */
+ left:  0; /* Center horizontally */
+ animation: expandToCorners  0.5s cubic-bezier(0.86,  0,  0.07,  1) forwards;
+}
+
+::-webkit-scrollbar{height:1rem;width:.5rem}::-webkit-scrollbar:horizontal{height:.5rem;width:1rem}::-webkit-scrollbar-track{background-color:transparent;border-radius:9999px}::-webkit-scrollbar-thumb{--tw-border-opacity:1;background-color:hsla(0,0%,89%,.8);border-color:rgba(255,255,255,var(--tw-border-opacity));border-radius:9999px;border-width:1px}::-webkit-scrollbar-thumb:hover{--tw-bg-opacity:1;background-color:rgba(227,227,227,var(--tw-bg-opacity))}.dark ::-webkit-scrollbar-thumb{background-color:hsla(0,0%,100%,.1)}.dark ::-webkit-scrollbar-thumb:hover{background-color:hsla(0,0%,100%,.3)}@media (min-width:768px){.scrollbar-trigger ::-webkit-scrollbar-thumb{visibility:hidden}.scrollbar-trigger:hover ::-webkit-scrollbar-thumb{visibility:visible}}
+
+.shake {
+  animation: shake 200ms ease-in-out infinite;
+  animation-play-state: running;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.ripple-button {
+  @apply relative cursor-pointer overflow-hidden px-4 py-2 text-text-base bg-primary hover:bg-secondary-light transition-all duration-200 active:scale-95 rounded
+}
+
+.ripple-button > .ripple {
+  animation: 0.9s ease 1 forwards ripple-effect;
+  content: "";
+  @apply absolute block w-10 h-10 bg-secondary rounded-full opacity-100
+}
+
+@keyframes ripple-effect {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(10);
+    opacity: 0.375;
+  }
+  100% {
+    transform: scale(35);
+    opacity: 0;
+  }
+}
+
+.ripple-button > .content {
+  position: relative;
+  z-index: 2;
+}
+
+textarea, select {
+  color: black;
+}

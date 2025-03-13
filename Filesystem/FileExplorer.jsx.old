@@ -1,0 +1,433 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { addFileOrFolder, getFilesAndFolders, deleteFileOrFolder, fetchFileContent } from './indexedDB';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolder } from '@fortawesome/free-regular-svg-icons';
+import baseTheme from "../../util/themes/baseTheme";
+import apps from "../apps/Apps.json";
+
+const FileExplorer = ({ openApp, openWindowWithContent }) => {
+  const [items, setItems] = useState([]);
+  const [availableFolders, setAvailableFolders] = useState([]);
+  const [visitedFolders, setVisitedFolders] = useState([]);
+  const [systemItems, setSystemItems] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [movePopupVisible, setMovePopupVisible] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  const [noteAreaVisible, setNoteAreaVisible] = useState(false);
+  const [fileViewerContent, setFileViewerContent] = useState(null);
+  const [currentFolder, setCurrentFolder] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [error, setError] = useState("");
+  const [newItemName, setNewItemName] = useState("");
+  const [noteAreaContent, setNoteAreaContent] = useState("");
+  const [sidebarFolders, setSidebarFolders] = useState([
+    { id: 'quickAccess', name: 'Quick Access', type: 'folder'},
+    { id: 'desktop', name: 'Desktop', type: 'folder' },
+    { id: 'documents', name: 'Documents', type: 'folder' },
+    { id: 'apps', name: 'Apps', type: 'folder '},
+    // Add more pre-defined folders as needed
+  ]);
+
+  const [settings, setSettings] = useState(false);
+  const theme = JSON.parse(localStorage.getItem(currentUser && currentUser.name + "theme")) || baseTheme;
+  const localAppData = JSON.parse(localStorage.getItem(currentUser.name +'installedApps')) || [];
+  const combinedApps = [...apps, ...localAppData];
+
+  const fileInputRef = useRef();
+
+  useEffect(() => {
+    setCurrentFolder("quickAccess");
+    // Get current user
+    const crntusr = JSON.parse(localStorage.getItem("currentUser"));
+    setCurrentUser(crntusr);
+
+    // get boolean if system is enabled
+    const storedSettings = JSON.parse(localStorage.getItem(crntusr.name + "advancedSettings"));
+    setSettings(storedSettings?.fileSystem || false);
+  }, []);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      currentUser.admin && await fetchSystemFiles();
+      settings && setSidebarFolders((prev) => {
+        const updatedFolders = prev.map(folder => (folder.id === 'system') ? { id: 'system', name: 'System', type: 'folder' } : folder);
+        if (!prev.some(folder => folder.id === 'system')) {
+          updatedFolders.push({ id: 'system', name: 'System', type: 'folder' });
+        }
+        return updatedFolders;
+      });
+    };
+  
+    fetchData();
+  }, [currentUser, settings]);  
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      const filesAndFolders = await getFilesAndFolders();
+
+      let filteredItems = [];
+      if (currentFolder) {
+        filteredItems = filesAndFolders.filter((item) => item.parentId === currentFolder);
+      } else {
+        filteredItems = filesAndFolders.filter((item) => !item.parentId);
+      }
+
+      setItems(filteredItems);
+    };
+
+    fetchItems();
+  }, [currentFolder]);
+
+  useEffect(() => {
+    fetchItems();
+  }, [currentFolder]);
+
+  const fetchSystemFiles = async () => {
+    const keywords = [currentUser?.name, "background", "users", "currentUser"];
+  
+    const systemFiles = Object.keys(localStorage)
+      .map((key) => ({
+        id: key,
+        name: key + ".Los",
+        content: localStorage.getItem(key).replaceAll(/[,;]/g, ',\n'),
+        type: 'file',
+        parentId: 'system',
+      }))
+      .filter(file => keywords.some(keyword => file.name.includes(keyword)));
+  
+    setSystemItems(systemFiles);
+  };  
+  
+  const handleAddFile = async () => {
+    const newFile = {
+      name: newItemName || 'New File',
+      content: 'File content',
+      type: 'file',
+      parentId: currentFolder,
+    };
+    await addFileOrFolder(newFile);
+    setNewItemName('');
+    setShowModal(false);
+  };
+
+  const desktopFolderApps = combinedApps
+  .filter((app) => app.shortcut)
+  .map((app) => ({
+    name: app.name,
+    svg: app.svg,
+    type: 'file', // Assuming that these apps are represented as files in the file system
+    parentId: 'desktop', // Assign a common parent ID for the Desktop folder
+  }));
+
+  const handleAddFolder = async () => {
+    const newFolder = {
+      name: newItemName || 'New Folder',
+      type: 'folder',
+      parentId: currentFolder,
+    };
+    await addFileOrFolder(newFolder);
+    setNewItemName('');
+    setShowModal(false);
+  };
+
+  const handleOpenFolder = (folderId) => {
+    setVisitedFolders([...visitedFolders, currentFolder]);
+    setCurrentFolder(folderId);
+  };
+
+  const handleGoBack = () => {
+    if (visitedFolders.length > 0) {
+      const previousFolder = visitedFolders.pop();
+      setVisitedFolders([...visitedFolders]);
+      setCurrentFolder(previousFolder);
+    }
+  };
+
+  const handleFileUpload = async (event) => {
+    const files = event.target.files;
+    for (const file of files) {
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const newFile = {
+          name: file.name,
+          content: reader.result,
+          type: 'file',
+          parentId: currentFolder,
+        };
+        console.log(currentFolder);
+        await addFileOrFolder(newFile);
+      };
+      reader.readAsText(file);
+    }
+    setNewItemName('');
+    setShowModal(false);
+  };
+
+  const handleSidebarFolderClick = (folderId) => {
+    setCurrentFolder(folderId);
+  };
+
+  const handleFileClick = async (file) => {
+      setSelectedFile(file.id);
+      
+    if (file.name.endsWith(".Los")) {
+      setNoteAreaContent(file.content);
+      setNoteAreaVisible(true);
+    } else if (file.name.endsWith('.html')) {
+      const fileContent = await fetchFileContent(file.id);
+      openWindowWithContent(file.name, fileContent);
+    } else {
+      const fileContent = await fetchFileContent(file.id);
+      
+      setFileViewerContent(fileContent);
+    }
+  };  
+
+  const handleDeleteFile = async () => {
+    // Check if a file is selected
+    if (selectedFile) {
+      if (window.confirm('Are you sure you want to delete this file?')) {
+        await deleteFileOrFolder(selectedFile);
+        setSelectedFile(null); // Clear the selection after deletion
+        fetchItems(); // Refresh the file list
+      } else {
+        setError(selectedFile + " was not deleted.")
+      }
+    }
+  };
+
+  const handleOpenFile = () => {
+    // Check if a file is selected
+    if (selectedFile) {
+      // Implement logic to open the file, e.g., display its content
+      const selectedFileData = items.find(item => item.id === selectedFile);
+      if (selectedFileData) {
+        alert(`Opening file: ${selectedFileData.name}\nContent: ${selectedFileData.content}`);
+      }
+    }
+  };
+
+  const handleMoveFile = async () => {
+    if (selectedFile) {
+      // Fetch available folders to move the file
+      const filesAndFolders = await getFilesAndFolders();
+      const folders = filesAndFolders.filter((item) => item.type === 'folder' && item.id !== selectedFile);
+      setAvailableFolders(folders);
+
+      // Show the move popup
+      setMovePopupVisible(true);
+    }
+  };
+
+  const handleMoveFileToFolder = async (folderId) => {
+    if (selectedFile) {
+      const fileToMove = items.find((item) => item.id === selectedFile);
+      if (fileToMove) {
+        // Update the parentId of the file to move
+        fileToMove.parentId = folderId;
+        await addFileOrFolder(fileToMove);
+        
+        // Close the move popup
+        setMovePopupVisible(false);
+
+        // Fetch the updated items
+        fetchItems();
+      }
+    }
+  };
+
+  const handleCancelMove = () => {
+    // Close the move popup
+    setMovePopupVisible(false);
+  };
+  
+  const fetchItems = async () => {
+    const filesAndFolders = await getFilesAndFolders();
+
+    let filteredItems = [];
+    if (currentFolder) {
+      filteredItems = filesAndFolders.filter((item) => item.parentId === currentFolder);
+    } else {
+      filteredItems = filesAndFolders.filter((item) => !item.parentId);
+    }
+
+    setItems(filteredItems);
+  };
+
+  const handleSaveChanges = async () => {
+    // Check if a file is selected
+    if (selectedFile) {
+      // Remove all occurrences of '\n' from noteAreaContent
+      const cleanedContent = noteAreaContent.replace(/\n/g, '');
+  
+      // Update the content of the selected file in localStorage
+      localStorage.setItem(selectedFile, cleanedContent);
+  
+      // Hide the note area
+      setNoteAreaVisible(false);
+  
+      fetchSystemFiles();
+    }
+  };  
+
+  return (
+    <div className="flex text-text-base h-full w-full">
+      <div className="w-1/4 p-4 border-r">
+        <div className="sticky">
+          <h2 className="mb-4">Folders</h2>
+          <ul>
+            {sidebarFolders.map((folder) => (
+              <li className="flex flex-row gap-2 items-center cursor-pointer hover:bg-secondary-light transition-colors duration-200 p-2 rounded" key={folder.id} onClick={() => handleSidebarFolderClick(folder.id)}>
+                <FontAwesomeIcon icon={faFolder} className={`${"text-text-base" === "white" && "invert"}`} style={{color: folder.name === 'System' && "red"}} /> 
+                <span style={{color: folder.name === 'System' && "red"}}>{ folder.name }</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="w-3/4 p-4">
+        <div className="flex flex-row items-center justify-between">
+        <button className="button-main" onClick={() => setShowModal(true)}>Add Item</button>
+        {currentFolder && <button className="button-main" onClick={handleGoBack}>{`< Go Back`}</button>}      
+        </div>
+        <p style={{color: "red"}}>{error}</p>
+        {selectedFile && (
+            <div>
+                <button onClick={handleMoveFile}>Move</button>
+                <button onClick={handleDeleteFile}>Delete</button>
+                <button onClick={handleOpenFile}>Open</button>
+            </div>
+        )}
+        <ul className="my-3">
+            {items.map((item) => (
+                <li
+                    key={item.id}
+                    className={`${selectedFile === item.id ? 'selected ' : ''} cursor-pointer hover:bg-primary-light transition-all active:scale-95 duration-200 p-1 rounded`}
+                >
+                    {item.type === 'folder' ? (
+                    <span onClick={() => handleOpenFolder(item.id)}>📁 {item.name}</span>
+                    ) : (
+                    <span onClick={() => handleFileClick(item)}>📄 {item.name}</span>
+                    )}
+                </li>
+            ))}
+            {currentFolder === 'desktop' && desktopFolderApps.map((app) => (
+                <li key={app.name} className="flex flex-row items-center gap-2 cursor-pointer hover:bg-primary-light transition-all active:scale-95 duration-200 p-1 rounded" onDoubleClick={() => openApp(app.name)}>
+                    <div dangerouslySetInnerHTML={{ __html: app.svg }} className={`w-4 h-4 ${theme["--theme-text-base"] === 'white' && "invert"}`} />
+                    <span>{app.name}</span>
+                </li>
+            ))}
+            {currentFolder === 'apps' && combinedApps.map((app) => (
+            <li key={app.name} className="flex flex-row items-center gap-2 cursor-pointer hover:bg-primary-light transition-all active:scale-95 duration-200 p-1 rounded" onDoubleClick={() => openApp(app.name)}>
+                {app.svg.includes('<svg') ? (
+                    <div dangerouslySetInnerHTML={{ __html: app.svg }} className={`w-4 h-4 ${theme["--theme-text-base"] === 'white' && "invert"}`} />
+                ) : (
+                    <img src={app.svg} alt={app.name} className={`w-4 h-4 ${theme["--theme-text-base"] === 'white' && "invert"}`} />
+                )}
+                <span>{app.name}</span>
+            </li>
+          ))}
+          {currentFolder === 'system' && 
+          <>
+          {systemItems.map((app) => (
+            <li key={app.name} className="flex flex-row items-center gap-2 cursor-pointer hover:bg-primary-light transition-all active:scale-95 duration-200 p-1 rounded" onDoubleClick={() => handleFileClick(app)}>
+                <svg className={`w-4 h-4 ${theme["--theme-text-base"] === 'white' && "invert"}`} fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 588.601 588.6" xmlSpace="preserve"><g strokeWidth="0"></g><g strokeLinecap="round" strokeLinejoin="round"></g><g> <g> <path d="M84.879,254.752c-5.21,0.092-8.575,0.643-10.547,1.17v72.465c1.972,0.527,5.189,0.58,8.1,0.623 c21.357,0.532,35.533-11.971,35.533-38.958C118.12,266.572,105.2,254.391,84.879,254.752z"></path> <path d="M359.031,537.786c0.781,0.042,1.551,0.115,2.342,0.115h178.2c20.846,0,37.8-16.959,37.8-37.8v-413.1 c0-20.838-16.954-37.8-37.8-37.8h-178.2c-0.786,0-1.561,0.069-2.342,0.114V0L11.228,46.419v494.562L359.031,588.6V537.786z M555.773,318.152c-0.243-1.524-0.232-3.074,0-4.604V318.152z M555.773,353.489v4.599 C555.541,356.569,555.52,355.013,555.773,353.489z M361.373,70.801h178.2c8.933,0,16.2,7.267,16.2,16.2v221.073l-7.088-7.094 c-0.438-0.432-0.77-0.3-1.013-0.189c-3.597,1.588-7.815,1.65-11.464,0.121c-3.676-1.514-6.598-4.503-8.037-8.205 c-0.132-0.338-0.464-0.569-0.833-0.569H516.17c-0.369,0-0.718,0.231-0.844,0.569c-1.435,3.702-4.372,6.687-8.016,8.205 c-3.66,1.52-7.863,1.472-11.486-0.121c-0.227-0.1-0.559-0.242-1.002,0.189l-7.91,7.9c-0.253,0.264-0.332,0.675-0.189,1.018 c1.613,3.628,1.635,7.799,0.121,11.465c-1.514,3.659-4.498,6.581-8.189,8.021c-0.348,0.132-0.585,0.464-0.585,0.854v11.164 c0,0.369,0.237,0.695,0.585,0.833c3.691,1.444,6.676,4.366,8.189,8.026c1.514,3.664,1.482,7.857-0.121,11.485 c-0.137,0.337-0.063,0.732,0.189,0.991l7.91,7.91c0.443,0.443,0.765,0.301,1.002,0.18c1.862-0.812,3.834-1.234,5.88-1.234 c1.925,0,3.813,0.38,5.59,1.118c3.665,1.519,6.603,4.503,8.032,8.205c0.126,0.338,0.475,0.56,0.844,0.56h11.169 c0.369,0,0.701-0.222,0.833-0.56c1.445-3.702,4.366-6.687,8.037-8.205c3.659-1.514,7.857-1.466,11.475,0.116 c0.242,0.105,0.564,0.242,1.002-0.18l7.088-7.098V500.09c0,8.934-7.268,16.2-16.2,16.2h-178.2c-0.796,0-1.571-0.126-2.342-0.242 v-161.42l6.213,6.223c0.938,0.923,1.592,0.611,2.119,0.38c3.913-1.72,8.095-2.601,12.398-2.601c4.087,0,8.058,0.786,11.817,2.357 c7.736,3.212,13.911,9.508,16.949,17.308c0.279,0.707,1.002,1.202,1.782,1.202h23.572c0.796,0,1.487-0.475,1.771-1.202 c3.043-7.8,9.208-14.096,16.949-17.308c7.53-3.111,16.084-3.074,23.562-0.011c0.111-0.991,0.358-1.982,0.775-2.932 c0.596-1.34,0.606-2.879,0.068-4.188c-0.532-1.281-1.635-2.362-2.947-2.874c-3.992-1.603-6.534-5.342-6.534-9.561v-11.169 c0-4.229,2.542-7.984,6.465-9.556c1.382-0.543,2.484-1.613,3.027-2.911c0.538-1.286,0.517-2.826-0.042-4.103 c-1.698-3.887-0.823-8.448,2.141-11.411l7.899-7.91c1.994-1.962,4.557-3.038,7.235-3.038h1.856l2.12,0.812 c1.646,0.728,3.037,0.664,4.282,0.142c1.328-0.553,2.404-1.655,2.91-2.963c1.498-3.752,4.926-6.157,8.87-6.421v-7.361 c0-0.77-0.506-1.484-1.224-1.78c-7.788-3.045-14.096-9.218-17.297-16.94c-3.206-7.739-3.116-16.572,0.254-24.234 c0.306-0.686,0.137-1.55-0.396-2.102l-16.69-16.674c-0.918-0.928-1.604-0.633-2.12-0.412c-7.594,3.354-16.485,3.473-24.211,0.253 c-7.726-3.185-13.9-9.502-16.954-17.305c-0.279-0.709-0.98-1.199-1.761-1.199h-23.578c-0.785,0-1.503,0.49-1.782,1.199 c-3.043,7.803-9.213,14.12-16.943,17.305c-7.699,3.219-16.574,3.122-24.236-0.253c-0.48-0.2-1.171-0.517-2.1,0.412l-6.217,6.209 V71.033C359.802,70.925,360.571,70.801,361.373,70.801z M543.476,335.823c0,11.986-9.745,21.727-21.727,21.727 c-11.992,0-21.716-9.745-21.716-21.727c0-11.98,9.729-21.736,21.716-21.736C533.74,314.086,543.476,323.842,543.476,335.823z M376.233,287.313c0-25.278,20.566-45.885,45.848-45.885c25.312,0,45.89,20.606,45.89,45.885c0,25.297-20.588,45.863-45.89,45.863 C396.795,333.176,376.233,312.61,376.233,287.313z M125.903,335.127c-11.277,9.66-28.205,13.911-48.526,13.384 c-12.002-0.316-20.417-1.351-26.083-2.31V238.583c8.377-1.685,19.388-2.792,31.137-3.093c19.808-0.524,32.843,2.984,43.158,10.972 c11.222,8.559,18.338,22.518,18.338,42.699C143.928,311.048,136.334,326.03,125.903,335.127z M231.797,351.285l-71.508-1.813 V234.296l25.473-0.659v94.36l46.035,0.722V351.285z M324.986,353.658l-77.309-1.962V232.029l27.52-0.717v98.083l49.789,0.775 V353.658L324.986,353.658z"></path> </g> </g></svg>
+                <span>{app.name}</span>
+            </li>
+          ))}
+          </>
+          }
+        </ul>
+      </div>
+      {noteAreaVisible && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary-light p-8 rounded shadow-lg z-50">
+          <textarea
+            className="w-full mb-4 p-2 border border-gray-300 rounded"
+            style={{ color: 'black' }}
+            value={noteAreaContent}
+            onChange={(e) => setNoteAreaContent(e.target.value)}
+            rows={10}
+            cols={30}
+          />
+          <div className="w-full flex justify-between">
+            <button
+              className="button-main"
+              onClick={handleSaveChanges}
+            >
+              Save Changes
+            </button>
+            <button
+              className="button-main"
+              onClick={() => setNoteAreaVisible(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+      {showModal && (
+        <div className="fixed inset-0 bg-opacity-75 flex items-center justify-center">
+          <div className="bg-secondary p-4 rounded shadow">
+            <input
+              type="text"
+              placeholder="New Item Name"
+              value={newItemName}
+              onChange={(e) => setNewItemName(e.target.value)}
+              className="mb-2 p-2 border border-gray-300 rounded"
+            />
+            <button onClick={handleAddFile} className="mr-2 bg-secondary hover:bg-secondary-light transition-colors duration-200 p-2 rounded">
+              Add File
+            </button>
+            <button onClick={handleAddFolder} className="bg-secondary hover:bg-secondary-light transition-colors duration-200 p-2 rounded">
+              Add Folder
+            </button>
+            <div>
+              <input
+                type="file"
+                onChange={handleFileUpload}
+                multiple
+                style={{ display: 'none' }}
+                ref={fileInputRef}
+              />
+              <button
+                onClick={() => fileInputRef.current.click()}
+                className="bg-secondary hover:bg-secondary-light transition-colors duration-200 p-2 rounded"
+              >
+                Upload File
+              </button>
+            </div>  
+            <button onClick={() => setShowModal(false)} className="ml-2 px-4 py-2 bg-gray-300 rounded">
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+      {movePopupVisible && (
+              <div className="fixed inset-0 bg-opacity-75 flex items-center justify-center">
+              <div className="bg-secondary p-4 rounded shadow">
+                  <h3 className="text-white mb-2">Move file to:</h3>
+                  <ul className="list-disc pl-4">
+                  {availableFolders.map((folder) => (
+                      <li
+                      key={folder.id}
+                      className="cursor-pointer text-blue-500 hover:underline"
+                      onClick={() => handleMoveFileToFolder(folder.id)}
+                      >
+                      {folder.name}
+                      </li>
+                  ))}
+                  </ul>
+                  <button
+                  onClick={handleCancelMove}
+                  className="mt-4 px-4 py-2 bg-gray-300 text-white rounded"
+                  >
+                  Cancel
+                  </button>
+              </div>
+              </div>
+      )}
+    </div>
+  );
+};
+
+export default FileExplorer;
