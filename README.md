@@ -62,6 +62,16 @@ Please provide a screenshot or error message if possible.
 - Release new websites for accessing Lumi OS
 - Add more games?
 
-## Source Code
+## Terms of Use
 
-Please cite the changes made within the loading screen.
+By downloading or using this code, you agree to the terms, conditions, and license specified in the **MAIN** branch.
+
+### Modification and Redistribution  
+If this code is modified and redistributed, the following conditions must be met:  
+- All modifications must be clearly disclosed to the user on the loading screen.  
+- A direct link to the modified source code must be provided.
+- You agree to all future versions of the terms  
+
+### Notes  
+This version will only receive updates for bug fixes and will not include new features or enhancements.
+
