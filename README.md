@@ -79,7 +79,7 @@ You can also chat with us and submit bugs on our [Discord server](https://discor
 - [ ] Release v12+ source code
 - [ ] Add more games
 - [x] Fix update bugs
-- [ ] Create more game websites
+- [ ] Create more websites
 - [ ] Add more TODOs
 
 ## Terms of Use
