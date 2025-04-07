@@ -2,24 +2,29 @@
 
 # Lumi OS
 
-### Join the Discord!
+### 🚀 Join the Community  
 [![Discord](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/refs/heads/main/images/discord.png)](https://discord.gg/TyacaNY3GK)
 
-Lumi OS is a React-Typescript operating system, offering a wide range of features that allow users to interact locally or on a server.
+**Lumi OS** is a modern **React + TypeScript** operating system built for the browser.  
+It offers a dynamic desktop experience with offline functionality, themes, plugins, games, and more!
 
 </div>
 
-## Features
+---
 
-- Themes, plugins, and more
-- Over 200+ games
-- Constant updates
-- Fully functional file system
-- Built-in text editor
+## 🧰 Features
+
+- 🎨 **Themes**, **plugins**, and much more  
+- 🎮 Over **200+ games** built-in  
+- 🔄 **Constant updates**  
+- 📁 Fully-functional **file system**  
+- 📝 Built-in **text editor**
+
+---
 
 ## Downloading
 
-Lumi OS can be run locally, so click on this [link](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v12.1.html) in order to download the file. It can also be downloaded as an about:blank page.
+Lumi OS can be run locally, so click on this [link](https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v12.5.html) in order to download the file. It can also be downloaded as an about:blank page.
 - Can I run Lumi OS off of my chromebook?
 	> Yes, Lumi OS can be run from local files.
 - How do I know when to update my file?
@@ -27,40 +32,55 @@ Lumi OS can be run locally, so click on this [link](https://raw.githubuserconten
 - Why won't my changes be saved?
 	> Selecting any other file besides the one opened will break it.
 
-## Bookmarklet
+### Bookmarklet
 
 Paste the following code into your bookmark bar and click it to run Lumi OS on any website.
 ```
 javascript:(function(){(async () => {/** BUILT FOR LUMI OS NOVEMBER 17th 2024*/const fetchLink = "https://raw.githubusercontent.com/LuminesenceProject/LumiOS/refs/heads/main/Info.json";try {const response = await fetch(fetchLink);if (!response.ok) throw new Error('Failed to fetch Info.json');const fetched = await response.json();const version = fetched[0]?.version;if (!version) throw new Error('Version not found in Info.json');const downloadLink = https://raw.githubusercontent.com/LuminesenceProject/LumiOS/main/LumiOS.v${version}.html;const fileResponse = await fetch(downloadLink);if (!fileResponse.ok) throw new Error('Failed to fetch the versioned file');const content = await fileResponse.text();const popupWindow = window.open('', '_blank', 'width=800,height=600');if (!popupWindow) throw new Error("Popup window couldn't be opened. Please check your browser settings.");popupWindow.document.open();popupWindow.document.write(content);popupWindow.document.close();} catch (error) {console.error('Error:', error.message);}})();})()
 ```
+---
 
-## Contributing
+## 🤝 Contributing
 
-This repository will be open-source soon.  
-Games have been moved to a separate repository, which can be found [here](https://github.com/LuminesenceProject/lumi-games).  
-When adding games, please ensure you include an image.
+Lumi OS os now **open-source**!  
+Games have moved to a separate repository: [lumi-games](https://github.com/LuminesenceProject/lumi-games)
 
-Note: Some feature suggestions may not be added, especially those that rely on external servers, as it could disrupt the ability to use Lumi OS offline.
+> 📝 When adding games, please ensure you include an **image preview**.
 
-**Contributors** will be credited in this repository.
+> [!NOTE]  
+> Some feature suggestions may not be added — especially ones relying on external servers — to keep **offline functionality** intact.  
+> Game links can always be updated through the **Settings** app.
 
-## Issues
+👑 **Contributors** will be credited in this repository.
 
-To report an issue, please open a new one on the [GitHub Issues page](https://github.com/LuminesenceProject/LumiOS/issues) and click 'New Issue'.
+---
 
-### Common Issues & Solutions
+## Issues & Support
+
+To report an issue, visit the [GitHub Issues page](https://github.com/LuminesenceProject/LumiOS/issues) and click **New Issue**.  
+You can also chat with us and submit bugs on our [Discord server](https://discord.gg/TyacaNY3GK)!
+
+### ⚠️ Common Issues & Fixes
 
 - **White Screen Error:**  
-  This is a common error. To resolve it, type `"lumiplus"` in the exact order, and it will clear all data stored. This solution works in version 4.2 and above of Lumi OS.
+  This is a known issue. To fix it, type `"lumiplus"` (exact spelling) — this will **clear all local data** and reset the system.  
+  Works on version 4.2 and above, *except for v11*, where you must redownload the latest version.
 
-Please provide a screenshot or error message if possible.
+> [!IMPORTANT]  
+> Type `"lumiplus"` in that exact order to trigger the system reset popup.
+
+📸 If possible, provide a screenshot or copy the error message when reporting.
+
+---
 
 ## Todo
 
-- Release source code
-- Remove redundant features
-- Release new websites for accessing Lumi OS
-- Add more games?
+- [x] Release source code
+- [ ] Release v12+ source code
+- [ ] Add more games
+- [x] Fix update bugs
+- [ ] Create more game websites
+- [ ] Add more TODOs
 
 ## Terms of Use
 
@@ -70,4 +90,5 @@ By downloading or using this code, you agree to the terms, conditions, and licen
 If this code is modified and redistributed, the following conditions must be met:  
 - All modifications must be clearly disclosed to the user on the loading screen.  
 - A direct link to the modified source code must be provided.
-- You agree to all future versions of the terms  
+- A direct link to [LumiOS](https://github.com/LuminesenceProject/LumiOS) must also be provided.
+- You agree to all future versions of the terms.
