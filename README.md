@@ -47,6 +47,10 @@ Games have moved to a separate repository: [lumi-games](https://github.com/Lumin
 
 > 📝 When adding games, please ensure you include an **image preview**.
 
+To get the source code, click the dropdown on main, then the version you want.
+Unfortunately old versions were lost since the code was directly updated.
+The code between major updates was completely changed. 
+
 > [!NOTE]  
 > Some feature suggestions may not be added — especially ones relying on external servers — to keep **offline functionality** intact.  
 > Game links can always be updated through the **Settings** app.
